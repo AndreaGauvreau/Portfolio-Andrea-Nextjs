@@ -1,0 +1,80 @@
+/*button custom*/
+#actionBtn {
+  background-color: #398ffc;
+  border-radius: 50px 0px;
+  color: white;
+  font-size: 20px;
+  padding: 15px 50px;
+  margin: 10px;
+  font-family: 'bely-display';
+  font-size: '40px';
+  font-weight: '400';
+  border: none !important ;
+}
+
+#linkofbutton {
+  position: relative;
+}
+
+#btnTopLeft,
+#btnBotRight {
+  background-color: transparent;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-radius: 3px;
+  transition: 0.5s;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 18px solid;
+  border-right: 12px solid transparent;
+  transition: 0.3s;
+  opacity: 30%;
+}
+
+#btnTopLeft {
+  top: -20px;
+  left: -13px;
+  transform: rotate(220deg);
+}
+
+#btnBotRight {
+  bottom: -20px;
+  right: -13px;
+  transform: rotate(40deg);
+}
+
+#actionBtn:hover ~ #btnTopLeft {
+  top: -0px;
+  left: -25px;
+  transform: rotate(205deg);
+}
+#actionBtn:hover ~ #btnBotRight {
+  bottom: 0px;
+  right: -25px;
+  transform: rotate(25deg);
+}
+
+#actionBtn:focus ~ #btnTopLeft {
+  top: -0px;
+  left: -40px;
+  transform: rotate(210deg);
+}
+#actionBtn:focus ~ #btnBotRight {
+  bottom: 0px;
+  right: -40px;
+  transform: rotate(30deg);
+}
+
+#actionBtn:hover ~ #btnTopLeft,
+#actionBtn:hover ~ #btnBotRight {
+  border-left: 18px solid #398ffc;
+  opacity: 100%;
+  transition: 0.3s;
+}
+
+@media screen and (max-width: 768px) {
+  #actionBtn {
+    font-size: 13px;
+  }
+}
