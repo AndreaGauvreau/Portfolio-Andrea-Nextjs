@@ -1,4 +1,4 @@
-import Box from '../../Box/Box'
+import {Box} from '@chakra-ui/react'
 
 export const LogoAndrea = ({color, color1, color2, width, ...rest}) => {
   return (

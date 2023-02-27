@@ -1,6 +1,6 @@
+import Link from 'next/link'
 import React, {useState} from 'react'
 import {useEffect} from 'react'
-import {Link} from 'react-router-dom'
 import {colorsDD} from '../colors/colors'
 import './Button.css'
 
@@ -41,7 +41,7 @@ export default function ButtonDD({
           backgroundColor: `${bgColor}`,
           color: `${color}`,
         }}
-        to={link}
+        href={link}
       >
         {text}
       </Link>

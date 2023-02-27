@@ -1,20 +1,13 @@
 import {Flex, Heading} from '@chakra-ui/react'
 import React, {useEffect, useRef} from 'react'
-import {useLocation} from 'react-router-dom'
 import ButtonDD from '../../ui/ButtonDD/ButtonDD'
 import {colorsDD} from '../../ui/colors/colors'
 import Gradient from '../../ui/GradientBgElems/Gradient'
 import CardMap from './floatingCards/CardsContent'
 
 export default function Project() {
-  const location = useLocation()
   const projetsRef = useRef(null)
 
-  useEffect(() => {
-    if (location.hash && projetsRef.current) {
-      projetsRef.current.scrollIntoView({behavior: 'smooth'})
-    }
-  }, [location.hash])
   return (
     <Flex
       minH="100vh"

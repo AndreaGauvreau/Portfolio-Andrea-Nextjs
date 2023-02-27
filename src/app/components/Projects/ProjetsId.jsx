@@ -10,7 +10,6 @@ import {
   Text,
 } from '@chakra-ui/react'
 import React, {useContext, useEffect, useRef, useState} from 'react'
-import {Link, useLocation, useParams} from 'react-router-dom'
 import Menu from '../Home/Menu/Menu'
 import projetsdata from '../Home/Projects/floatingCards/FakeData'
 import {colorsDD} from '../ui/colors/colors'
@@ -22,6 +21,7 @@ import ImageProject from './ImageProject'
 import Gradient from '../ui/GradientBgElems/Gradient'
 import ButtonDD from '../ui/ButtonDD/ButtonDD'
 import Canvas3d from '../Home/Main/3drocket/Canva'
+import Link from 'next/link'
 
 export default function ProjetsId() {
   const {id} = useParams()
@@ -127,7 +127,7 @@ export default function ProjetsId() {
           >
             <Flex gap={2}>
               <Link
-                to={'/#projets'}
+                href={'/#projets'}
                 onMouseLeave={handleMouseLeave}
                 onClick={handleMouseLeave}
                 onMouseEnter={handleMouseClick}
@@ -142,7 +142,7 @@ export default function ProjetsId() {
                 </Button>
               </Link>
               <Link
-                to={'#badge'}
+                href={'#badge'}
                 onMouseLeave={handleMouseLeave}
                 onMouseEnter={handleMouseClick}
                 onClick={handleMouseLeave}

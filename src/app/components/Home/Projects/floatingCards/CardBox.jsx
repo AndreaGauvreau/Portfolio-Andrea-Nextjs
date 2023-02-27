@@ -14,10 +14,8 @@ import {
 import {useState} from 'react'
 import {useEffect} from 'react'
 import {colorsDD} from '../../../ui/colors/colors'
-import {Link} from 'react-router-dom'
 import {CursorContext} from '../../../ui/cursor/CursorProvider'
-import {decode} from 'blurhash'
-import {Blurhash} from 'react-blurhash'
+import Link from 'next/link'
 export default function Cards({datas, currentIndex, length}) {
   const [pos, setPos] = useState('-50%')
   const [index, setIndex] = useState(1)
@@ -108,10 +106,6 @@ export default function Cards({datas, currentIndex, length}) {
       mouseText: '',
     }))
   }
-  const hashData = datas?.hash
-  const decodeImage = decode(hashData, 32, 32)
-  console.log('hashData', hashData)
-  console.log('decodeImage', decodeImage)
 
   return (
     <>
@@ -132,8 +126,7 @@ export default function Cards({datas, currentIndex, length}) {
         borderRadius={10}
       >
         <CardBody p={4}>
-          <Blurhash hash={hashData} />
-          <Link to={`/projets/${datas.id}`}>
+          <Link href={`/projets/${datas.id}`}>
             <Box
               bgImage={datas?.image}
               w="100%"
