@@ -3,6 +3,7 @@ import React, {useContext, useState} from 'react'
 import {colorsDD} from '../../ui/colors/colors'
 import {CursorContext} from '../../ui/cursor/CursorProvider'
 import Gradient from '../../ui/GradientBgElems/Gradient'
+import CanvasEgg from './3dEgg/Canva'
 
 export default function Competences() {
   const [isHovering, setIsHovering] = useState(false)
@@ -102,7 +103,9 @@ export default function Competences() {
               right={'-50px'}
               w={{base: '200px', md: '200px', lg: '250px'}}
               h={{base: '200px', md: '200px', lg: '250px'}}
-            ></Box>
+            >
+              <CanvasEgg />
+            </Box>
           </Box>
           <Flex gap={1} display={{base: 'none', md: 'none', lg: 'flex'}}>
             <Badge colorScheme={'dd'} padding={1} borderRadius={5}>
