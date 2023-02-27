@@ -20,7 +20,6 @@ import {motion} from 'framer-motion' // Importer motion de framer-motion
 import ImageProject from './ImageProject'
 import Gradient from '../ui/GradientBgElems/Gradient'
 import ButtonDD from '../ui/ButtonDD/ButtonDD'
-import Canvas3d from '../Home/Main/3drocket/Canva'
 import Link from 'next/link'
 
 export default function ProjetsId() {

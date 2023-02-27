@@ -1,6 +1,6 @@
+'use client'
 import {Center, PresentationControls, Sparkles} from '@react-three/drei'
 import {Canvas} from '@react-three/fiber'
-
 import Hand3d from './Hand3d'
 
 export default function CanvaHand() {
