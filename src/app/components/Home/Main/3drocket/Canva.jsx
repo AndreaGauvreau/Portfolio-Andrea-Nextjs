@@ -1,3 +1,5 @@
+'use client'
+
 import {Center, PresentationControls} from '@react-three/drei'
 import {Canvas} from '@react-three/fiber'
 import {useContext} from 'react'

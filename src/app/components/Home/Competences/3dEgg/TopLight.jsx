@@ -1,3 +1,5 @@
+'use client'
+
 import {useTexture, useGLTF} from '@react-three/drei'
 
 export default function TopLight() {

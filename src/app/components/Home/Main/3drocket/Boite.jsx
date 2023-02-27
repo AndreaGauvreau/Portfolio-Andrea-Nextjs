@@ -1,3 +1,5 @@
+'use client'
+
 import {useTexture, useGLTF, Float} from '@react-three/drei'
 import {Bloom, EffectComposer} from '@react-three/postprocessing'
 export default function Boite() {

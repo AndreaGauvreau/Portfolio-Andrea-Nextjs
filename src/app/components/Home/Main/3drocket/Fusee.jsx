@@ -1,3 +1,5 @@
+'use client'
+
 import {useTexture, useGLTF, Float} from '@react-three/drei'
 
 export default function Fusee() {

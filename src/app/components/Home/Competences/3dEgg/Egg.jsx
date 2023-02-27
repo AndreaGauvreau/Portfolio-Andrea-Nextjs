@@ -1,3 +1,5 @@
+'use client'
+
 import {useTexture, useGLTF, Float} from '@react-three/drei'
 import {useState, useRef} from 'react'
 import {useFrame} from '@react-three/fiber'
