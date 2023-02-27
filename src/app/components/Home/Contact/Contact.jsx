@@ -1,10 +1,9 @@
 import {Box, Flex, Heading} from '@chakra-ui/react'
 import React from 'react'
-import Canvas3d from '../Main/3drocket/Canva'
 import ButtonDD from '../../ui/ButtonDD/ButtonDD'
 import {colorsDD} from '../../ui/colors/colors'
-import CanvaHand from './3dHand/CanvaHand'
 import Gradient from '../../ui/GradientBgElems/Gradient'
+import CanvaHand from './3dHand/CanvaHand'
 
 export default function Contact() {
   return (

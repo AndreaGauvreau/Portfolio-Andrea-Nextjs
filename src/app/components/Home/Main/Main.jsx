@@ -1,6 +1,5 @@
 import {Flex, Heading} from '@chakra-ui/react'
 import React from 'react'
-import Canvas3d from './3drocket/Canva'
 import Prenom from './Prenom'
 
 export default function Main() {
@@ -26,9 +25,7 @@ export default function Main() {
           alignItems="center"
           justifyContent={'center'}
           h={'50vh'}
-        >
-          <Canvas3d />
-        </Flex>
+        ></Flex>
         <Flex
           w={{base: '100%', md: '100%', lg: '50%'}}
           alignItems="center"
