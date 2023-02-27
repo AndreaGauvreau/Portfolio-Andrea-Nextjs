@@ -52,6 +52,7 @@ export default function Competences() {
           <Heading
             variant={'dew'}
             color={'white'}
+            fontFamily={'bely-display'}
             fontSize={{base: '27px', md: '30px', lg: '40px'}}
           >
             Des compétences pour vous aider à faire{' '}

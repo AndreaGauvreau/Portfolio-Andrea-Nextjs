@@ -13,7 +13,7 @@ export default function Main() {
       flexDirection={'column'}
       justifyContent={'center'}
       alignItems={'center'}
-      bgImage={'./images/path-background.svg'}
+      bgImage={'/images/path-background.svg'}
       bgSize="cover"
       boxSizing="border-box"
     >
