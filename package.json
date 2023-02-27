@@ -9,22 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@react-three/drei": "^9.56.27",
-    "@react-three/fiber": "^8.11.5",
-    "next": "13.2.1",
-    "r3f-perf": "^7.1.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "three": "^0.150.0",
     "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "^2.5.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@loadable/component": "^5.15.3",
+    "@next/font": "^13.2.1",
+    "@react-three/drei": "^9.56.27",
+    "@react-three/fiber": "^8.11.5",
     "@react-three/postprocessing": "^2.7.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
-    "framer-motion": "^9.0.4"
+    "framer-motion": "^10.0.0",
+    "next": "13.2.1",
+    "r3f-perf": "^7.1.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "three": "^0.150.0"
   }
 }
