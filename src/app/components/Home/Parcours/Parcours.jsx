@@ -1,4 +1,5 @@
-import {Flex, Heading, Image, Text} from '@chakra-ui/react'
+import {Flex, Heading, Text} from '@chakra-ui/react'
+import Image from 'next/image'
 import React from 'react'
 import ButtonDD from '../../ui/ButtonDD/ButtonDD'
 
@@ -31,9 +32,12 @@ export default function Parcours() {
           h={{base: '100%', md: '100%', lg: '100vh'}}
         >
           <Image
-            src="./images/identite/andrea-lightup.png"
-            w={{base: '60%', md: '60%', lg: '100%'}}
-            zIndex={1}
+            src="/images/identite/andrea-lightup.png"
+            alt="andrea-gauvreau-developpeur-front-end"
+            quality={50}
+            loading="lazy"
+            width={500}
+            height={500}
           />
         </Flex>
         <Flex

@@ -140,6 +140,7 @@ export default function Competences() {
           h={'90vh'}
           alignItems={'flex-end'}
           justifyContent={'center'}
+          zIndex={2}
         >
           <Image
             src="/images/identite/andrea-light-think.png"

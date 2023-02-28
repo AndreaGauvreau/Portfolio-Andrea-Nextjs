@@ -49,6 +49,7 @@ export default function Main() {
         textAlign={'center'}
         color={'white'}
         className={climatefont.className}
+        as="h1"
       >
         Votre développeur Front-end qui va propulser 🚀 votre projet
       </Heading>
