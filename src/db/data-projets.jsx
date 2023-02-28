@@ -1,3 +1,5 @@
+import {ColorModeContext} from '@chakra-ui/react'
+import {color} from 'framer-motion'
 import {colorsDD} from '../app/components/ui/colors/colors'
 const projetsdata = [
   {
@@ -5,6 +7,7 @@ const projetsdata = [
     color1: '#398ffc',
     color2: 'white',
     title: 'Teachizi',
+    slug: 'teachizi',
     dateStart: 'Septembre 2021',
     dateEnd: 'Janvier 2023',
     description:
@@ -21,8 +24,9 @@ const projetsdata = [
   {
     id: 2,
     color1: '#398ffc',
-    color2: 'red',
+    color2: colorsDD?.green,
     title: 'SchoolBooster',
+    slug: 'schoolBooster',
     dateStart: 'Janvier 2023',
     dateEnd: 'Mars 2023',
     description:
@@ -40,6 +44,7 @@ const projetsdata = [
     color1: '#ff954e',
     color2: '#b201de',
     title: 'Formizi',
+    slug: 'formizi',
     dateStart: 'Septembre 2022',
     dateEnd: 'Janvier 2023',
     description:
@@ -59,6 +64,7 @@ const projetsdata = [
     color1: '#398ffc',
     color2: 'white',
     title: 'Teachizi',
+    slug: 'teachizi',
     dateStart: 'Septembre 2021',
     dateEnd: 'Janvier 2023',
     description:
@@ -75,8 +81,9 @@ const projetsdata = [
   {
     id: 5,
     color1: '#398ffc',
-    color2: 'red',
+    color2: colorsDD?.green,
     title: 'SchoolBooster',
+    slug: 'schoolbooster',
     dateStart: 'Janvier 2023',
     dateEnd: 'Mars 2023',
     description:
@@ -95,6 +102,7 @@ const projetsdata = [
     color1: '#ff954e',
     color2: '#b201de',
     title: 'Formizi',
+    slug: 'formizi',
     dateStart: 'Septembre 2022',
     dateEnd: 'Janvier 2023',
     description:
@@ -114,6 +122,7 @@ const projetsdata = [
     color1: '#398ffc',
     color2: 'white',
     title: 'Teachizi',
+    slug: 'teachizi',
     dateStart: 'Septembre 2021',
     dateEnd: 'Janvier 2023',
     description:
@@ -132,6 +141,7 @@ const projetsdata = [
     color1: '#398ffc',
     color2: colorsDD?.green,
     title: 'SchoolBooster',
+    slug: 'schoolbooster',
     dateStart: 'Janvier 2023',
     dateEnd: 'Mars 2023',
     description:
@@ -150,6 +160,7 @@ const projetsdata = [
     color1: '#ff954e',
     color2: '#b201de',
     title: 'Formizi',
+    slug: 'formizi',
     dateStart: 'Septembre 2022',
     dateEnd: 'Janvier 2023',
     description:

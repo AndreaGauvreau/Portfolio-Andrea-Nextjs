@@ -1,6 +1,7 @@
 import {CursorProvider} from './components/ui/cursor/CursorProvider'
 import Chakra from './chakra'
 import Head from 'next/head'
+import './global.css'
 
 export default function RootLayout({children}) {
   return (

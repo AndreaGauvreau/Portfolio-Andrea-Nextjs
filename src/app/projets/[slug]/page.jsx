@@ -12,6 +12,13 @@ import ButtonDD from '../../components/ui/ButtonDD/ButtonDD'
 import Link from 'next/link.js'
 import {CursorContext} from '../../components/ui/cursor/CursorProvider.jsx'
 import Cursor from '../../components/ui/cursor/Cursor.jsx'
+import '../gradient.css'
+import {Abril_Fatface} from '@next/font/google'
+
+const climatefont = Abril_Fatface({
+  subsets: ['latin-ext'],
+  weight: '400',
+})
 
 export default function Page({params}) {
   const [cursorData, setCursorData] = useContext(CursorContext)
@@ -19,6 +26,7 @@ export default function Page({params}) {
   const [projetDatas, setProjetDatas] = useState({
     id: 2,
     color1: '#398ffc',
+    slug: 'schoolbooster',
     color2: 'red',
     title: 'SchoolBooster',
     dateStart: 'Janvier 2023',
@@ -34,15 +42,15 @@ export default function Page({params}) {
     logo: '/images/logo-teachizi-blanc-450x102.png',
   })
   useEffect(() => {
-    const theid = params?.id
+    const theid = params?.slug
     if (theid) {
       console.log(theid)
-      const job = datas.find(projet => projet.id === parseInt(theid))
+      const job = datas.find(projet => projet.slug === theid)
       setProjetDatas(job)
     } else {
       console.log('passe pas')
     }
-  }, [params?.id])
+  }, [params?.slug])
 
   const [scrollY, setScrollY] = useState(1)
   const [scaleValue, setScaleValue] = useState(1)
@@ -172,6 +180,7 @@ export default function Page({params}) {
                 color={'white'}
                 fontSize={{base: '27px', md: '30px', lg: '40px'}}
                 colorBl
+                className={climatefont.className}
               >
                 {projetDatas.title}
               </Heading>
