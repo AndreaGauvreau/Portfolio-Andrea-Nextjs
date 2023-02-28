@@ -1,31 +1,44 @@
+'use client'
 import {ArrowBackIcon, ArrowDownIcon} from '@chakra-ui/icons'
-import {
-  Badge,
-  Box,
-  Button,
-  calc,
-  Flex,
-  Heading,
-  Image,
-  Text,
-} from '@chakra-ui/react'
-import React, {useContext, useEffect, useRef, useState} from 'react'
-import Menu from '../Home/Menu/Menu'
-import projetsdata from '../Home/Projects/floatingCards/FakeData'
-import {colorsDD} from '../ui/colors/colors'
-import Cursor from '../ui/cursor/Cursor'
-import {CursorContext} from '../ui/cursor/CursorProvider'
-import './gradient.css'
+import {Badge, Box, Button, Flex, Heading, Image, Text} from '@chakra-ui/react'
+import {useEffect, useState} from 'react'
+import projetsdata from '../../../db/data-projets.js'
+import Menu from '../../components/Home/Menu/Menu.jsx'
+import {colorsDD} from '../../components/ui/colors/colors'
 import {motion} from 'framer-motion' // Importer motion de framer-motion
-import ImageProject from './ImageProject'
-import Gradient from '../ui/GradientBgElems/Gradient'
-import ButtonDD from '../ui/ButtonDD/ButtonDD'
-import Link from 'next/link'
+import ImageProject from '../ImageProject'
+import Gradient from '../../components/ui/GradientBgElems/Gradient'
+import ButtonDD from '../../components/ui/ButtonDD/ButtonDD'
 
-export default function ProjetsId() {
-  const {id} = useParams()
-  const projet = projetsdata.find(projet => projet.id === parseInt(id))
-  const [cursorData, setCursorData] = useContext(CursorContext)
+export default function Page({params}) {
+  const datas = projetsdata
+  const [projetDatas, setProjetDatas] = useState({
+    id: 2,
+    color1: '#398ffc',
+    color2: 'red',
+    title: 'SchoolBooster',
+    dateStart: 'Janvier 2023',
+    dateEnd: 'Mars 2023',
+    description:
+      "la Team V2 est une plateforme de gesttion de formation et d'équipe",
+    contribution: `J'ai contribué à l'amélioration de lateamV2, je me suis principalement occupé de divers problème ui/ux, appels API avec react Query. J'ai eu la chance d'être épaulé par un developpeur senior tout au long de cette mission ce qui a grandement augmenté mes compétences de developpeur`,
+    categories: ['React', 'React Query', 'Chakra Ui'],
+    image: '/images/schoolbooster.jpg',
+    hash: 'LkFslT%gE0Io%%ohRkWEE4M|xu%2',
+    projectOwner: 'Mathis Thomas',
+    comment: "Notre projet à vu le jour grâce au travail d'andréa",
+    logo: '/images/logo-teachizi-blanc-450x102.png',
+  })
+  useEffect(() => {
+    const theid = params?.id
+    if (theid) {
+      console.log(theid)
+      const job = datas.find(projet => projet.id === parseInt(theid))
+      setProjetDatas(job)
+    } else {
+      console.log('passe pas')
+    }
+  }, [params?.id])
 
   const [scrollY, setScrollY] = useState(1)
   const [scaleValue, setScaleValue] = useState(1)
@@ -56,40 +69,15 @@ export default function ProjetsId() {
     }
   }, [scrollY, maxScroll])
 
-  // Utilisez la valeur de scrollY ici pour vos besoins
-
-  const handleMouseClick = () => {
-    setCursorData(prevState => ({
-      ...prevState,
-      mouseEnter: 'SmFull',
-      mouseText: '⬅️',
-    }))
-  }
-
-  const handleMouseLeave = () => {
-    setCursorData(prevState => ({
-      ...prevState,
-      mouseEnter: 'default',
-      mouseText: '',
-    }))
-  }
-  const location = useLocation()
-  const badgeRef = useRef(null)
-
-  useEffect(() => {
-    if (location.hash && badgeRef.current) {
-      badgeRef.current.scrollIntoView({behavior: 'smooth'})
-    }
-  }, [location.hash])
   return (
     <Box
       id="backgroundGradient"
       w={'100%'}
       padding={2}
-      background={`linear-gradient(-45deg, ${projet.color1}, ${projet.color2},${projet.color1}, ${projet.color2})`}
+      background={`linear-gradient(-45deg, ${projetDatas.color1}, ${projetDatas.color2},${projetDatas.color1}, ${projetDatas.color2})`}
       maxH={'100vh'}
     >
-      <Menu color1={projet.color1} color2={projet.color2} blur={0} />
+      <Menu color1={projetDatas.color1} color2={projetDatas.color2} blur={0} />
       <Flex
         id={'scrollsection'}
         bg={colorsDD.bgcolor}
@@ -102,7 +90,6 @@ export default function ProjetsId() {
         overflow={'scroll'}
         overflowX={'hidden'}
       >
-        <Cursor />
         <Flex
           minH={'100vh'}
           flexDirection={'column'}
@@ -111,7 +98,6 @@ export default function ProjetsId() {
           gap={5}
           position="relative"
         >
-          <Gradient colorG={projet.color1} versionG={1} indexG={0} />
           <Flex
             h={{base: '50vh', md: '50vh', lg: '70vh'}}
             flexDirection={'column'}
@@ -125,38 +111,23 @@ export default function ProjetsId() {
             w={{base: '90vw', md: '90vw', lg: '100%'}}
           >
             <Flex gap={2}>
-              <Link
-                href={'/#projets'}
-                onMouseLeave={handleMouseLeave}
-                onClick={handleMouseLeave}
-                onMouseEnter={handleMouseClick}
+              <Button
+                bgColor={projetDatas.color1}
+                color={'white'}
+                leftIcon={<ArrowBackIcon />}
+                cursor={'none'}
               >
-                <Button
-                  bgColor={projet.color1}
-                  color={'white'}
-                  leftIcon={<ArrowBackIcon />}
-                  cursor={'none'}
-                >
-                  retour
-                </Button>
-              </Link>
-              <Link
-                href={'#badge'}
-                onMouseLeave={handleMouseLeave}
-                onMouseEnter={handleMouseClick}
-                onClick={handleMouseLeave}
+                retour
+              </Button>
+              <Button
+                bgColor={projetDatas.color1}
+                color={'white'}
+                leftIcon={<ArrowDownIcon />}
+                cursor={'none'}
+                className={'badge'}
               >
-                <Button
-                  bgColor={projet.color1}
-                  color={'white'}
-                  leftIcon={<ArrowDownIcon />}
-                  cursor={'none'}
-                  className={'badge'}
-                  ref={badgeRef}
-                >
-                  Découvrir
-                </Button>
-              </Link>
+                Découvrir
+              </Button>
             </Flex>
             <motion.div
               initial={{opacity: 0, y: 30}}
@@ -164,12 +135,11 @@ export default function ProjetsId() {
               transition={{delay: 0.3, duration: 0.5}}
             >
               <Heading
-                variant={'dew'}
                 color={'white'}
                 fontSize={{base: '27px', md: '30px', lg: '40px'}}
                 colorBl
               >
-                {projet.title}
+                {projetDatas.title}
               </Heading>
             </motion.div>
             <motion.div
@@ -187,11 +157,11 @@ export default function ProjetsId() {
                 ml={'auto'}
                 mr={'auto'}
               >
-                {projet.description}
+                {projetDatas.description}
               </Text>
             </motion.div>
           </Flex>
-          <ImageProject image={projet.image} scale={scaleValue} />
+          <ImageProject image={projetDatas.image} scale={scaleValue} />
         </Flex>
         <Flex
           minH={{base: '0px', md: '100px', lg: '100px'}}
@@ -202,13 +172,13 @@ export default function ProjetsId() {
           alignItems={'flex-end'}
           mt={5}
         >
-          {projet.categories.map((e, index) => {
+          {projetDatas.categories.map((e, index) => {
             return (
               <Badge
                 variant="subtle"
-                colorScheme={projet.color1}
+                colorScheme={projetDatas.color1}
                 key={index}
-                backgroundColor={projet.color1}
+                backgroundColor={projetDatas.color1}
                 color={'white'}
                 p={1}
                 borderRadius={5}
@@ -228,10 +198,10 @@ export default function ProjetsId() {
           alignContent="flex-start"
           justifyContent={'center'}
         >
-          <Gradient colorG={projet.color2} />
+          <Gradient colorG={projetDatas.color2} />
           <Flex
             w={'calc(50% - 5px)'}
-            bg={projet.color2}
+            bg={projetDatas.color2}
             minH={'200px'}
             p={5}
             borderRadius={10}
@@ -242,38 +212,38 @@ export default function ProjetsId() {
             <Badge bg={'#00000030'} color={'black'} p={1} borderRadius={5}>
               avis client
             </Badge>
-            <Text color={'black'}>{projet.comment}</Text>
+            <Text color={'black'}>{projetDatas.comment}</Text>
             <Flex>
               <Box color={'black'}>
-                <Text fontWeight="bold">{projet.projectOwner}</Text>
+                <Text fontWeight="bold">{projetDatas.projectOwner}</Text>
                 <Text fontSize="sm">Project Owner</Text>
               </Box>
             </Flex>
           </Flex>
           <Flex
             w={'calc(50% - 5px)'}
-            bg={projet.color1}
+            bg={projetDatas.color1}
             minH={'200px'}
             p={5}
             borderRadius={10}
             justifyContent={'center'}
             alignItems={'center'}
           >
-            <Image src={projet.logo} w={'70%'} h={'auto'} />
+            <Image src={projetDatas.logo} w={'70%'} h={'auto'} />
           </Flex>
           <Flex
             w={'100%'}
-            bg={projet.color1}
+            bg={projetDatas.color1}
             minH={'200px'}
             p={5}
             borderRadius={10}
           >
-            <Text color={'white'}>{projet.contribution}</Text>
+            <Text color={'white'}>{projetDatas.contribution}</Text>
           </Flex>
           <Box mt={20}>
             <ButtonDD
               text={'Contactez-moi 🚀'}
-              colorButton={projet.color1}
+              colorButton={projetDatas.color1}
               colorThemeDD={'custom'}
             />
           </Box>

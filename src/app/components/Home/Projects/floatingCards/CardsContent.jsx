@@ -4,7 +4,7 @@ import React, {useState, useCallback, useEffect, useContext} from 'react'
 import {colorsDD} from '../../../ui/colors/colors'
 import {CursorContext} from '../../../ui/cursor/CursorProvider'
 import Cards from './CardBox'
-import projetsdatas from './FakeData.jsx'
+import projetsdatas from '../../../../../db/data-projets'
 
 export default function CardMap() {
   const [mainIndex, setMainIndex] = useState(0)
