@@ -1,16 +1,20 @@
 'use client'
 import {ArrowBackIcon, ArrowDownIcon} from '@chakra-ui/icons'
 import {Badge, Box, Button, Flex, Heading, Image, Text} from '@chakra-ui/react'
-import {useEffect, useState} from 'react'
-import projetsdata from '../../../db/data-projets.js'
+import {useContext, useEffect, useState} from 'react'
+import projetsdata from '../../../db/data-projets.jsx'
 import Menu from '../../components/Home/Menu/Menu.jsx'
 import {colorsDD} from '../../components/ui/colors/colors'
 import {motion} from 'framer-motion' // Importer motion de framer-motion
 import ImageProject from '../ImageProject'
 import Gradient from '../../components/ui/GradientBgElems/Gradient'
 import ButtonDD from '../../components/ui/ButtonDD/ButtonDD'
+import Link from 'next/link.js'
+import {CursorContext} from '../../components/ui/cursor/CursorProvider.jsx'
+import Cursor from '../../components/ui/cursor/Cursor.jsx'
 
 export default function Page({params}) {
+  const [cursorData, setCursorData] = useContext(CursorContext)
   const datas = projetsdata
   const [projetDatas, setProjetDatas] = useState({
     id: 2,
@@ -69,6 +73,21 @@ export default function Page({params}) {
     }
   }, [scrollY, maxScroll])
 
+  const handleMouseClick = () => {
+    setCursorData(prevState => ({
+      ...prevState,
+      mouseEnter: 'SmFull',
+      mouseText: '⬅️',
+    }))
+  }
+
+  const handleMouseLeave = () => {
+    setCursorData(prevState => ({
+      ...prevState,
+      mouseEnter: 'default',
+      mouseText: '',
+    }))
+  }
   return (
     <Box
       id="backgroundGradient"
@@ -77,6 +96,7 @@ export default function Page({params}) {
       background={`linear-gradient(-45deg, ${projetDatas.color1}, ${projetDatas.color2},${projetDatas.color1}, ${projetDatas.color2})`}
       maxH={'100vh'}
     >
+      <Cursor />
       <Menu color1={projetDatas.color1} color2={projetDatas.color2} blur={0} />
       <Flex
         id={'scrollsection'}
@@ -111,23 +131,37 @@ export default function Page({params}) {
             w={{base: '90vw', md: '90vw', lg: '100%'}}
           >
             <Flex gap={2}>
-              <Button
-                bgColor={projetDatas.color1}
-                color={'white'}
-                leftIcon={<ArrowBackIcon />}
-                cursor={'none'}
+              <Link
+                href={'/#projets'}
+                onMouseLeave={handleMouseLeave}
+                onClick={handleMouseLeave}
+                onMouseEnter={handleMouseClick}
               >
-                retour
-              </Button>
-              <Button
-                bgColor={projetDatas.color1}
-                color={'white'}
-                leftIcon={<ArrowDownIcon />}
-                cursor={'none'}
-                className={'badge'}
+                <Button
+                  bgColor={projetDatas.color1}
+                  color={'white'}
+                  leftIcon={<ArrowBackIcon />}
+                  cursor={'none'}
+                >
+                  retour
+                </Button>
+              </Link>
+              <Link
+                href={'#badge'}
+                onMouseLeave={handleMouseLeave}
+                onMouseEnter={handleMouseClick}
+                onClick={handleMouseLeave}
               >
-                Découvrir
-              </Button>
+                <Button
+                  bgColor={projetDatas.color1}
+                  color={'white'}
+                  leftIcon={<ArrowDownIcon />}
+                  cursor={'none'}
+                  className={'badge'}
+                >
+                  Découvrir
+                </Button>
+              </Link>
             </Flex>
             <motion.div
               initial={{opacity: 0, y: 30}}
