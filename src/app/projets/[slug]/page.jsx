@@ -97,201 +97,207 @@ export default function Page({params}) {
     }))
   }
   return (
-    <Box
-      id="backgroundGradient"
-      w={'100%'}
-      padding={2}
-      background={`linear-gradient(-45deg, ${projetDatas.color1}, ${projetDatas.color2},${projetDatas.color1}, ${projetDatas.color2})`}
-      maxH={'100vh'}
-    >
-      <Cursor />
-      <Menu color1={projetDatas.color1} color2={projetDatas.color2} blur={0} />
-      <Flex
-        id={'scrollsection'}
-        bg={colorsDD.bgcolor}
-        m={0}
+    <>
+      <Box
+        id="backgroundGradient"
         w={'100%'}
-        flexDirection={'column'}
-        alignItems={'center'}
-        maxH={'calc(100vh - 15px)'}
-        borderRadius={20}
-        overflow={'scroll'}
-        overflowX={'hidden'}
+        padding={2}
+        background={`linear-gradient(-45deg, ${projetDatas.color1}, ${projetDatas.color2},${projetDatas.color1}, ${projetDatas.color2})`}
+        maxH={'100vh'}
       >
+        <Cursor />
+        <Menu
+          color1={projetDatas.color1}
+          color2={projetDatas.color2}
+          blur={0}
+        />
         <Flex
-          minH={'100vh'}
+          id={'scrollsection'}
+          bg={colorsDD.bgcolor}
+          m={0}
+          w={'100%'}
           flexDirection={'column'}
-          justifyContent={'center'}
           alignItems={'center'}
-          gap={5}
-          position="relative"
+          maxH={'calc(100vh - 15px)'}
+          borderRadius={20}
+          overflow={'scroll'}
+          overflowX={'hidden'}
         >
           <Flex
-            h={{base: '50vh', md: '50vh', lg: '70vh'}}
+            minH={'100vh'}
             flexDirection={'column'}
-            alignItems={'center'}
-            justifyContent={{
-              base: 'flex-start',
-              md: 'flex-start',
-              lg: 'center',
-            }}
-            gap={10}
-            w={{base: '90vw', md: '90vw', lg: '100%'}}
-          >
-            <Flex gap={2}>
-              <Link
-                href={'/#projets'}
-                onMouseLeave={handleMouseLeave}
-                onClick={handleMouseLeave}
-                onMouseEnter={handleMouseClick}
-              >
-                <Button
-                  bgColor={projetDatas.color1}
-                  color={'white'}
-                  leftIcon={<ArrowBackIcon />}
-                  cursor={'none'}
-                >
-                  retour
-                </Button>
-              </Link>
-              <Link
-                href={'#badge'}
-                onMouseLeave={handleMouseLeave}
-                onMouseEnter={handleMouseClick}
-                onClick={handleMouseLeave}
-              >
-                <Button
-                  bgColor={projetDatas.color1}
-                  color={'white'}
-                  leftIcon={<ArrowDownIcon />}
-                  cursor={'none'}
-                  className={'badge'}
-                >
-                  Découvrir
-                </Button>
-              </Link>
-            </Flex>
-            <motion.div
-              initial={{opacity: 0, y: 30}}
-              animate={{opacity: 1, y: 0}}
-              transition={{delay: 0.3, duration: 0.5}}
-            >
-              <Heading
-                color={'white'}
-                fontSize={{base: '27px', md: '30px', lg: '40px'}}
-                colorBl
-                className={climatefont.className}
-              >
-                {projetDatas.title}
-              </Heading>
-            </motion.div>
-            <motion.div
-              initial={{opacity: 0, y: 30}}
-              animate={{opacity: 1, y: 0}}
-              transition={{delay: 0.4, duration: 0.5}}
-            >
-              <Text
-                color={'white'}
-                display="flex"
-                pl={5}
-                pr={5}
-                textAlign="center"
-                w={'75%'}
-                ml={'auto'}
-                mr={'auto'}
-              >
-                {projetDatas.description}
-              </Text>
-            </motion.div>
-          </Flex>
-          <ImageProject image={projetDatas.image} scale={scaleValue} />
-        </Flex>
-        <Flex
-          minH={{base: '0px', md: '100px', lg: '100px'}}
-          w={'100vw'}
-          flexDirection={'row'}
-          justifyContent="center"
-          gap={2}
-          alignItems={'flex-end'}
-          mt={5}
-        >
-          {projetDatas.categories.map((e, index) => {
-            return (
-              <Badge
-                variant="subtle"
-                colorScheme={projetDatas.color1}
-                key={index}
-                backgroundColor={projetDatas.color1}
-                color={'white'}
-                p={1}
-                borderRadius={5}
-              >
-                {e}
-              </Badge>
-            )
-          })}
-        </Flex>
-        <Flex
-          mt={{base: '30px', md: '40px', lg: '40px'}}
-          minH={'100vh'}
-          flexWrap={'wrap'}
-          w={{base: '90%', md: '90%', lg: '500px'}}
-          position="relative"
-          gap={'10px'}
-          alignContent="flex-start"
-          justifyContent={'center'}
-        >
-          <Gradient colorG={projetDatas.color2} />
-          <Flex
-            w={'calc(50% - 5px)'}
-            bg={projetDatas.color2}
-            minH={'200px'}
-            p={5}
-            borderRadius={10}
-            alignItems={'flex-start'}
-            flexDirection={'column'}
-            gap={5}
-          >
-            <Badge bg={'#00000030'} color={'black'} p={1} borderRadius={5}>
-              avis client
-            </Badge>
-            <Text color={'black'}>{projetDatas.comment}</Text>
-            <Flex>
-              <Box color={'black'}>
-                <Text fontWeight="bold">{projetDatas.projectOwner}</Text>
-                <Text fontSize="sm">Project Owner</Text>
-              </Box>
-            </Flex>
-          </Flex>
-          <Flex
-            w={'calc(50% - 5px)'}
-            bg={projetDatas.color1}
-            minH={'200px'}
-            p={5}
-            borderRadius={10}
             justifyContent={'center'}
             alignItems={'center'}
+            gap={5}
+            position="relative"
           >
-            <Image src={projetDatas.logo} w={'70%'} h={'auto'} />
+            <Flex
+              h={{base: '50vh', md: '50vh', lg: '70vh'}}
+              flexDirection={'column'}
+              alignItems={'center'}
+              justifyContent={{
+                base: 'flex-start',
+                md: 'flex-start',
+                lg: 'center',
+              }}
+              gap={10}
+              w={{base: '90vw', md: '90vw', lg: '100%'}}
+            >
+              <Flex gap={2}>
+                <Link
+                  href={'/#projets'}
+                  onMouseLeave={handleMouseLeave}
+                  onClick={handleMouseLeave}
+                  onMouseEnter={handleMouseClick}
+                >
+                  <Button
+                    bgColor={projetDatas.color1}
+                    color={'white'}
+                    leftIcon={<ArrowBackIcon />}
+                    cursor={'none'}
+                  >
+                    retour
+                  </Button>
+                </Link>
+                <Link
+                  href={'#badge'}
+                  onMouseLeave={handleMouseLeave}
+                  onMouseEnter={handleMouseClick}
+                  onClick={handleMouseLeave}
+                >
+                  <Button
+                    bgColor={projetDatas.color1}
+                    color={'white'}
+                    leftIcon={<ArrowDownIcon />}
+                    cursor={'none'}
+                    className={'badge'}
+                  >
+                    Découvrir
+                  </Button>
+                </Link>
+              </Flex>
+              <motion.div
+                initial={{opacity: 0, y: 30}}
+                animate={{opacity: 1, y: 0}}
+                transition={{delay: 0.3, duration: 0.5}}
+              >
+                <Heading
+                  color={'white'}
+                  fontSize={{base: '27px', md: '30px', lg: '40px'}}
+                  colorBl
+                  className={climatefont.className}
+                >
+                  {projetDatas.title}
+                </Heading>
+              </motion.div>
+              <motion.div
+                initial={{opacity: 0, y: 30}}
+                animate={{opacity: 1, y: 0}}
+                transition={{delay: 0.4, duration: 0.5}}
+              >
+                <Text
+                  color={'white'}
+                  display="flex"
+                  pl={5}
+                  pr={5}
+                  textAlign="center"
+                  w={'75%'}
+                  ml={'auto'}
+                  mr={'auto'}
+                >
+                  {projetDatas.description}
+                </Text>
+              </motion.div>
+            </Flex>
+            <ImageProject image={projetDatas.image} scale={scaleValue} />
           </Flex>
           <Flex
-            w={'100%'}
-            bg={projetDatas.color1}
-            minH={'200px'}
-            p={5}
-            borderRadius={10}
+            minH={{base: '0px', md: '100px', lg: '100px'}}
+            w={'100vw'}
+            flexDirection={'row'}
+            justifyContent="center"
+            gap={2}
+            alignItems={'flex-end'}
+            mt={5}
           >
-            <Text color={'white'}>{projetDatas.contribution}</Text>
+            {projetDatas.categories.map((e, index) => {
+              return (
+                <Badge
+                  variant="subtle"
+                  colorScheme={projetDatas.color1}
+                  key={index}
+                  backgroundColor={projetDatas.color1}
+                  color={'white'}
+                  p={1}
+                  borderRadius={5}
+                >
+                  {e}
+                </Badge>
+              )
+            })}
           </Flex>
-          <Box mt={20}>
-            <ButtonDD
-              text={'Contactez-moi 🚀'}
-              colorButton={projetDatas.color1}
-              colorThemeDD={'custom'}
-            />
-          </Box>
+          <Flex
+            mt={{base: '30px', md: '40px', lg: '40px'}}
+            minH={'100vh'}
+            flexWrap={'wrap'}
+            w={{base: '90%', md: '90%', lg: '500px'}}
+            position="relative"
+            gap={'10px'}
+            alignContent="flex-start"
+            justifyContent={'center'}
+          >
+            <Gradient colorG={projetDatas.color2} />
+            <Flex
+              w={'calc(50% - 5px)'}
+              bg={projetDatas.color2}
+              minH={'200px'}
+              p={5}
+              borderRadius={10}
+              alignItems={'flex-start'}
+              flexDirection={'column'}
+              gap={5}
+            >
+              <Badge bg={'#00000030'} color={'black'} p={1} borderRadius={5}>
+                avis client
+              </Badge>
+              <Text color={'black'}>{projetDatas.comment}</Text>
+              <Flex>
+                <Box color={'black'}>
+                  <Text fontWeight="bold">{projetDatas.projectOwner}</Text>
+                  <Text fontSize="sm">Project Owner</Text>
+                </Box>
+              </Flex>
+            </Flex>
+            <Flex
+              w={'calc(50% - 5px)'}
+              bg={projetDatas.color1}
+              minH={'200px'}
+              p={5}
+              borderRadius={10}
+              justifyContent={'center'}
+              alignItems={'center'}
+            >
+              <Image src={projetDatas.logo} w={'70%'} h={'auto'} />
+            </Flex>
+            <Flex
+              w={'100%'}
+              bg={projetDatas.color1}
+              minH={'200px'}
+              p={5}
+              borderRadius={10}
+            >
+              <Text color={'white'}>{projetDatas.contribution}</Text>
+            </Flex>
+            <Box mt={20}>
+              <ButtonDD
+                text={'Contactez-moi 🚀'}
+                colorButton={projetDatas.color1}
+                colorThemeDD={'custom'}
+              />
+            </Box>
+          </Flex>
         </Flex>
-      </Flex>
-    </Box>
+      </Box>
+    </>
   )
 }
