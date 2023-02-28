@@ -1,5 +1,4 @@
-import {colorsDD} from '../../../ui/colors/colors'
-
+import {colorsDD} from '../app/components/ui/colors/colors'
 const projetsdata = [
   {
     id: 1,
@@ -22,7 +21,7 @@ const projetsdata = [
   {
     id: 2,
     color1: '#398ffc',
-    color2: colorsDD.green,
+    color2: 'red',
     title: 'SchoolBooster',
     dateStart: 'Janvier 2023',
     dateEnd: 'Mars 2023',
@@ -76,7 +75,7 @@ const projetsdata = [
   {
     id: 5,
     color1: '#398ffc',
-    color2: colorsDD.green,
+    color2: 'red',
     title: 'SchoolBooster',
     dateStart: 'Janvier 2023',
     dateEnd: 'Mars 2023',
@@ -131,7 +130,7 @@ const projetsdata = [
   {
     id: 8,
     color1: '#398ffc',
-    color2: colorsDD.green,
+    color2: colorsDD?.green,
     title: 'SchoolBooster',
     dateStart: 'Janvier 2023',
     dateEnd: 'Mars 2023',

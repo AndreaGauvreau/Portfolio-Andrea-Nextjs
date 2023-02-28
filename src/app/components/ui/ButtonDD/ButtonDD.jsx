@@ -41,7 +41,7 @@ export default function ButtonDD({
           backgroundColor: `${bgColor}`,
           color: `${color}`,
         }}
-        href={link}
+        href={link ?? '/'}
       >
         {text}
       </Link>

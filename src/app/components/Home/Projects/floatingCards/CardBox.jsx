@@ -126,7 +126,7 @@ export default function Cards({datas, currentIndex, length}) {
         borderRadius={10}
       >
         <CardBody p={4}>
-          <Link href={`/projets/${datas.id}`}>
+          <Link href={`/projets/${datas?.id}`}>
             <Box
               bgImage={datas?.image}
               w="100%"
