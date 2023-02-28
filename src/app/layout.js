@@ -22,7 +22,12 @@ export default function RootLayout({children}) {
             href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap"
             rel="stylesheet"
           />
+          <title>Andréa Gauvreau Developpeur frontend </title>
           <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+          <meta
+            name="description"
+            content="Developpeur frontend freelance react et nextJS. Aussi spécialisé ThreeJs pour intégrer de la 3d sur vos sites"
+          />
         </Head>
         <Chakra>
           <CursorProvider>{children}</CursorProvider>
