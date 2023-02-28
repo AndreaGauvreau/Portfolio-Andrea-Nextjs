@@ -1,10 +1,16 @@
-import {Badge, Box, Flex, Heading, Image, Text} from '@chakra-ui/react'
+import {Badge, Box, Flex, Heading, Text} from '@chakra-ui/react'
 import React, {useContext, useState} from 'react'
 import {colorsDD} from '../../ui/colors/colors'
 import {CursorContext} from '../../ui/cursor/CursorProvider'
 import Gradient from '../../ui/GradientBgElems/Gradient'
 import CanvasEgg from './3dEgg/Canva'
+import Image from 'next/image'
+import {Abril_Fatface} from '@next/font/google'
 
+const climatefont = Abril_Fatface({
+  subsets: ['latin-ext'],
+  weight: '400',
+})
 export default function Competences() {
   const [isHovering, setIsHovering] = useState(false)
   const [cursorData, setCursorData] = useContext(CursorContext)
@@ -54,6 +60,7 @@ export default function Competences() {
             color={'white'}
             fontFamily={'bely-display'}
             fontSize={{base: '27px', md: '30px', lg: '40px'}}
+            className={climatefont.className}
           >
             Des compétences pour vous aider à faire{' '}
             <b
@@ -135,9 +142,10 @@ export default function Competences() {
           justifyContent={'center'}
         >
           <Image
-            src="./images/identite/andrea-light-think.png"
-            w={'100%'}
-            zIndex={1}
+            src="/images/identite/andrea-light-think.png"
+            alt="andrea-gauvreau-developpeur-front-end"
+            width={500}
+            height={500}
           />
         </Flex>
       </Flex>
