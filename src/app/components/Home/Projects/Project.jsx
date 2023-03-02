@@ -1,5 +1,5 @@
 import {Flex, Heading} from '@chakra-ui/react'
-import React, {useEffect, useRef} from 'react'
+import React, {useRef} from 'react'
 import ButtonDD from '../../ui/ButtonDD/ButtonDD'
 import {colorsDD} from '../../ui/colors/colors'
 import Gradient from '../../ui/GradientBgElems/Gradient'
