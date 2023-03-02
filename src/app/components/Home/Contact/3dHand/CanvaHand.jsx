@@ -1,5 +1,5 @@
 'use client'
-import {Center, PresentationControls, Sparkles} from '@react-three/drei'
+import {Center, Float, PresentationControls, Sparkles} from '@react-three/drei'
 import {Canvas} from '@react-three/fiber'
 import Hand3d from './Hand3d'
 
@@ -15,29 +15,11 @@ export default function CanvaHand() {
           position: [1, 0, 5],
         }}
       >
-        <PresentationControls
-          enabled={true} // the controls can be disabled by setting this to false
-          global={false} // Spin globally or by dragging the model
-          cursor={true} // Whether to toggle cursor style on drag
-          snap={true} // Snap-back to center (can also be a spring config)
-          speed={0.5} // Speed factor
-          zoom={1} // Zoom factor when half the polar-max is reached
-          rotation={[0, 0, 0]} // Default rotation
-          polar={[0, Math.PI / 7]} // Vertical limits
-          azimuth={[0, Math.PI / 2]} // Horizontal limits
-          config={{mass: 1, tension: 170, friction: 26}} // Spring config
-        >
-          <Center>
+        <Center>
+          <Float>
             <Hand3d />
-          </Center>
-        </PresentationControls>
-        <Sparkles
-          size={3}
-          scale={[4, 4, 4]}
-          position-y={1}
-          speed={0.32}
-          count={70}
-        />
+          </Float>
+        </Center>
       </Canvas>
     </>
   )

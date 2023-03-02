@@ -40,57 +40,69 @@ export default function Menu({color1, color2, blur}) {
         </Link>
       </Box>
       <Flex gap={{base: 2, md: 5, lg: 10}} alignItems={'center'}>
-        <IconButton
-          aria-label="github link"
-          variant={'ghost'}
-          bgColor={'#ffffff00'}
-          _hover={{bgColor: '#ffffff20'}}
-          boxSize={{base: 8, md: 10, lg: 12}}
-          onMouseEnter={() => setGithubColor('white')}
-          onMouseLeave={() => setGithubColor('#ffffff50')}
-          icon={
-            <GithIcon
-              color={githubColor}
-              color1={color1 ? color1 : colorsDD.pink}
-              color2={color2 ? color2 : colorsDD.green}
-              width={'100%'}
-            />
-          }
-        />
-        <IconButton
-          aria-label="github link"
-          variant={'ghost'}
-          boxSize={{base: 8, md: 10, lg: 12}}
-          bgColor={'#ffffff00'}
-          _hover={{bgColor: '#ffffff20'}}
-          onMouseEnter={() => setLinkdedinColor('white')}
-          onMouseLeave={() => setLinkdedinColor('#ffffff50')}
-          icon={
-            <LinkdinIcon
-              color={linkedinColor}
-              color1={color1 ? color1 : colorsDD.pink}
-              color2={color2 ? color2 : colorsDD.green}
-              width={'100%'}
-            />
-          }
-        />
-        <IconButton
-          aria-label="github link"
-          variant={'ghost'}
-          boxSize={{base: 8, md: 10, lg: 12}}
-          bgColor={'#ffffff00'}
-          _hover={{bgColor: '#ffffff20'}}
-          onMouseEnter={() => setDribbleColor('white')}
-          onMouseLeave={() => setDribbleColor('#ffffff50')}
-          icon={
-            <DribbleIcon
-              color={dribbleColor}
-              color1={color1 ? color1 : colorsDD.pink}
-              color2={color2 ? color2 : colorsDD.green}
-              width={'100%'}
-            />
-          }
-        />
+        <Link href={'https://github.com/AndreaGauvreau'} target="_blank">
+          <IconButton
+            aria-label="github link"
+            variant={'ghost'}
+            bgColor={'#ffffff00'}
+            _hover={{bgColor: '#ffffff20'}}
+            boxSize={{base: 8, md: 10, lg: 12}}
+            onMouseEnter={() => setGithubColor('white')}
+            onMouseLeave={() => setGithubColor('#ffffff50')}
+            icon={
+              <GithIcon
+                color={githubColor}
+                color1={color1 ? color1 : colorsDD.pink}
+                color2={color2 ? color2 : colorsDD.green}
+                width={'100%'}
+              />
+            }
+          />
+        </Link>
+        <Link
+          href={'https://www.linkedin.com/in/andr%C3%A9a-gauvreau-8564b3170/'}
+          target="_blank"
+        >
+          <IconButton
+            aria-label="github link"
+            variant={'ghost'}
+            boxSize={{base: 8, md: 10, lg: 12}}
+            bgColor={'#ffffff00'}
+            _hover={{bgColor: '#ffffff20'}}
+            onMouseEnter={() => setLinkdedinColor('white')}
+            onMouseLeave={() => setLinkdedinColor('#ffffff50')}
+            icon={
+              <LinkdinIcon
+                color={linkedinColor}
+                color1={color1 ? color1 : colorsDD.pink}
+                color2={color2 ? color2 : colorsDD.green}
+                width={'100%'}
+              />
+            }
+          />
+        </Link>
+        <Link
+          href={'https://www.linkedin.com/in/andr%C3%A9a-gauvreau-8564b3170/'}
+          target="_blank"
+        >
+          <IconButton
+            aria-label="github link"
+            variant={'ghost'}
+            boxSize={{base: 8, md: 10, lg: 12}}
+            bgColor={'#ffffff00'}
+            _hover={{bgColor: '#ffffff20'}}
+            onMouseEnter={() => setDribbleColor('white')}
+            onMouseLeave={() => setDribbleColor('#ffffff50')}
+            icon={
+              <DribbleIcon
+                color={dribbleColor}
+                color1={color1 ? color1 : colorsDD.pink}
+                color2={color2 ? color2 : colorsDD.green}
+                width={'100%'}
+              />
+            }
+          />
+        </Link>
       </Flex>
     </Flex>
   )
