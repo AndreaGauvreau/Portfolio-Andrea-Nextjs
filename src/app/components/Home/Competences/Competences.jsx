@@ -5,12 +5,7 @@ import {CursorContext} from '../../ui/cursor/CursorProvider'
 import Gradient from '../../ui/GradientBgElems/Gradient'
 import CanvasEgg from './3dEgg/Canva'
 import Image from 'next/image'
-import {Abril_Fatface} from '@next/font/google'
 
-const climatefont = Abril_Fatface({
-  subsets: ['latin-ext'],
-  weight: '400',
-})
 export default function Competences() {
   const [isHovering, setIsHovering] = useState(false)
   const [cursorData, setCursorData] = useContext(CursorContext)
@@ -58,15 +53,18 @@ export default function Competences() {
           <Heading
             variant={'dew'}
             color={'white'}
-            fontFamily={'bely-display'}
             fontSize={{base: '27px', md: '30px', lg: '40px'}}
-            className={climatefont.className}
+            fontFamily={'Bely Display'}
           >
             Des compétences pour vous aider à faire{' '}
             <b
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              style={{color: `${colorsDD.pink}`, fontWeight: '400'}}
+              style={{
+                color: `${colorsDD.pink}`,
+                fontWeight: '400',
+                fontFamily: 'bely display',
+              }}
             >
               éclore
             </b>{' '}
@@ -93,6 +91,7 @@ export default function Competences() {
             <Text
               color={'white'}
               display={{base: 'none', md: 'flex', lg: 'flex'}}
+              fontSize={'15px'}
             >
               Mes compétences de frontend développeur vont <br></br>transformer
               vos idées en réalisations <br></br> solides et concrètes pour

@@ -38,14 +38,13 @@ export default function Contact() {
             p={0}
           >
             <Heading
-              variant={'dew'}
               textAlign="center"
               color={colorsDD.background}
               fontSize={{base: '27px', md: '30px', lg: '40px'}}
               pt={10}
               pl={10}
               pr={10}
-              className={climatefont.className}
+              fontFamily={'Bely Display'}
             >
               Échangeons autour d'un café
             </Heading>
