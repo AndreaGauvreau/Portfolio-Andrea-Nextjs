@@ -4,6 +4,12 @@ import ButtonDD from '../../ui/ButtonDD/ButtonDD'
 import {colorsDD} from '../../ui/colors/colors'
 import Gradient from '../../ui/GradientBgElems/Gradient'
 import CanvaHand from './3dHand/CanvaHand'
+import {Abril_Fatface} from '@next/font/google'
+
+const climatefont = Abril_Fatface({
+  subsets: ['latin-ext'],
+  weight: '400',
+})
 
 export default function Contact() {
   return (
@@ -39,6 +45,7 @@ export default function Contact() {
               pt={10}
               pl={10}
               pr={10}
+              className={climatefont.className}
             >
               Échangeons autour d'un café
             </Heading>

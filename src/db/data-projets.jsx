@@ -178,3 +178,7 @@ const projetsdata = [
 ]
 
 export default projetsdata
+
+export const getProjetSlug = async slug => {
+  return Promise.resolve(projetsdata[slug])
+}

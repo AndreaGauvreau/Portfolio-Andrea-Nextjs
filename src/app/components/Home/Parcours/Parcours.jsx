@@ -2,6 +2,12 @@ import {Flex, Heading, Text} from '@chakra-ui/react'
 import Image from 'next/image'
 import React from 'react'
 import ButtonDD from '../../ui/ButtonDD/ButtonDD'
+import {Abril_Fatface} from '@next/font/google'
+
+const climatefont = Abril_Fatface({
+  subsets: ['latin-ext'],
+  weight: '400',
+})
 
 export default function Parcours() {
   return (
@@ -51,6 +57,7 @@ export default function Parcours() {
             variant={'dew'}
             color={'white'}
             fontSize={{base: '27px', md: '30px', lg: '40px'}}
+            className={climatefont.className}
           >
             Un Parcours Atypique
           </Heading>

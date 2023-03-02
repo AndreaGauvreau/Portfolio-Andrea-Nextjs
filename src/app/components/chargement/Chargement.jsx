@@ -1,29 +1,38 @@
-import {Box, Flex} from '@chakra-ui/react'
+import {Flex} from '@chakra-ui/react'
+import Image from 'next/image'
 import React from 'react'
-import Lottie from 'react-lottie'
-import {colorsDD} from '../ui/colors/colors'
-import animationData from './icones-andrea-2.json'
+import './chargement.css'
 
-export default function Chargement() {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  }
-
+export default function Loading() {
   return (
     <Flex
       w={'100vw'}
       h={'100vh'}
-      position="fixed"
-      bgColor={colorsDD.background}
+      bg={'#0d0d12'}
+      flexDirection={'column'}
       justifyContent={'center'}
       alignItems={'center'}
+      position="relative"
     >
-      <Lottie options={defaultOptions} height={300} width={300} />
+      <div style={{position: 'relative'}}>
+        <Image
+          src="/images/icones/icone-load-int-andrea.png"
+          width={200}
+          height={200}
+        />
+        <Image
+          src="/images/icones/icone-ext-load-andrea.png"
+          width={200}
+          height={200}
+          className="spin"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+          }}
+        />
+      </div>
+      <link rel="stylesheet" href="/loading.css" />
     </Flex>
   )
 }

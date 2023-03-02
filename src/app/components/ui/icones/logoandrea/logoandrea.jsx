@@ -5,7 +5,7 @@ export const LogoAndrea = ({color, color1, color2, width, ...rest}) => {
     <Box w={'100%'} h={'100%'}>
       <svg
         width={width}
-        height="auto"
+        height={width}
         viewBox="0 0 863 264"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

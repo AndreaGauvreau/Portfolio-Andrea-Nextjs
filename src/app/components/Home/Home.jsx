@@ -1,6 +1,6 @@
 'use client'
 import {Box} from '@chakra-ui/react'
-import React, {useContext, useState} from 'react'
+import React, {Suspense, useContext, useState} from 'react'
 import Main from './Main/Main'
 import Competences from './Competences/Competences'
 import Menu from './Menu/Menu'

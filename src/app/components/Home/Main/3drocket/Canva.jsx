@@ -1,8 +1,14 @@
 'use client'
-import {Center, PresentationControls} from '@react-three/drei'
+import {
+  Box,
+  Center,
+  PresentationControls,
+  Sphere,
+  useProgress,
+} from '@react-three/drei'
 import {Canvas} from '@react-three/fiber'
 import {Perf} from 'r3f-perf'
-import {useContext} from 'react'
+import {Suspense, useContext} from 'react'
 import {CursorContext} from '../../../ui/cursor/CursorProvider'
 import Boite from './Boite'
 import Fusee from './Fusee'
@@ -25,6 +31,7 @@ export default function Canvas3d() {
       mouseText: '',
     }))
   }
+
   return (
     <>
       <Canvas
@@ -38,7 +45,6 @@ export default function Canvas3d() {
         onMouseEnter={handleMouseGrab}
         onMouseLeave={handleMouseLeave}
       >
-        <Perf />
         <PresentationControls
           enabled={true} // the controls can be disabled by setting this to false
           global={false} // Spin globally or by dragging the model
