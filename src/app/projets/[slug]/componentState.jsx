@@ -298,7 +298,12 @@ export function ContentPage({params}) {
               justifyContent={'center'}
               alignItems={'center'}
             >
-              <Image src={projetDatas?.logo} width={170} height={70} />
+              <Image
+                src={projetDatas?.logo}
+                width={170}
+                height={70}
+                alt={projetDatas?.description}
+              />
             </Flex>
             <Flex
               w={'100%'}

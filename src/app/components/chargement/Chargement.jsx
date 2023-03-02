@@ -17,11 +17,13 @@ export default function Loading() {
       <div style={{position: 'relative'}}>
         <Image
           src="/images/icones/icone-load-int-andrea.png"
+          alt="icone-andrea-gauvreau"
           width={200}
           height={200}
         />
         <Image
           src="/images/icones/icone-ext-load-andrea.png"
+          alt="andrea-gauvreau-banderole"
           width={200}
           height={200}
           className="spin"

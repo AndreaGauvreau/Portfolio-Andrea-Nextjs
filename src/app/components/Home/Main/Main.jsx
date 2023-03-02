@@ -16,10 +16,12 @@ export default function Main() {
       bgImage={'/images/path-background.svg'}
       bgSize="cover"
       boxSizing="border-box"
+      overflow={'hidden'}
     >
       <Flex
         w={{base: '100%', md: '100%', lg: '1024px'}}
         flexDirection={{base: 'column-reverse', md: 'column', lg: 'row'}}
+        zIndex={1}
       >
         <Flex
           w={{base: '100%', md: '100%', lg: '50%'}}
@@ -44,6 +46,7 @@ export default function Main() {
         textAlign={'center'}
         color={'white'}
         as="h1"
+        zIndex={2}
       >
         Votre développeur Front-end qui va propulser 🚀 votre projet
       </Heading>
