@@ -1,14 +1,7 @@
 'use client'
-import {
-  Box,
-  Center,
-  PresentationControls,
-  Sphere,
-  useProgress,
-} from '@react-three/drei'
+import {Center, PresentationControls} from '@react-three/drei'
 import {Canvas} from '@react-three/fiber'
-import {Perf} from 'r3f-perf'
-import {Suspense, useContext} from 'react'
+import {useContext} from 'react'
 import {CursorContext} from '../../../ui/cursor/CursorProvider'
 import Boite from './Boite'
 import Fusee from './Fusee'

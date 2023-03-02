@@ -1,4 +1,4 @@
-import {Box, Flex, IconButton, Image} from '@chakra-ui/react'
+import {Box, Flex, IconButton} from '@chakra-ui/react'
 import React, {useState} from 'react'
 import {colorsDD} from '../../ui/colors/colors'
 import {DribbleIcon} from '../../ui/icones/dribbleIcon/dribbleicon'

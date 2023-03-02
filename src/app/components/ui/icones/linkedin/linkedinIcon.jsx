@@ -1,6 +1,6 @@
 import {Box} from '@chakra-ui/react'
 
-export const LinkdinIcon = ({color, color1, color2, width, ...rest}) => {
+export const LinkdinIcon = ({color, color1, color2, width}) => {
   return (
     <Box w={'100%'} h={'100%'}>
       <svg
