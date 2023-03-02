@@ -12,7 +12,8 @@ export default function Prenom() {
       <Heading
         size={'3xl'}
         textAlign="center"
-        fontFamily={'dunkel-sans-glatt, sans-serif'}
+        fontFamily={'Poppins'}
+        fontWeight={'900'}
         color={colorsDD.green}
       >
         andréa
@@ -21,7 +22,8 @@ export default function Prenom() {
         mt={-2}
         mb={2}
         size={'3xl'}
-        fontFamily={'dunkel-sans-glatt, sans-serif'}
+        fontFamily={'Poppins'}
+        fontWeight={'900'}
         textAlign="center"
         color={'white'}
       >

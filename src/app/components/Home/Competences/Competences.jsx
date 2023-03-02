@@ -80,11 +80,13 @@ export default function Competences() {
             justifyContent={'center'}
             p={0}
             m={0}
+            zIndex={1}
           >
             <Image
-              src="./images/identite/andrea-light-think.png"
-              w={'50%'}
-              zIndex={1}
+              src="/images/identite/andrea-light-think.png"
+              alt="andrea-gauvreau-developpeur-front-end"
+              width={500}
+              height={500}
             />
           </Flex>
           <Box p={5} borderRadius={20} bg={'#ffffff20'} position="relative">

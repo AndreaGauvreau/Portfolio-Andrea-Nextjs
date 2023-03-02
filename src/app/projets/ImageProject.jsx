@@ -1,5 +1,5 @@
 'use client'
-import {Box, Flex, Image} from '@chakra-ui/react'
+import {Box, Flex} from '@chakra-ui/react'
 import React from 'react'
 
 export default function ImageProject({image, scale}) {

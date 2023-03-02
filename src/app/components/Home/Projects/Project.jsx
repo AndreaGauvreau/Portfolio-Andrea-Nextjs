@@ -4,7 +4,12 @@ import ButtonDD from '../../ui/ButtonDD/ButtonDD'
 import {colorsDD} from '../../ui/colors/colors'
 import Gradient from '../../ui/GradientBgElems/Gradient'
 import CardMap from './floatingCards/CardsContent'
+import {Abril_Fatface} from '@next/font/google'
 
+const climatefont = Abril_Fatface({
+  subsets: ['latin-ext'],
+  weight: '400',
+})
 export default function Project() {
   const projetsRef = useRef(null)
 
@@ -37,6 +42,7 @@ export default function Project() {
           color={'white'}
           textAlign="center"
           fontSize={{base: '27px', md: '30px', lg: '40px'}}
+          className={climatefont.className}
         >
           Projets après Projets
         </Heading>
