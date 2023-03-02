@@ -42,7 +42,7 @@ export default function Project() {
           color={'white'}
           textAlign="center"
           fontSize={{base: '27px', md: '30px', lg: '40px'}}
-          className={climatefont.className}
+          fontFamily={'Bely Display'}
         >
           Projets après Projets
         </Heading>

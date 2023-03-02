@@ -20,20 +20,19 @@ const climatefont = Abril_Fatface({
   subsets: ['latin-ext'],
   weight: '400',
 })
-
 export default function ScrollElement({image}) {
   const [scrollY, setScrollY] = useState(1)
   const [scaleValue, setScaleValue] = useState(1)
 
   function handleScroll() {
     const scrollSection = document.getElementById('scrollsection')
+    const maxScroll = 100 - scrollSection.clientHeight
     setScrollY(scrollSection.scrollTop)
   }
 
-  const maxScroll = 100 - window.innerHeight
-
   useEffect(() => {
     const scrollSection = document.getElementById('scrollsection')
+    const maxScroll = 100 - scrollSection.clientHeight
     scrollSection.addEventListener('scroll', handleScroll)
     return () => {
       scrollSection.removeEventListener('scroll', handleScroll)
@@ -41,6 +40,8 @@ export default function ScrollElement({image}) {
   }, [])
 
   useEffect(() => {
+    const maxScroll =
+      100 - document.getElementById('scrollsection').clientHeight
     if (scrollY === 0) {
       setScaleValue(1)
     } else if (scrollY < 0.5) {
@@ -49,7 +50,7 @@ export default function ScrollElement({image}) {
       const newScaleValue = 1 + (scrollY / maxScroll) * 1.5
       setScaleValue(Math.max(0.5, newScaleValue))
     }
-  }, [scrollY, maxScroll])
+  }, [scrollY])
 
   return <ImageProject image={image} scale={scaleValue} />
 }
@@ -204,7 +205,8 @@ export function ContentPage({params}) {
                   color={'white'}
                   fontSize={{base: '27px', md: '30px', lg: '40px'}}
                   colorBl
-                  className={climatefont.className}
+                  fontFamily={'Bely Display'}
+                  fontWeight={400}
                 >
                   {projetDatas?.title}
                 </Heading>

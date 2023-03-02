@@ -1,4 +1,5 @@
 import {Box, Flex, IconButton} from '@chakra-ui/react'
+import Link from 'next/link'
 import React, {useState} from 'react'
 import {colorsDD} from '../../ui/colors/colors'
 import {DribbleIcon} from '../../ui/icones/dribbleIcon/dribbleicon'
@@ -29,12 +30,14 @@ export default function Menu({color1, color2, blur}) {
       }}
     >
       <Box w={{base: '100px', md: '90px', lg: '150px'}}>
-        <LogoAndrea
-          width={'100%'}
-          color1={color1 ? color1 : colorsDD.pink}
-          color2={color2 ? color2 : colorsDD.green}
-          color={'white'}
-        />
+        <Link href="/">
+          <LogoAndrea
+            width={'100%'}
+            color1={color1 ? color1 : colorsDD.pink}
+            color2={color2 ? color2 : colorsDD.green}
+            color={'white'}
+          />
+        </Link>
       </Box>
       <Flex gap={{base: 2, md: 5, lg: 10}} alignItems={'center'}>
         <IconButton

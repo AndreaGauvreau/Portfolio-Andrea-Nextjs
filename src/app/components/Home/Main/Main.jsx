@@ -2,12 +2,6 @@ import {Flex, Heading} from '@chakra-ui/react'
 import React from 'react'
 import Canvas3d from './3drocket/Canva'
 import Prenom from './Prenom'
-import {Abril_Fatface} from '@next/font/google'
-
-const climatefont = Abril_Fatface({
-  subsets: ['latin-ext'],
-  weight: '400',
-})
 
 export default function Main() {
   return (
@@ -44,11 +38,11 @@ export default function Main() {
         </Flex>
       </Flex>
       <Heading
-        variant={'dew'}
+        fontFamily={'Bely Display'}
+        fontWeight={400}
         fontSize={{base: '17px', md: '20px', lg: '30px'}}
         textAlign={'center'}
         color={'white'}
-        className={climatefont.className}
         as="h1"
       >
         Votre développeur Front-end qui va propulser 🚀 votre projet

@@ -3,4 +3,43 @@
 }
 * {
   font-family: 'Poppins';
+  font-weight: 400;
+}
+.boxEffect::after {
+  content: '';
+  background-size: 100% 100%;
+  background-position: 0px 0px;
+  background-image: conic-gradient(
+    from 0deg at 45% 47%,
+    rgba(26, 255, 0, 1) 0%,
+    rgba(255, 0, 255, 1) 100%
+  );
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(0deg); /* Ajout de la propriété rotate */
+  border-radius: 10px;
+  animation: rotate 5s linear infinite; /* Ajout de l'animation */
+  z-index: -1;
+  filter: blur(50px);
+}
+
+.boxEffect {
+  box-shadow: 0px 0px 30px 0px #ffffff20;
+  background: linear-gradient(
+    135deg,
+    rgba(6, 10, 27, 1) 0%,
+    rgba(8, 10, 36, 0.87777048319327735) 100%
+  ) !important;
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg); /* Début de l'animation */
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg); /* Fin de l'animation */
+  }
 }
