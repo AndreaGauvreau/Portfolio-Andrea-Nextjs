@@ -2,7 +2,7 @@ import {Flex, Heading} from '@chakra-ui/react'
 import React from 'react'
 import Canvas3d from './3drocket/Canva'
 import Prenom from './Prenom'
-import AnimationDD from './animationDD'
+import AnimationDD from './animationDd'
 
 export default function Main() {
   return (
