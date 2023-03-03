@@ -16,34 +16,35 @@ export default function Parcours() {
       bgSize="cover"
       boxSizing="border-box"
       position={'relative'}
-      bgColor={{base: '#ffffff00', md: '#ffffff00', lg: '#ffffff10'}}
+      bgColor={{base: '#00000000', md: '#00000000', lg: '#19191D'}}
     >
       <Flex
         w={{base: '100%', md: '100%', lg: '1024px'}}
         flexDirection={{base: 'column', md: 'column', lg: 'row'}}
-        bgColor={{base: '#ffffff10', md: '#ffffff10', lg: '#ffffff00'}}
+        bgColor={{base: '#19191D', md: '#19191D', lg: '#ffffff00'}}
         borderRadius={20}
         p={{base: 5, md: 5, lg: 0}}
       >
         <Flex
-          w={{base: '100%', md: '100%', lg: '45%'}}
-          alignItems={'flex-end'}
+          w={{base: '100%', md: '100%', lg: '50%'}}
+          alignItems={'center'}
           justifyContent={'center'}
           h={{base: '100%', md: '100%', lg: '100vh'}}
         >
           <Image
-            src="/images/identite/andrea-lightup.png"
+            src="/images/identite/dd-assis.jpg"
             alt="andrea-gauvreau-developpeur-front-end"
-            quality={50}
+            quality={100}
             loading="lazy"
-            width={500}
-            height={500}
+            width={420}
+            height={200}
           />
         </Flex>
         <Flex
           w={{base: '100%', md: '100%', lg: '45%'}}
           flexDirection={'column'}
           gap={5}
+          pb={{base: 5, md: 0}}
           justifyContent={'center'}
           alignItems={{base: 'center', md: 'center', lg: 'flex-start'}}
         >

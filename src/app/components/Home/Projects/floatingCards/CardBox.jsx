@@ -76,7 +76,7 @@ export default function Cards({datas, currentIndex, length}) {
         setScale(1)
         setOpacity(1)
         setBlur('0px')
-        setClassName('noanim')
+        setClassName('boxEffect')
       } else if (diff === length - 1) {
         setPos('0%')
         setIndex(4)

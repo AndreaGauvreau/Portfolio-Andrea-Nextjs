@@ -81,10 +81,10 @@ export default function Competences() {
             zIndex={1}
           >
             <Image
-              src="/images/identite/andrea-light-think.png"
+              src="/images/identite/andrea-thinking-lightup.png"
               alt="andrea-gauvreau-developpeur-front-end"
-              width={500}
-              height={500}
+              width={200}
+              height={400}
             />
           </Flex>
           <Box p={5} borderRadius={20} bg={'#ffffff20'} position="relative">
@@ -143,12 +143,15 @@ export default function Competences() {
           justifyContent={'center'}
           zIndex={2}
         >
-          <Image
-            src="/images/identite/andrea-light-think.png"
-            alt="andrea-gauvreau-developpeur-front-end"
-            width={500}
-            height={500}
-          />
+          <Box w={'1000px'}>
+            <Image
+              src="/images/identite/andrea-thinking-lightup.png"
+              alt="andrea-gauvreau-developpeur-front-end"
+              width={600}
+              height={700}
+              quality={100}
+            />
+          </Box>
         </Flex>
       </Flex>
     </Flex>

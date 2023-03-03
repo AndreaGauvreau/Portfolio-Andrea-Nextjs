@@ -30,3 +30,9 @@
 body {
   cursor: none;
 }
+
+@media screen and (max-width: 480px) {
+  .cursor {
+    display: none;
+  }
+}
