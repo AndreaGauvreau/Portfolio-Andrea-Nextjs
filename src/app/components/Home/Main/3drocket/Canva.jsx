@@ -6,6 +6,7 @@ import {useContext, useState} from 'react'
 import {CursorContext} from '../../../ui/cursor/CursorProvider'
 import Fusee from './Fusee'
 import Boite from './Boite'
+import Image from 'next/image'
 
 export default function Canvas3d() {
   const [cursorData, setCursorData] = useContext(CursorContext)
@@ -60,12 +61,13 @@ export default function Canvas3d() {
           </PresentationControls>
         </Canvas>
       ) : (
-        <LoadingScreen />
+        <Image
+          src={'/images/identite/box-loader.png'}
+          width={300}
+          height={300}
+          onClick={() => setLoading(true)}
+        />
       )}
     </>
   )
-}
-
-export function LoadingScreen() {
-  return <Box w={'200px'} h={'300px'} bg="red" />
 }
