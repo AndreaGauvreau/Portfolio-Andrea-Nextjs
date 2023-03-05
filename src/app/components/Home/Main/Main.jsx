@@ -1,5 +1,5 @@
 import {Flex, Heading} from '@chakra-ui/react'
-import React from 'react'
+import React, {Suspense} from 'react'
 import Canvas3d from './3drocket/Canva'
 import Prenom from './Prenom'
 import AnimationDD from './animationDd'
@@ -31,8 +31,8 @@ export default function Main() {
           h={'50vh'}
           position={'relative'}
         >
-          <AnimationDD />
           <Canvas3d />
+          <AnimationDD />
         </Flex>
         <Flex
           w={{base: '100%', md: '100%', lg: '50%'}}
