@@ -17,6 +17,7 @@ import {useEffect} from 'react'
 import {colorsDD} from '../../../ui/colors/colors'
 import {CursorContext} from '../../../ui/cursor/CursorProvider'
 import Link from 'next/link'
+import Image from 'next/image'
 export default function Cards({datas, currentIndex, length}) {
   const [pos, setPos] = useState('-50%')
   const [index, setIndex] = useState(1)
@@ -142,17 +143,18 @@ export default function Cards({datas, currentIndex, length}) {
           <CardBody p={4}>
             <Link href={`/projets/${datas?.slug}`}>
               <Box
-                bgImage={datas?.image}
                 w="100%"
-                h={{base: '150px', md: '150px', lg: '250px'}}
                 bgSize="cover"
                 bgPosition={'center'}
-                borderRadius={10}
                 onMouseEnter={handleMouseClick}
                 onMouseLeave={handleMouseLeave}
                 onClick={handleMouseLeave}
                 cursor={'none'}
-              />
+                borderRadius={10}
+                overflow="hidden"
+              >
+                <Image src={datas?.image} width={350} height={350} />
+              </Box>
             </Link>
             <Stack mt="6" spacing="3">
               <Heading
