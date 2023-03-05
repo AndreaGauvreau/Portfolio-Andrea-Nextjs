@@ -1,6 +1,12 @@
 import {ArrowBackIcon, ArrowForwardIcon} from '@chakra-ui/icons'
-import {Box, Flex, IconButton} from '@chakra-ui/react'
-import React, {useState, useCallback, useEffect, useContext} from 'react'
+import {Box, Flex, IconButton, SkeletonCircle} from '@chakra-ui/react'
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  useContext,
+  Suspense,
+} from 'react'
 import {colorsDD} from '../../../ui/colors/colors'
 import {CursorContext} from '../../../ui/cursor/CursorProvider'
 import Cards from './CardBox'
@@ -115,7 +121,6 @@ export default function CardMap() {
             />
           ))}
         </Flex>
-
         <IconButton
           position={'absolute'}
           bgColor={{

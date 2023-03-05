@@ -1,5 +1,5 @@
 'use client'
-import {Flex} from '@chakra-ui/react'
+import {Box, Flex} from '@chakra-ui/react'
 import Image from 'next/image'
 import React from 'react'
 

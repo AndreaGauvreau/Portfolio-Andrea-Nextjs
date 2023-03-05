@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {Suspense, useContext} from 'react'
 import {
   Card,
   CardBody,
@@ -9,6 +9,7 @@ import {
   TagLabel,
   Tag,
   Flex,
+  SkeletonCircle,
 } from '@chakra-ui/react'
 
 import {useState} from 'react'
