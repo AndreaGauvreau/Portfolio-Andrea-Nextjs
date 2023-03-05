@@ -153,7 +153,12 @@ export default function Cards({datas, currentIndex, length}) {
                 borderRadius={10}
                 overflow="hidden"
               >
-                <Image src={datas?.image} width={350} height={350} />
+                <Image
+                  src={datas?.image}
+                  width={350}
+                  height={350}
+                  alt={datas?.description}
+                />
               </Box>
             </Link>
             <Stack mt="6" spacing="3">
