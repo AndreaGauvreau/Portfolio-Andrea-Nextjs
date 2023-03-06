@@ -1,6 +1,6 @@
 'use client'
 
-import {useContext, useEffect, useState} from 'react'
+import {useCallback, useContext, useEffect, useState} from 'react'
 import {motion} from 'framer-motion'
 import {CursorContext} from './CursorProvider'
 import {colorsDD} from '../colors/colors'
@@ -9,8 +9,8 @@ import './cursor.css'
 export default function Cursor() {
   const [cursorData, setCursorData] = useContext(CursorContext)
   const [textCursor, setTextCursor] = useState('')
-  useEffect(() => {
-    const mouseMove = e => {
+  const mouseMove = useCallback(
+    e => {
       setCursorData(prevState => ({
         ...prevState,
         position: {
@@ -18,14 +18,17 @@ export default function Cursor() {
           y: e.clientY,
         },
       }))
-    }
+    },
+    [setCursorData],
+  )
 
+  useEffect(() => {
     window.addEventListener('mousemove', mouseMove)
 
     return () => {
       window.removeEventListener('mousemove', mouseMove)
     }
-  }, [setCursorData])
+  }, [mouseMove])
 
   const variants = {
     default: {
@@ -79,28 +82,28 @@ export default function Cursor() {
         variant: 'text',
         orientation: 0,
       }))
-      document.body.classList.remove('show-cursor')
+      document.body.classList.add('hide_cursor')
     } else if (cursorData.mouseEnter === 'Sm') {
       setCursorData(prevState => ({
         ...prevState,
         variant: 'pos',
         orientation: 0,
       }))
-      document.body.classList.remove('show-cursor')
+      document.body.classList.add('hide_cursor')
     } else if (cursorData.mouseEnter === 'SmFull') {
       setCursorData(prevState => ({
         ...prevState,
         variant: 'SmFull',
         orientation: 0,
       }))
-      document.body.classList.remove('show-cursor')
+      document.body.classList.add('hide_cursor')
     } else if (cursorData.mouseEnter === 'SmP') {
       setCursorData(prevState => ({
         ...prevState,
         variant: 'SmP',
         orientation: 0,
       }))
-      document.body.classList.remove('show-cursor')
+      document.body.classList.add('hide_cursor')
     } else {
       setCursorData(prevState => ({
         ...prevState,
@@ -108,7 +111,7 @@ export default function Cursor() {
         text: '',
         orientation: 90,
       }))
-      document.body.classList.add('show-cursor')
+      document.body.classList.remove('hide_cursor')
     }
     setTextCursor(cursorData.mouseText)
   }, [cursorData.mouseEnter, cursorData.mouseText, setCursorData])

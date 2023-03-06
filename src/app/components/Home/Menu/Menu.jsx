@@ -2,7 +2,7 @@ import {Box, Flex, IconButton} from '@chakra-ui/react'
 import Link from 'next/link'
 import React, {useState} from 'react'
 import {colorsDD} from '../../ui/colors/colors'
-import {DribbleIcon} from '../../ui/icones/dribbleIcon/dribbleicon'
+import {MaltIcon} from '../../ui/icones/malt/malt'
 import {GithIcon} from '../../ui/icones/githubicon/githubIcon'
 import {IconeAndrea} from '../../ui/icones/iconeandrea/iconeandrea'
 import {LinkdinIcon} from '../../ui/icones/linkedin/linkedinIcon'
@@ -94,7 +94,7 @@ export default function Menu({color1, color2, blur}) {
             onMouseEnter={() => setDribbleColor('white')}
             onMouseLeave={() => setDribbleColor('#ffffff50')}
             icon={
-              <DribbleIcon
+              <MaltIcon
                 color={dribbleColor}
                 color1={color1 ? color1 : colorsDD.pink}
                 color2={color2 ? color2 : colorsDD.green}

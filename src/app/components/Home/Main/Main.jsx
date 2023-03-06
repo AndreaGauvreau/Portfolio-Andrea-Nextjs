@@ -1,4 +1,4 @@
-import {Flex, Heading} from '@chakra-ui/react'
+import {Box, Flex, Heading} from '@chakra-ui/react'
 import React, {Suspense} from 'react'
 import Canvas3d from './3drocket/Canva'
 import Prenom from './Prenom'
@@ -44,8 +44,8 @@ export default function Main() {
         </Flex>
       </Flex>
       <Heading
-        fontFamily={'Bely Display'}
-        fontWeight={400}
+        fontFamily={'Poppins'}
+        fontWeight={900}
         fontSize={{base: '17px', md: '20px', lg: '30px'}}
         textAlign={'center'}
         color={'white'}

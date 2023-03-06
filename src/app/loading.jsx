@@ -1,5 +1,5 @@
 'use client'
-import {Box, Flex} from '@chakra-ui/react'
+import {Flex} from '@chakra-ui/react'
 import Image from 'next/image'
 import React from 'react'
 
@@ -34,7 +34,6 @@ export default function Loading() {
           }}
         />
       </div>
-      <link rel="stylesheet" href="/loading.css" />
     </Flex>
   )
 }
