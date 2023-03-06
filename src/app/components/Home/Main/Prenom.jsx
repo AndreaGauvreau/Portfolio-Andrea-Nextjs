@@ -13,7 +13,7 @@ export default function Prenom() {
         size={'3xl'}
         textAlign="center"
         fontFamily={'Poppins'}
-        fontWeight={'900'}
+        fontWeight={900}
         color={colorsDD.green}
       >
         andréa
@@ -23,7 +23,7 @@ export default function Prenom() {
         mb={2}
         size={'3xl'}
         fontFamily={'Poppins'}
-        fontWeight={'900'}
+        fontWeight={900}
         textAlign="center"
         color={'white'}
       >

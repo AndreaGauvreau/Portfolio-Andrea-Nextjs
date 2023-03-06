@@ -1,5 +1,7 @@
 'use client'
-import {useTexture, useGLTF, Float, Box} from '@react-three/drei'
+import {useTexture, useGLTF, Float} from '@react-three/drei'
+import {useEffect} from 'react'
+
 export default function Boite() {
   const {nodes} = useGLTF('./model/box.glb')
   const bakedTexture = useTexture('./model/box.jpg')
@@ -8,13 +10,8 @@ export default function Boite() {
   return (
     <>
       <Float>
-        <group position={[0, -1.2, 0]}>
-          <mesh
-            geometry={nodes.Cube004.geometry}
-            position={nodes.Cube004.position}
-            rotation={[0, -2, 0]}
-            emissiveIntensity={12}
-          >
+        <group position={[0, -1.3, 0]}>
+          <mesh geometry={nodes.Cube004.geometry} rotation={[0, -2, 0]}>
             <meshBasicMaterial map={bakedTexture} />
           </mesh>
         </group>

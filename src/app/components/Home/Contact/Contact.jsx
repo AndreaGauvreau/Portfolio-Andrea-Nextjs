@@ -59,15 +59,7 @@ export default function Contact() {
               Et voyons ensemble comment pouvons-bous <br></br>faire évoluer
               votre projet !
             </Heading>
-            <Flex
-              mt={'-50px'}
-              w={'100%'}
-              alignItems="center"
-              justifyContent={'center'}
-              h={{base: '50vh', md: '60vh', lg: '100%'}}
-            >
-              <CanvaHand />
-            </Flex>
+            <CanvaHand />
           </Box>
         </Flex>
         <Flex

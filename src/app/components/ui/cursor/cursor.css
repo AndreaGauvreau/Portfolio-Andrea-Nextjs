@@ -23,12 +23,12 @@
   font-weight: 900;
 }
 
-.show-cursor {
-  cursor: url('./cursor.svg'), auto !important;
+.hide_cursor {
+  cursor: none !important ;
 }
 
 body {
-  cursor: none;
+  cursor: url('./cursor.svg'), auto;
 }
 
 @media screen and (max-width: 480px) {

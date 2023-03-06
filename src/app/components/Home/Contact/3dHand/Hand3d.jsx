@@ -30,6 +30,7 @@ export default function Hand3d() {
         far={10}
         resolution={256}
         color="#000000"
+        position={[0, -0.2, 0]}
       />
       <mesh
         ref={meshRef}
@@ -37,7 +38,7 @@ export default function Hand3d() {
         rotation={[0.1, -0.7, 0]}
         receiveShadow
         castShadow
-        scale={1.2}
+        scale={1}
       >
         <meshBasicMaterial map={bakedTexture} />
       </mesh>

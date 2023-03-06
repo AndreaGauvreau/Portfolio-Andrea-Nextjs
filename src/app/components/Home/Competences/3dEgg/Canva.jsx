@@ -1,18 +1,39 @@
 'use client'
-import {Box} from '@chakra-ui/react'
+import {Box, Skeleton, SkeletonCircle} from '@chakra-ui/react'
 import {Center, PresentationControls} from '@react-three/drei'
 import {Canvas} from '@react-three/fiber'
-import {useState} from 'react'
+import {Suspense, useEffect, useRef, useState} from 'react'
+import {colorsDD} from '../../../ui/colors/colors'
 import ChargeStation from './ChargeStation'
 import Egg from './Egg'
 import TopLight from './TopLight'
 
 export default function CanvasEgg({hoverEgg}) {
-  const [loading, setLoading] = useState(false)
+  const [active, setActive] = useState(false)
+  const [scrollY, setScrollY] = useState(0)
+  const skeletonref = useRef()
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY)
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    if (
+      Math.round(scrollY / 100) * 100 ==
+      Math.round(skeletonref.current.getBoundingClientRect().top / 100) * 100
+    ) {
+      setActive(true)
+    }
+  }, [scrollY])
 
   return (
-    <>
-      {loading ? (
+    <Box ref={skeletonref}>
+      {active ? (
         <Canvas
           flat
           camera={{
@@ -35,19 +56,28 @@ export default function CanvasEgg({hoverEgg}) {
             config={{mass: 1, tension: 170, friction: 26}} // Spring config
           >
             <Center>
-              <Egg hoverEgg={hoverEgg} />
-              <ChargeStation />
-              <TopLight />
+              <Suspense fallback={null}>
+                <Egg hoverEgg={hoverEgg} />
+              </Suspense>
+              <Suspense fallback={null}>
+                <ChargeStation />
+              </Suspense>
+
+              <Suspense fallback={null}>
+                <TopLight />
+              </Suspense>
             </Center>
           </PresentationControls>
         </Canvas>
       ) : (
-        <LoadingScreen />
+        <SkeletonCircle
+          ml={{md: 100}}
+          w="150px"
+          h="150px"
+          tartColor={colorsDD.pink}
+          endColor={colorsDD.green}
+        />
       )}
-    </>
+    </Box>
   )
-}
-
-export function LoadingScreen() {
-  return <Box w={'100px'} h={'100px'} bg="red" />
 }
