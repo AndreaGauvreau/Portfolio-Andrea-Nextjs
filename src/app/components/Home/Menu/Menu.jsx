@@ -82,7 +82,7 @@ export default function Menu({color1, color2, blur}) {
           />
         </Link>
         <Link
-          href={'https://www.linkedin.com/in/andr%C3%A9a-gauvreau-8564b3170/'}
+          href={'https://www.malt.fr/profile/andreagauvreau'}
           target="_blank"
         >
           <IconButton
