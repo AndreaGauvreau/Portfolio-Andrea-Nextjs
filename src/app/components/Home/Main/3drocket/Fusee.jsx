@@ -20,9 +20,11 @@ export default function Fusee() {
     <>
       <Suspense fallback={<LoaderSphere />}>
         <Float speed={5}>
-          <mesh geometry={nodes.Sphere.geometry} rotation={[0, -2, 0]}>
-            <meshBasicMaterial map={bakedTexture} />
-          </mesh>
+          <group position={[0, -1.2, 0]}>
+            <mesh geometry={nodes.Sphere.geometry} rotation={[0, -2, 0]}>
+              <meshBasicMaterial map={bakedTexture} />
+            </mesh>
+          </group>
         </Float>
       </Suspense>
     </>
