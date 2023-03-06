@@ -2,7 +2,17 @@
 import {ChakraProvider, extendTheme} from '@chakra-ui/react'
 import React from 'react'
 import {colorsDD} from './components/ui/colors/colors'
+import {Poppins} from 'next/font/google'
 
+const fontBigPoppins = Poppins({
+  subsets: ['latin'],
+  weight: '900',
+})
+
+const fontMediumPoppins = Poppins({
+  subsets: ['latin'],
+  weight: '400',
+})
 const theme = extendTheme({
   colors: {
     dew: {
@@ -28,20 +38,16 @@ const theme = extendTheme({
       900: colorsDD.pink,
     },
   },
-  components: {
-    Heading: {
-      variants: {
-        dew: {
-          fontFamily: 'arial',
-          fontSize: '40px',
-          fontWeight: '400',
-        },
-        dd: {
-          fontFamily: 'arial',
-          fontSize: '40px',
-          fontWeight: '600',
-        },
-      },
+  fonts: {
+    body: fontMediumPoppins.style.fontFamily,
+    heading: fontBigPoppins.style.fontFamily,
+    badge: fontMediumPoppins.style.fontFamily,
+    text: fontMediumPoppins.style.fontFamily,
+    tag: fontMediumPoppins.style.fontFamily,
+  },
+  commponent: {
+    badge: {
+      font: fontMediumPoppins.style.fontFamily,
     },
   },
 })

@@ -9,28 +9,19 @@ export default function Prenom() {
       alignItems={'center'}
       justifyContent={'center'}
     >
-      <Heading
-        size={'3xl'}
-        textAlign="center"
-        fontFamily={'Poppins'}
-        fontWeight={900}
-        color={colorsDD.green}
-      >
+      <Heading size={'3xl'} textAlign="center" color={colorsDD.green}>
         andréa
       </Heading>
-      <Heading
-        mt={-2}
-        mb={2}
-        size={'3xl'}
-        fontFamily={'Poppins'}
-        fontWeight={900}
-        textAlign="center"
-        color={'white'}
-      >
+      <Heading mt={-2} mb={2} size={'3xl'} textAlign="center" color={'white'}>
         Gauvreau
       </Heading>
       <Flex gap={1}>
-        <Badge colorScheme={'dew'} padding={1} borderRadius={5}>
+        <Badge
+          fontFamily={'Poppins'}
+          colorScheme={'dew'}
+          padding={1}
+          borderRadius={5}
+        >
           Developpeur frontend
         </Badge>
         <Badge colorScheme={'dd'} padding={1} borderRadius={5}>

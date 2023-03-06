@@ -44,8 +44,6 @@ export default function Main() {
         </Flex>
       </Flex>
       <Heading
-        fontFamily={'Poppins'}
-        fontWeight={900}
         fontSize={{base: '17px', md: '20px', lg: '30px'}}
         textAlign={'center'}
         color={'white'}
