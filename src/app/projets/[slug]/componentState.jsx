@@ -76,7 +76,7 @@ export function ButtonPageElement({projetDatas}) {
   return (
     <Flex gap={2}>
       <Link
-        href={'/#projets'}
+        href={'/'}
         onMouseLeave={handleMouseLeave}
         onClick={handleMouseLeave}
         onMouseEnter={handleMouseClick}
@@ -95,7 +95,7 @@ export function ButtonPageElement({projetDatas}) {
         </Button>
       </Link>
       <Link
-        href={'#badge'}
+        href={`/projets/${projetDatas.slug}#badge`}
         onMouseLeave={handleMouseLeave}
         onMouseEnter={handleMouseClick}
         onClick={handleMouseLeave}
@@ -205,7 +205,6 @@ export function ContentPage({params}) {
                   color={'white'}
                   fontSize={{base: '27px', md: '30px', lg: '40px'}}
                   colorBl
-                  fontFamily={'Bely Display'}
                   fontWeight={400}
                 >
                   {projetDatas?.title}
@@ -319,6 +318,7 @@ export function ContentPage({params}) {
                 text={'Contactez-moi 🚀'}
                 colorButton={projetDatas?.color1}
                 colorThemeDD={'custom'}
+                link={'https://calendly.com/andrea-formizi/30min'}
               />
             </Box>
           </Flex>

@@ -72,7 +72,11 @@ export default function Contact() {
             <Box w={'50%'} borderRight={'5px solid white'} h={'15vh'}></Box>
             <Box w={'50%'}></Box>
           </Flex>
-          <ButtonDD text={'Contactez-moi'} link={'#'} colorThemeDD={'light'} />
+          <ButtonDD
+            text={'Contactez-moi'}
+            link={'https://calendly.com/andrea-formizi/30min'}
+            colorThemeDD={'light'}
+          />
           <Flex display={{base: 'none', md: 'none', lg: 'flex'}}>
             <Box w={'50%'} borderRight={'5px solid white'} h={'15vh'}></Box>
             <Box w={'50%'}></Box>
