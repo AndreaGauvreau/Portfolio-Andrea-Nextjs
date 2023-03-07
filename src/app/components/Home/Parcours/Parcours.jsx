@@ -32,7 +32,7 @@ export default function Parcours() {
           h={{base: '100%', md: '100%', lg: '100vh'}}
         >
           <Image
-            src="/images/identite/dd-assis.jpg"
+            src="/images/identite/andrea-galaxy.png"
             alt="andrea-gauvreau-developpeur-front-end"
             colour
             quality={100}
