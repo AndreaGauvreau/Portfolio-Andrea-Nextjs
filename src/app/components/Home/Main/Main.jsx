@@ -48,13 +48,15 @@ export default function Main() {
           gap={7}
         >
           <Prenom />
-          <ButtonDD
-            text={'Contactez-moi'}
-            link={'https://calendly.com/andrea-formizi/30min'}
-            colorThemeDD={'light'}
-            indexB={2}
-            size={'xs'}
-          />
+          <Box display={{base: 'none', md: 'inline'}}>
+            <ButtonDD
+              text={'Contactez-moi'}
+              link={'https://calendly.com/andrea-formizi/30min'}
+              colorThemeDD={'light'}
+              indexB={2}
+              size={'xs'}
+            />
+          </Box>
         </Flex>
       </Flex>
       <Heading
@@ -67,6 +69,15 @@ export default function Main() {
       >
         Votre développeur Front-end qui va propulser 🚀 votre projet
       </Heading>
+      <Box display={{base: 'inline', md: 'none'}}>
+        <ButtonDD
+          text={'Contactez-moi'}
+          link={'https://calendly.com/andrea-formizi/30min'}
+          colorThemeDD={'light'}
+          indexB={2}
+          size={'xs'}
+        />
+      </Box>
     </Flex>
   )
 }
