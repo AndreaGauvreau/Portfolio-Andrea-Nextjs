@@ -42,7 +42,6 @@ export default function Project() {
           color={'white'}
           textAlign="center"
           fontSize={{base: '27px', md: '30px', lg: '40px'}}
-          fontFamily={'Bely Display'}
         >
           Projets après Projets
         </Heading>
@@ -57,14 +56,6 @@ export default function Project() {
           Peut-être serez-vous le prochain ?
         </Heading>
         <CardMap />
-        <Flex w={'100%'} alignItems="center" justifyContent="center">
-          <ButtonDD
-            text={'Tous les projets'}
-            link="/projets"
-            colorThemeDD={'pink'}
-            indexB={10}
-          />
-        </Flex>
       </Flex>
     </Flex>
   )

@@ -18,11 +18,13 @@ export default function Main() {
       bgSize="cover"
       boxSizing="border-box"
       overflow={'hidden'}
+      position="relative"
     >
       <Flex
         w={{base: '100%', md: '100%', lg: '1024px'}}
         flexDirection={{base: 'column-reverse', md: 'column', lg: 'row'}}
-        zIndex={1}
+        id={'maincover'}
+        zIndex={2}
       >
         <Flex
           w={{base: '100%', md: '100%', lg: '50%'}}
@@ -30,6 +32,7 @@ export default function Main() {
           justifyContent={'center'}
           h={'50vh'}
           position={'relative'}
+          zIndex={2}
         >
           <Canvas3d />
           <AnimationDD />
@@ -39,6 +42,7 @@ export default function Main() {
           alignItems="center"
           justifyContent={'center'}
           position="relative"
+          zIndex={2}
         >
           <Prenom />
         </Flex>

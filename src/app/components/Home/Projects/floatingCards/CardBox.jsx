@@ -18,6 +18,7 @@ import {colorsDD} from '../../../ui/colors/colors'
 import {CursorContext} from '../../../ui/cursor/CursorProvider'
 import Link from 'next/link'
 import Image from 'next/image'
+import SkeletonProjet from './SkeletonProjet'
 export default function Cards({datas, currentIndex, length}) {
   const [pos, setPos] = useState('-50%')
   const [index, setIndex] = useState(1)
@@ -26,6 +27,13 @@ export default function Cards({datas, currentIndex, length}) {
   const [opcaticy, setOpacity] = useState(1)
   const [blur, setBlur] = useState('0px')
   const [className, setClassName] = useState('noanim')
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    if (datas) {
+      setLoading(false)
+    }
+  }, [datas])
 
   const diff = Math.abs(currentIndex - datas.id)
   useEffect(() => {
@@ -118,73 +126,77 @@ export default function Cards({datas, currentIndex, length}) {
       mouseText: '',
     }))
   }
-
-  return (
-    <>
-      <Card
-        maxW="sm"
-        w={{base: '250px', md: '250px', lg: '350px'}}
-        position={'absolute'}
-        top={'50%'}
-        left={'50%'}
-        transform={`translate(${pos},-50%) rotate(${transform}deg) scale(${scale})`}
-        transition={'0.5s ease'}
-        transformOrigin="center"
-        zIndex={index}
-        opacity={opcaticy}
-        color={'white'}
-        filter={`blur(${blur})`}
-        borderRadius={10}
-        bg={'#ffffff00'}
-        overflow={'hidden'}
-        p={1}
-      >
-        <Box className={className} bg={colorsDD.bgcolor2} borderRadius={10}>
-          <CardBody p={4}>
-            <Link href={`/projets/${datas?.slug}`}>
-              <Box
-                w="100%"
-                bgSize="cover"
-                bgPosition={'center'}
-                onMouseEnter={handleMouseClick}
-                onMouseLeave={handleMouseLeave}
-                onClick={handleMouseLeave}
-                cursor={'none'}
-                borderRadius={10}
-                overflow="hidden"
-              >
-                <Image
-                  src={datas?.image}
-                  width={350}
-                  height={350}
-                  alt={datas?.description}
-                />
-              </Box>
-            </Link>
-            <Stack mt="6" spacing="3">
-              <Heading
-                variant="dew"
-                fontFamily={'bely-display, sans-serif'}
-                size={{base: 'sm', md: 'md', lg: 'xl'}}
-              >
-                {datas?.title}
-              </Heading>
-              <Text fontSize={{base: 'xs', md: 'sm', lg: 'lg'}}>
-                {datas?.description}
-              </Text>
-              <Flex gap={2} wrap={'wrap'}>
-                {datas.categories.map(name => (
-                  <Tag key={name} variant="subtle" colorScheme="dew">
-                    <TagLabel fontSize={{base: 'xs', md: 'sm', lg: 'md'}}>
-                      {name}
-                    </TagLabel>
-                  </Tag>
-                ))}
-              </Flex>
-            </Stack>
-          </CardBody>
-        </Box>
-      </Card>
-    </>
-  )
+  if (loading) {
+    return (
+      <SkeletonProjet pos={(pos, transform, scale, index, opcaticy, blur)} />
+    )
+  } else
+    return (
+      <>
+        <Card
+          maxW="sm"
+          w={{base: '250px', md: '250px', lg: '350px'}}
+          position={'absolute'}
+          top={'50%'}
+          left={'50%'}
+          transform={`translate(${pos},-50%) rotate(${transform}deg) scale(${scale})`}
+          transition={'0.5s ease'}
+          transformOrigin="center"
+          zIndex={index}
+          opacity={opcaticy}
+          color={'white'}
+          filter={`blur(${blur})`}
+          borderRadius={10}
+          bg={'#ffffff00'}
+          overflow={'hidden'}
+          p={1}
+        >
+          <Box className={className} bg={colorsDD.bgcolor2} borderRadius={10}>
+            <CardBody p={4}>
+              <Link href={`/projets/${datas?.slug}`}>
+                <Box
+                  w="100%"
+                  bgSize="cover"
+                  bgPosition={'center'}
+                  onMouseEnter={handleMouseClick}
+                  onMouseLeave={handleMouseLeave}
+                  onClick={handleMouseLeave}
+                  cursor={'none'}
+                  borderRadius={10}
+                  overflow="hidden"
+                >
+                  <Image
+                    src={datas?.image}
+                    width={350}
+                    height={350}
+                    alt={datas?.description}
+                  />
+                </Box>
+              </Link>
+              <Stack mt="6" spacing="3">
+                <Heading
+                  variant="dew"
+                  fontFamily={'bely-display, sans-serif'}
+                  size={{base: 'sm', md: 'md', lg: 'xl'}}
+                >
+                  {datas?.title}
+                </Heading>
+                <Text fontSize={{base: 'xs', md: 'sm', lg: 'lg'}}>
+                  {datas?.description}
+                </Text>
+                <Flex gap={2} wrap={'wrap'}>
+                  {datas.categories.map(name => (
+                    <Tag key={name} variant="subtle" colorScheme="dew">
+                      <TagLabel fontSize={{base: 'xs', md: 'sm', lg: 'md'}}>
+                        {name}
+                      </TagLabel>
+                    </Tag>
+                  ))}
+                </Flex>
+              </Stack>
+            </CardBody>
+          </Box>
+        </Card>
+      </>
+    )
 }

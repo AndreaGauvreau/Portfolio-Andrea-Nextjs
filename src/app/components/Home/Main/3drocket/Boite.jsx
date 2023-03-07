@@ -1,5 +1,5 @@
 'use client'
-import {useTexture, useGLTF, Float} from '@react-three/drei'
+import {useTexture, useGLTF, Float, useProgress, Html} from '@react-three/drei'
 import {useEffect} from 'react'
 
 export default function Boite() {

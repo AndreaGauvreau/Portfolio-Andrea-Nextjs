@@ -169,3 +169,22 @@
     transform: rotate(360deg);
   }
 }
+
+#maincover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 50vh;
+  background: linear-gradient(0deg, #0d0d12 20%, #0d0d1230);
+}
+#maincover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 50vh;
+  background: linear-gradient(180deg, #0d0d12 20%, #0d0d1230);
+}
