@@ -54,17 +54,12 @@ export default function Competences() {
             variant={'dew'}
             color={'white'}
             fontSize={{base: '27px', md: '30px', lg: '40px'}}
-            fontFamily={'Bely Display'}
           >
             Des compétences pour vous aider à faire{' '}
             <b
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              style={{
-                color: `${colorsDD.pink}`,
-                fontWeight: '400',
-                fontFamily: 'bely display',
-              }}
+              style={{color: `${colorsDD.pink}`, fontWeight: '900'}}
             >
               éclore
             </b>{' '}
@@ -84,6 +79,7 @@ export default function Competences() {
               src="/images/identite/andrea-thinking-lightup.png"
               alt="andrea-gauvreau-developpeur-front-end"
               width={200}
+              loading="lazy"
               height={400}
             />
           </Flex>
@@ -149,6 +145,7 @@ export default function Competences() {
               alt="andrea-gauvreau-developpeur-front-end"
               width={600}
               height={700}
+              loading="lazy"
               quality={100}
             />
           </Box>

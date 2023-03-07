@@ -1,3 +1,4 @@
+'use client'
 import {Box, Flex, IconButton} from '@chakra-ui/react'
 import Link from 'next/link'
 import React, {useState} from 'react'
@@ -12,6 +13,8 @@ export default function Menu({color1, color2, blur}) {
   const [githubColor, setGithubColor] = useState('#ffffff50')
   const [linkedinColor, setLinkdedinColor] = useState('#ffffff50')
   const [dribbleColor, setDribbleColor] = useState('#ffffff50')
+  const wait1 = 1.6
+  const wait2 = 1.6
   return (
     <Flex
       pl={{base: 10, md: 5, lg: 10}}
@@ -35,6 +38,7 @@ export default function Menu({color1, color2, blur}) {
             width={'100%'}
             color1={color1 ? color1 : colorsDD.pink}
             color2={color2 ? color2 : colorsDD.green}
+            wait={wait2}
             color={'white'}
           />
         </Link>
@@ -46,7 +50,8 @@ export default function Menu({color1, color2, blur}) {
             variant={'ghost'}
             bgColor={'#ffffff00'}
             _hover={{bgColor: '#ffffff20'}}
-            boxSize={{base: 8, md: 10, lg: 12}}
+            boxSize={{base: 10, md: 12, lg: 14}}
+            p={1}
             onMouseEnter={() => setGithubColor('white')}
             onMouseLeave={() => setGithubColor('#ffffff50')}
             icon={
@@ -54,6 +59,7 @@ export default function Menu({color1, color2, blur}) {
                 color={githubColor}
                 color1={color1 ? color1 : colorsDD.pink}
                 color2={color2 ? color2 : colorsDD.green}
+                wait={wait1}
                 width={'100%'}
               />
             }
@@ -66,7 +72,8 @@ export default function Menu({color1, color2, blur}) {
           <IconButton
             aria-label="github link"
             variant={'ghost'}
-            boxSize={{base: 8, md: 10, lg: 12}}
+            boxSize={{base: 10, md: 12, lg: 14}}
+            p={1}
             bgColor={'#ffffff00'}
             _hover={{bgColor: '#ffffff20'}}
             onMouseEnter={() => setLinkdedinColor('white')}
@@ -77,6 +84,7 @@ export default function Menu({color1, color2, blur}) {
                 color1={color1 ? color1 : colorsDD.pink}
                 color2={color2 ? color2 : colorsDD.green}
                 width={'100%'}
+                wait={wait1}
               />
             }
           />
@@ -88,7 +96,8 @@ export default function Menu({color1, color2, blur}) {
           <IconButton
             aria-label="github link"
             variant={'ghost'}
-            boxSize={{base: 8, md: 10, lg: 12}}
+            boxSize={{base: 10, md: 12, lg: 14}}
+            p={1}
             bgColor={'#ffffff00'}
             _hover={{bgColor: '#ffffff20'}}
             onMouseEnter={() => setDribbleColor('white')}
@@ -99,6 +108,7 @@ export default function Menu({color1, color2, blur}) {
                 color1={color1 ? color1 : colorsDD.pink}
                 color2={color2 ? color2 : colorsDD.green}
                 width={'100%'}
+                wait={wait1}
               />
             }
           />

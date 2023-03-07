@@ -40,11 +40,10 @@ export default function Contact() {
             <Heading
               textAlign="center"
               color={colorsDD.background}
-              fontSize={{base: '27px', md: '30px', lg: '40px'}}
+              fontSize={{base: '27px', md: '30px', lg: '35px'}}
               pt={10}
               pl={10}
               pr={10}
-              fontFamily={'Bely Display'}
             >
               Échangeons autour d'un café
             </Heading>

@@ -34,6 +34,7 @@ export default function Parcours() {
           <Image
             src="/images/identite/dd-assis.jpg"
             alt="andrea-gauvreau-developpeur-front-end"
+            colour
             quality={100}
             loading="lazy"
             width={420}
@@ -51,7 +52,6 @@ export default function Parcours() {
           <Heading
             color={'white'}
             fontSize={{base: '27px', md: '30px', lg: '40px'}}
-            fontFamily={'Bely Display'}
             fontWeight={400}
           >
             Un Parcours Atypique
