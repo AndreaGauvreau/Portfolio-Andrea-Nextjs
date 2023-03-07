@@ -3,17 +3,49 @@
   background-color: #398ffc;
   border-radius: 50px 0px;
   color: white;
-  font-size: 20px;
+  font-size: 17px;
   padding: 15px 50px;
   margin: 10px;
-  font-family: 'bely-display';
-  font-size: '40px';
   font-weight: '400';
   border: none !important ;
 }
-
-#linkofbutton {
+#actionBtnxs {
+  background-color: #398ffc;
+  border-radius: 50px 0px;
+  color: white;
+  font-size: 13px;
+  padding: 10px 30px;
+  margin: 10px;
+  font-weight: '400';
+  border: none !important ;
+}
+#linkofbutton,
+#linkofbuttonxs {
   position: relative;
+}
+#linkofbuttonxs #btnTopLeft,
+#linkofbuttonxs #btnBotRight {
+  border-radius: 50px !important;
+  border-top: 4px solid white;
+  border-bottom: 4px solid white;
+  border-left: 4px solid white;
+  border-right: 4px solid white;
+}
+
+#actionBtnxs:hover ~ #btnTopLeft,
+#actionBtnxs:hover ~ #btnBotRight {
+  border: 5px solid white;
+  opacity: 100%;
+  transition: 0.3s;
+}
+#linkofbuttonxs #btnTopLeft {
+  top: -4px !important;
+  left: -2px !important;
+}
+
+#linkofbuttonxs #btnBotRight {
+  bottom: -4px !important;
+  right: -2px !important;
 }
 
 #btnTopLeft,

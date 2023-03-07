@@ -3,6 +3,7 @@ import React, {Suspense} from 'react'
 import Canvas3d from './3drocket/Canva'
 import Prenom from './Prenom'
 import AnimationDD from './animationDd'
+import ButtonDD from '../../ui/ButtonDD/ButtonDD'
 
 export default function Main() {
   return (
@@ -40,11 +41,20 @@ export default function Main() {
         <Flex
           w={{base: '100%', md: '100%', lg: '50%'}}
           alignItems="center"
+          flexDirection={'column'}
           justifyContent={'center'}
           position="relative"
           zIndex={2}
+          gap={7}
         >
           <Prenom />
+          <ButtonDD
+            text={'Contactez-moi'}
+            link={'https://calendly.com/andrea-formizi/30min'}
+            colorThemeDD={'light'}
+            indexB={2}
+            size={'xs'}
+          />
         </Flex>
       </Flex>
       <Heading
@@ -53,6 +63,7 @@ export default function Main() {
         color={'white'}
         as="h1"
         zIndex={2}
+        mb={10}
       >
         Votre développeur Front-end qui va propulser 🚀 votre projet
       </Heading>

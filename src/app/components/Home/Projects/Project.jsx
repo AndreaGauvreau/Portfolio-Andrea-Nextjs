@@ -1,10 +1,11 @@
-import {Flex, Heading} from '@chakra-ui/react'
+import {Box, Flex, Heading} from '@chakra-ui/react'
 import React, {useRef} from 'react'
 import ButtonDD from '../../ui/ButtonDD/ButtonDD'
 import {colorsDD} from '../../ui/colors/colors'
 import Gradient from '../../ui/GradientBgElems/Gradient'
 import CardMap from './floatingCards/CardsContent'
 import {Abril_Fatface} from '@next/font/google'
+import {motion} from 'framer-motion'
 
 const climatefont = Abril_Fatface({
   subsets: ['latin-ext'],

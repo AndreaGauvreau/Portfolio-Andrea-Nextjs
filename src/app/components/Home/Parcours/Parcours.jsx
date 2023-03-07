@@ -78,7 +78,11 @@ export default function Parcours() {
             artistique et un savoir faire de développeur front-end pour proposer
             le meilleur mélange possible pour vos projets.
           </Text>
-          <ButtonDD text={'contactez-moi'} link={'#'} colorThemeDD={'green'} />
+          <ButtonDD
+            text={'contactez-moi'}
+            colorThemeDD={'green'}
+            link={'https://calendly.com/andrea-formizi/30min'}
+          />
         </Flex>
       </Flex>
     </Flex>

@@ -10,6 +10,7 @@ export default function ButtonDD({
   colorThemeDD,
   indexB,
   colorButton,
+  size,
 }) {
   const [color, setColor] = useState('white')
   const [bgColor, setBgColor] = useState('pink')
@@ -33,15 +34,19 @@ export default function ButtonDD({
     }
   }, [colorButton, colorThemeDD])
 
+  const idsize = size === 'xs' ? 'linkofbuttonxs' : 'linkofbutton'
+  const idsizeBtn = size === 'xs' ? 'actionBtnxs' : 'actionBtn'
+
   return (
-    <div id="linkofbutton" style={{zIndex: indexB}}>
+    <div id={idsize} style={{zIndex: indexB}}>
       <Link
-        id="actionBtn"
+        id={idsizeBtn}
         style={{
           backgroundColor: `${bgColor}`,
           color: `${color}`,
         }}
         href={link ?? '/'}
+        target="_blank"
       >
         {text}
       </Link>
