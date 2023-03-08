@@ -1,5 +1,5 @@
 import {Box, Flex, Heading} from '@chakra-ui/react'
-import React, {Suspense} from 'react'
+import React from 'react'
 import Canvas3d from './3drocket/Canva'
 import Prenom from './Prenom'
 import AnimationDD from './animationDd'

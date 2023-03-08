@@ -2,7 +2,12 @@ import {Flex, Heading, Text} from '@chakra-ui/react'
 import Image from 'next/image'
 import React from 'react'
 import ButtonDD from '../../ui/ButtonDD/ButtonDD'
+import {Poppins} from 'next/font/google'
 
+const fontPoppins = Poppins({
+  subsets: ['latin'],
+  weight: ['600', '900'],
+})
 export default function Parcours() {
   return (
     <Flex
@@ -56,16 +61,23 @@ export default function Parcours() {
           >
             Un Parcours Atypique
           </Heading>
-          <Heading
+          <Text
             fontSize={{base: '13px', md: '15px', lg: '18px'}}
+            fontWeight={'600'}
+            lineHeight={{base: '13px', md: '15px', lg: '18px'}}
+            className={fontPoppins.className}
+            textAlign={'center'}
             color={'white'}
+            zIndex={10}
+            mt={3}
           >
             Suis-je suis la 893 000 ème personnes à dire ca ?
-          </Heading>
+          </Text>
           <Text
             color={'white'}
             mb={{base: 5, md: 5, lg: 10}}
             mt={{base: 5, md: 5, lg: 10}}
+            fontSize={{base: '13px', md: '15px'}}
           >
             Tombé par hasard dans le monde du code, c'est mon désir d'améliorer
             et de contribuer à un monde du web meilleur que je décide de me
