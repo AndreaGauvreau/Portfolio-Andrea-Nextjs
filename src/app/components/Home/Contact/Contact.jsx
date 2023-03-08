@@ -1,14 +1,14 @@
-import {Box, Flex, Heading} from '@chakra-ui/react'
+import {Box, Flex, Heading, Text} from '@chakra-ui/react'
 import React from 'react'
 import ButtonDD from '../../ui/ButtonDD/ButtonDD'
 import {colorsDD} from '../../ui/colors/colors'
 import Gradient from '../../ui/GradientBgElems/Gradient'
 import CanvaHand from './3dHand/CanvaHand'
-import {Abril_Fatface} from '@next/font/google'
+import {Poppins} from 'next/font/google'
 
-const climatefont = Abril_Fatface({
-  subsets: ['latin-ext'],
-  weight: '400',
+const fontPoppins = Poppins({
+  subsets: ['latin'],
+  weight: ['600', '900'],
 })
 
 export default function Contact() {
@@ -33,13 +33,14 @@ export default function Contact() {
           <Box
             minH={'50vh'}
             w={'100%'}
-            background={`linear-gradient(50deg, ${colorsDD.green20} 0%, ${colorsDD.green} 100%)`}
+            background={`linear-gradient(50deg, ${colorsDD.pink} 0%, ${colorsDD.green} 100%)`}
             borderRadius={20}
             p={0}
+            boxShadow={`-30px 20px 60px 0px ${colorsDD.pink20}, 30px 40px 100px 0px ${colorsDD.green20}`}
           >
             <Heading
               textAlign="center"
-              color={colorsDD.background}
+              color={colorsDD.bgcolor}
               fontSize={{base: '27px', md: '30px', lg: '35px'}}
               pt={10}
               pl={10}
@@ -47,17 +48,18 @@ export default function Contact() {
             >
               Échangeons autour d'un café
             </Heading>
-            <Heading
-              variant={'dd'}
+            <Text
               fontSize={{base: '13px', md: '15px', lg: '18px'}}
-              color={colorsDD.background}
+              fontWeight={'600'}
+              color={colorsDD.bgcolor}
+              className={fontPoppins.className}
               textAlign="center"
               pl={5}
               pr={5}
             >
-              Et voyons ensemble comment pouvons-bous <br></br>faire évoluer
+              Et voyons ensemble comment pouvons-nous <br></br>faire évoluer
               votre projet !
-            </Heading>
+            </Text>
             <CanvaHand />
           </Box>
         </Flex>

@@ -1,15 +1,14 @@
-import {Box, Flex, Heading} from '@chakra-ui/react'
+import {Box, Flex, Heading, Text} from '@chakra-ui/react'
 import React, {useRef} from 'react'
 import ButtonDD from '../../ui/ButtonDD/ButtonDD'
 import {colorsDD} from '../../ui/colors/colors'
 import Gradient from '../../ui/GradientBgElems/Gradient'
 import CardMap from './floatingCards/CardsContent'
-import {Abril_Fatface} from '@next/font/google'
-import {motion} from 'framer-motion'
+import {Poppins} from 'next/font/google'
 
-const climatefont = Abril_Fatface({
-  subsets: ['latin-ext'],
-  weight: '400',
+const fontPoppins = Poppins({
+  subsets: ['latin'],
+  weight: ['600', '900'],
 })
 export default function Project() {
   const projetsRef = useRef(null)
@@ -46,16 +45,19 @@ export default function Project() {
         >
           Projets après Projets
         </Heading>
-        <Heading
-          variant={'dd'}
+        <Text
           fontSize={{base: '13px', md: '15px', lg: '18px'}}
+          fontWeight={'600'}
+          lineHeight={{base: '13px', md: '15px', lg: '18px'}}
+          className={fontPoppins.className}
           textAlign={'center'}
           color={'white'}
           zIndex={10}
+          mt={3}
         >
           Que de beaux projets ! <br></br>
           Peut-être serez-vous le prochain ?
-        </Heading>
+        </Text>
         <CardMap />
       </Flex>
     </Flex>

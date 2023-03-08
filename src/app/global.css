@@ -1,10 +1,7 @@
 *::-webkit-scrollbar {
   display: none;
 }
-* {
-  font-family: 'Poppins';
-  font-weight: 400;
-}
+
 .boxEffect::after {
   content: '';
   background-size: 100% 100%;

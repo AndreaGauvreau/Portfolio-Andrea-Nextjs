@@ -3,6 +3,12 @@ import React, {useState} from 'react'
 import {useEffect} from 'react'
 import {colorsDD} from '../colors/colors'
 import './Button.css'
+import {Poppins} from 'next/font/google'
+
+const fontPoppins = Poppins({
+  subsets: ['latin'],
+  weight: ['200', '400', '600', '900'],
+})
 
 export default function ButtonDD({
   text,
@@ -47,6 +53,7 @@ export default function ButtonDD({
         }}
         href={link ?? '/'}
         target="_blank"
+        className={fontPoppins.className}
       >
         {text}
       </Link>

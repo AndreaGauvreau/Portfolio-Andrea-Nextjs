@@ -1,8 +1,13 @@
-import {Badge, Box, Flex, Heading} from '@chakra-ui/react'
+import {Badge, Box, Flex, Heading, Text} from '@chakra-ui/react'
 import React from 'react'
 import {colorsDD} from '../../ui/colors/colors'
 import {motion} from 'framer-motion'
+import {Poppins} from 'next/font/google'
 
+const fontPoppins = Poppins({
+  subsets: ['latin'],
+  weight: ['600', '900'],
+})
 export default function Prenom() {
   return (
     <Flex
@@ -29,9 +34,16 @@ export default function Prenom() {
               ease: [0.15, 0.84, 0.27, 0.96],
             }}
           >
-            <Heading size={'3xl'} textAlign="center" color={colorsDD.green}>
+            <Text
+              fontSize={'70px'}
+              textAlign="center"
+              color={colorsDD.green}
+              fontWeight={'900'}
+              lineHeight={'70px'}
+              className={fontPoppins.className}
+            >
               andréa
-            </Heading>
+            </Text>
           </motion.div>
         </Box>
       </motion.div>
@@ -54,35 +66,57 @@ export default function Prenom() {
               ease: [0.15, 0.84, 0.27, 0.96],
             }}
           >
-            <Heading
+            <Text
               mt={-2}
               mb={2}
-              size={'3xl'}
               textAlign="center"
               color={'white'}
+              fontWeight={'900'}
+              lineHeight={'70px'}
+              fontSize={'70px'}
+              className={fontPoppins.className}
             >
               Gauvreau
-            </Heading>
+            </Text>
           </motion.div>
         </Box>{' '}
       </motion.div>
 
       <Flex gap={1}>
         <Badge
-          fontFamily={'Poppins'}
           colorScheme={'dew'}
           padding={1}
           borderRadius={5}
+          className={fontPoppins.className}
+          fontWeight={'600'}
         >
           Developpeur frontend
         </Badge>
-        <Badge colorScheme={'dd'} padding={1} borderRadius={5}>
+        <Badge
+          colorScheme={'dd'}
+          padding={1}
+          borderRadius={5}
+          fontWeight={'600'}
+          className={fontPoppins.className}
+        >
           React
         </Badge>
-        <Badge colorScheme={'dd'} padding={1} borderRadius={5}>
+        <Badge
+          colorScheme={'dd'}
+          padding={1}
+          borderRadius={5}
+          fontWeight={'600'}
+          className={fontPoppins.className}
+        >
           Next
         </Badge>
-        <Badge colorScheme={'dd'} padding={1} borderRadius={5}>
+        <Badge
+          colorScheme={'dd'}
+          padding={1}
+          borderRadius={5}
+          fontWeight={'600'}
+          className={fontPoppins.className}
+        >
           Three...
         </Badge>
       </Flex>
