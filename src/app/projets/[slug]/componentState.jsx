@@ -5,7 +5,7 @@ import Link from 'next/link'
 import React, {useContext, useEffect, useState} from 'react'
 import {CursorContext} from '../../components/ui/cursor/CursorProvider'
 import Cursor from '../../components/ui/cursor/Cursor.jsx'
-import Menu from '../../components/Home/Menu/Menu'
+import Menu from '../../components/ui/Menu/Menu'
 import projetsdata from '../../../db/data-projets'
 import {colorsDD} from '../../components/ui/colors/colors'
 import {motion} from 'framer-motion'
@@ -95,7 +95,7 @@ export function ButtonPageElement({projetDatas}) {
         </Button>
       </Link>
       <Link
-        href={`/projets/${projetDatas.slug}#badge`}
+        href={`/projets/${projetDatas?.slug}#badge`}
         onMouseLeave={handleMouseLeave}
         onMouseEnter={handleMouseClick}
         onClick={handleMouseLeave}
@@ -153,7 +153,7 @@ export function ContentPage({params}) {
         id="backgroundGradient"
         w={'100%'}
         padding={2}
-        background={`linear-gradient(-45deg, ${projetDatas.color1}, ${projetDatas.color2},${projetDatas.color1}, ${projetDatas.color2})`}
+        background={`linear-gradient(-45deg, ${projetDatas?.color1}, ${projetDatas?.color2},${projetDatas?.color1}, ${projetDatas?.color2})`}
         maxH={'100vh'}
       >
         <Cursor />

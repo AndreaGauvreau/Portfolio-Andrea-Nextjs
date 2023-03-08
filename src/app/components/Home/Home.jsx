@@ -1,9 +1,9 @@
 'use client'
 import {Box, Text} from '@chakra-ui/react'
-import Menu from './Menu/Menu'
+import Menu from '../ui/Menu/Menu'
+import Footer from '../ui/Footer/Footer'
 import Cursor from '../ui/cursor/Cursor'
 import dynamic from 'next/dynamic'
-import {Suspense} from 'react'
 
 export default function Home() {
   const Main = dynamic(() => import('./Main/Main'))
@@ -22,6 +22,7 @@ export default function Home() {
         <Project />
         <Parcours />
         <Contact />
+        <Footer blur={7} />
       </Box>
     </>
   )
