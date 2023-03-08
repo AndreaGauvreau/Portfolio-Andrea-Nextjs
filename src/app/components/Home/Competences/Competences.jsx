@@ -55,7 +55,7 @@ export default function Competences() {
             color={'white'}
             fontSize={{base: '27px', md: '30px', lg: '40px'}}
           >
-            Des compétences pour vous aider à faire{' '}
+            Des compétences pour faire{' '}
             <b
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -89,9 +89,9 @@ export default function Competences() {
               display={{base: 'none', md: 'flex', lg: 'flex'}}
               fontSize={'15px'}
             >
-              Mes compétences de frontend développeur vont <br></br>transformer
-              vos idées en réalisations <br></br> solides et concrètes pour
-              propulser <br></br> votre projet au sommet !
+              Mes compétences de Front-end développeur <br></br> vont
+              transformer vos idées en réalisations <br></br> solides et
+              concrètes pour propulser <br></br> votre projet au sommet !
             </Text>
             <Text
               color={'white'}

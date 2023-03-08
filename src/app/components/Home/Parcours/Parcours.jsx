@@ -67,16 +67,20 @@ export default function Parcours() {
             mb={{base: 5, md: 5, lg: 10}}
             mt={{base: 5, md: 5, lg: 10}}
           >
-            Tombé dans le monde du code par hasard, c’est ma volonté à améliorer
-            et contribuer à un monde du web meilleur qui m’a poussé à devenir
-            développeur.<br></br>
-            <br></br> Tout droit sortit d’école de commerce, je me lance avec 3
-            amis dans un projet fou. Alors que nous voulions agir dans l’univers
-            de l’edtech, notre manque de compétences dans le web m’a poussé à
-            agir et apprendre rapidement à developper une plateforme comme nous
-            l’imaginions.<br></br> Depuis j’allie compétences marketing,
-            artistique et un savoir faire de développeur front-end pour proposer
-            le meilleur mélange possible pour vos projets.
+            Tombé par hasard dans le monde du code, c'est mon désir d'améliorer
+            et de contribuer à un monde du web meilleur que je décide de me
+            lancer dans l'aventure du code! <br></br>
+            <br></br>Petite explication. 🤓
+            <br></br>
+            <br></br> Issu d'une école de commerce, je me suis lancé avec trois
+            amis dans un projet ambitieux... Nous souhaitions agir dans
+            l'univers de l'edtech, mais notre manque de compétences dans le
+            domaine du web m'a poussé à réagir et à prendre rapidement une
+            décision... Celle de pousser la porte du monde du dev. 🤯 <br></br>
+            <br></br>
+            Depuis, j'allie mes compétences en marketing, mon sens artistique et
+            mon savoir-faire de développeur front-end pour proposer le meilleur
+            mélange possible pour vos projets.
           </Text>
           <ButtonDD
             text={'contactez-moi'}
