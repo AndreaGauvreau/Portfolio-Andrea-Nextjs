@@ -2,7 +2,7 @@
 import {Badge, Box, Button, Flex, Heading, Text} from '@chakra-ui/react'
 import {ArrowBackIcon, ArrowDownIcon} from '@chakra-ui/icons'
 import Link from 'next/link'
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext, useEffect, useRef, useState} from 'react'
 import {CursorContext} from '../../components/ui/cursor/CursorProvider'
 import Cursor from '../../components/ui/cursor/Cursor.jsx'
 import Menu from '../../components/ui/Menu/Menu'
@@ -15,6 +15,9 @@ import ButtonDD from '../../components/ui/ButtonDD/ButtonDD'
 import Image from 'next/image'
 import '../gradient.css'
 import ImageProject from '../ImageProject'
+import {Canvas, useFrame} from '@react-three/fiber'
+import {Center, PresentationControls, Text3D} from '@react-three/drei'
+import CanvasText from './CanvasText'
 
 const climatefont = Abril_Fatface({
   subsets: ['latin-ext'],
@@ -120,22 +123,46 @@ export function ButtonPageElement({projetDatas}) {
 export function ContentPage({params}) {
   const datas = projetsdata
   const [projetDatas, setProjetDatas] = useState({
-    id: 2,
+    id: 8,
     color1: '#398ffc',
-    slug: 'schoolbooster',
-    color2: 'red',
+    color2: colorsDD?.green,
     title: 'SchoolBooster',
+    slug: 'schoolBooster',
     dateStart: 'Janvier 2023',
     dateEnd: 'Mars 2023',
     description:
-      "la Team V2 est une plateforme de gesttion de formation et d'équipe",
+      "SchoolBooster est une plateforme de gestion de formation et d'équipe",
     contribution: `J'ai contribué à l'amélioration de lateamV2, je me suis principalement occupé de divers problème ui/ux, appels API avec react Query. J'ai eu la chance d'être épaulé par un developpeur senior tout au long de cette mission ce qui a grandement augmenté mes compétences de developpeur`,
     categories: ['React', 'React Query', 'Chakra Ui'],
     image: '/images/schoolbooster.jpg',
     hash: 'LkFslT%gE0Io%%ohRkWEE4M|xu%2',
-    projectOwner: 'Mathis Thomas',
-    comment: "Notre projet à vu le jour grâce au travail d'andréa",
+    projectOwner: 'Mike Codeur',
+    comment: 'Merci à andréa pour son aide apporté au projet',
     logo: '/images/logo-teachizi-blanc-450x102.png',
+    stack: [
+      'React',
+      'Jest',
+      'React Query',
+      'Github',
+      'Chakra UI',
+      'TypeScript',
+      'MDeditor',
+      'AWS',
+      'GraphQL',
+      'Formik',
+    ],
+    missions: [
+      '🚧 Construire des formulaires Formik',
+      "🚧 Construire et améliorer l'ui/ux de l'app",
+      "🚧 Construire et améliorer l'ui/ux du site",
+      "🐣 Création d'espaces dédiées sur l'app pour les 2 types d'utilisateurs",
+      "🐣 Création d'appels API avec GraphQl et React Query",
+      "🏅 Optimisation Des Performances de l'app",
+      "🤌 Travail d'équipe au quotidien sur Github",
+      '🛟 Mise en place des tests avec JEST',
+    ],
+    retourVideo:
+      'https://www.youtube.com/watch?v=y6oMutwJQCw&ab_channel=4KRelaxationChannel',
   })
   useEffect(() => {
     const theid = params?.slug
@@ -313,6 +340,21 @@ export function ContentPage({params}) {
             >
               <Text color={'white'}>{projetDatas?.contribution}</Text>
             </Flex>
+            <Flex flexDirection={'column'} gap={3} alignItems="center">
+              <Heading>Missions</Heading>
+              {projetDatas.missions.map((e, index) => {
+                return (
+                  <MissionsList
+                    mission={e}
+                    color={projetDatas.color1}
+                    key={index}
+                  />
+                )
+              })}
+              <Heading>Stack</Heading>
+              <CanvasText projetDatas={projetDatas} />
+            </Flex>
+
             <Box mt={20}>
               <ButtonDD
                 text={'Contactez-moi 🚀'}
@@ -323,6 +365,34 @@ export function ContentPage({params}) {
             </Box>
           </Flex>
         </Flex>
+      </Box>
+    </>
+  )
+}
+
+const MissionsList = ({mission, color}) => {
+  const color1 = color => {
+    const newColor = color + '30'
+    return newColor
+  }
+  const newColor = color1(color)
+  console.log(newColor)
+  return (
+    <>
+      <Box
+        bg={`linear-gradient(60deg,${colorsDD.bgcolor},${newColor})`}
+        p={2}
+        borderRadius={5}
+        width={{base: '350px', md: '500px'}}
+        border={`0.5px solid ${newColor}`}
+        transition={'0.5s ease'}
+        _hover={{
+          width: {base: 'calc(350px - 20px)', md: 'calc(500px - 20px)'},
+          bg: `linear-gradient(60deg,${colorsDD.bgcolor},${color})`,
+          border: `0.5px solid ${color}`,
+        }}
+      >
+        <Text fontSize={'13px'}>{mission}</Text>
       </Box>
     </>
   )

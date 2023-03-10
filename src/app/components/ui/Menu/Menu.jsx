@@ -2,12 +2,12 @@
 import {Box, Flex, IconButton} from '@chakra-ui/react'
 import Link from 'next/link'
 import React, {useState} from 'react'
-import {colorsDD} from '../../ui/colors/colors'
-import {MaltIcon} from '../../ui/icones/malt/malt'
-import {GithIcon} from '../../ui/icones/githubicon/githubIcon'
-import {IconeAndrea} from '../../ui/icones/iconeandrea/iconeandrea'
-import {LinkdinIcon} from '../../ui/icones/linkedin/linkedinIcon'
-import {LogoAndrea} from '../../ui/icones/logoandrea/logoandrea'
+import {colorsDD} from '../colors/colors'
+import {MaltIcon} from '../icones/malt/malt'
+import {GithIcon} from '../icones/githubicon/githubIcon'
+import {IconeAndrea} from '../icones/iconeandrea/iconeandrea'
+import {LinkdinIcon} from '../icones/linkedin/linkedinIcon'
+import {LogoAndrea} from '../icones/logoandrea/logoandrea'
 
 export default function Menu({color1, color2, blur}) {
   const [githubColor, setGithubColor] = useState('#ffffff50')
