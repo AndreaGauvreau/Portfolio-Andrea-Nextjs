@@ -13,7 +13,7 @@ import Cards from './CardBox'
 import projetsdatas from '../../../../../db/data-projets'
 
 export default function CardMap() {
-  const [mainIndex, setMainIndex] = useState(0)
+  const [mainIndex, setMainIndex] = useState(2)
 
   const lengthArray = projetsdatas.length
 

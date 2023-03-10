@@ -185,3 +185,36 @@
   height: 50vh;
   background: linear-gradient(180deg, #0d0d12 20%, #0d0d1230);
 }
+
+.circle {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.word {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background-color: yellow;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@keyframes circle {
+  from {
+    transform: rotate(0deg) translateX(90px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(90px) rotate(-360deg);
+  }
+}
