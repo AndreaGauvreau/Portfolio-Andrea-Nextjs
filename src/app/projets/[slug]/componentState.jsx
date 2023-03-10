@@ -341,7 +341,7 @@ export function ContentPage({params}) {
               <Text color={'white'}>{projetDatas?.contribution}</Text>
             </Flex>
             <Flex flexDirection={'column'} gap={3} alignItems="center">
-              <Heading>Missions</Heading>
+              <Heading color={'white'}>Missions</Heading>
               {projetDatas.missions.map((e, index) => {
                 return (
                   <MissionsList
@@ -351,7 +351,7 @@ export function ContentPage({params}) {
                   />
                 )
               })}
-              <Heading>Stack</Heading>
+              <Heading color={'white'}>Stack</Heading>
               <CanvasText projetDatas={projetDatas} />
             </Flex>
 
@@ -392,7 +392,9 @@ const MissionsList = ({mission, color}) => {
           border: `0.5px solid ${color}`,
         }}
       >
-        <Text fontSize={'13px'}>{mission}</Text>
+        <Text color={'white'} fontSize={'13px'}>
+          {mission}
+        </Text>
       </Box>
     </>
   )
