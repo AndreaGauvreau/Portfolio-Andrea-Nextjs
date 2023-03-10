@@ -171,6 +171,8 @@ export function ContentPage({params}) {
       console.log('passe pas')
     }
   }, [params?.slug])
+  const color1 = coopacityColor(projetDatas.color1)
+
   return (
     <>
       <Box
@@ -180,165 +182,185 @@ export function ContentPage({params}) {
         background={`linear-gradient(-45deg, ${projetDatas?.color1}, ${projetDatas?.color2},${projetDatas?.color1}, ${projetDatas?.color2})`}
         maxH={'100vh'}
       >
-        <Cursor />
-        <Menu
-          color1={projetDatas?.color1}
-          color2={projetDatas?.color2}
-          blur={0}
-        />
-        <Flex
-          id={'scrollsection'}
-          bg={colorsDD.bgcolor}
-          m={0}
-          w={'100%'}
-          flexDirection={'column'}
-          alignItems={'center'}
-          maxH={'calc(100vh - 15px)'}
-          borderRadius={20}
-          overflow={'scroll'}
-          overflowX={'hidden'}
-        >
+        <Flex>
+          <Cursor />
+          <Menu
+            color1={projetDatas?.color1}
+            color2={projetDatas?.color2}
+            blur={0}
+          />
           <Flex
-            minH={'100vh'}
+            id={'scrollsection'}
+            bg={colorsDD.bgcolor}
+            m={0}
+            w={'100%'}
             flexDirection={'column'}
-            justifyContent={'center'}
             alignItems={'center'}
+            maxH={'calc(100vh - 15px)'}
+            borderRadius={20}
+            overflow={'scroll'}
+            overflowX={'hidden'}
             gap={5}
-            position="relative"
           >
-            {' '}
             <Flex
-              h={{base: '50vh', md: '50vh', lg: '70vh'}}
+              minH={'100vh'}
               flexDirection={'column'}
+              justifyContent={'center'}
               alignItems={'center'}
-              justifyContent={{
-                base: 'flex-start',
-                md: 'flex-start',
-                lg: 'center',
-              }}
-              gap={10}
-              w={{base: '90vw', md: '90vw', lg: '100%'}}
-            >
-              <ButtonPageElement projetDatas={projetDatas} />
-              <motion.div
-                initial={{opacity: 0, y: 30}}
-                animate={{opacity: 1, y: 0}}
-                transition={{delay: 0.3, duration: 0.5}}
-              >
-                <Heading
-                  color={'white'}
-                  fontSize={{base: '27px', md: '30px', lg: '40px'}}
-                  colorBl
-                  fontWeight={400}
-                >
-                  {projetDatas?.title}
-                </Heading>
-              </motion.div>
-              <motion.div
-                initial={{opacity: 0, y: 30}}
-                animate={{opacity: 1, y: 0}}
-                transition={{delay: 0.4, duration: 0.5}}
-              >
-                <Text
-                  color={'white'}
-                  display="flex"
-                  pl={5}
-                  pr={5}
-                  textAlign="center"
-                  w={'75%'}
-                  ml={'auto'}
-                  mr={'auto'}
-                >
-                  {projetDatas?.description}
-                </Text>
-              </motion.div>
-            </Flex>
-            <ScrollElement image={projetDatas?.image} />
-          </Flex>
-          <Flex
-            minH={{base: '0px', md: '100px', lg: '100px'}}
-            w={'100vw'}
-            flexDirection={'row'}
-            justifyContent="center"
-            gap={2}
-            alignItems={'flex-end'}
-            mt={5}
-          >
-            {projetDatas?.categories.map((e, index) => {
-              return (
-                <Badge
-                  variant="subtle"
-                  colorScheme={projetDatas?.color1}
-                  key={index}
-                  backgroundColor={projetDatas?.color1}
-                  color={'white'}
-                  p={1}
-                  borderRadius={5}
-                >
-                  {e}
-                </Badge>
-              )
-            })}
-          </Flex>
-          <Flex
-            mt={{base: '30px', md: '40px', lg: '40px'}}
-            minH={'100vh'}
-            flexWrap={'wrap'}
-            w={{base: '90%', md: '90%', lg: '500px'}}
-            position="relative"
-            gap={'10px'}
-            alignContent="flex-start"
-            justifyContent={'center'}
-          >
-            <Gradient colorG={projetDatas?.color2} />
-            <Flex
-              w={'calc(50% - 5px)'}
-              bg={projetDatas?.color2}
-              minH={'200px'}
-              p={5}
-              borderRadius={10}
-              alignItems={'flex-start'}
-              flexDirection={'column'}
               gap={5}
+              position="relative"
             >
-              <Badge bg={'#00000030'} color={'black'} p={1} borderRadius={5}>
-                avis client
-              </Badge>
-              <Text color={'black'}>{projetDatas?.comment}</Text>
-              <Flex>
-                <Box color={'black'}>
-                  <Text fontWeight="bold">{projetDatas?.projectOwner}</Text>
-                  <Text fontSize="sm">Project Owner</Text>
-                </Box>
+              <Flex
+                h={{base: '50vh', md: '50vh', lg: '70vh'}}
+                flexDirection={'column'}
+                alignItems={'center'}
+                justifyContent={{
+                  base: 'flex-start',
+                  md: 'flex-start',
+                  lg: 'center',
+                }}
+                gap={10}
+                w={{base: '90vw', md: '90vw', lg: '100%'}}
+              >
+                <ButtonPageElement projetDatas={projetDatas} />
+                <motion.div
+                  initial={{opacity: 0, y: 30}}
+                  animate={{opacity: 1, y: 0}}
+                  transition={{delay: 0.3, duration: 0.5}}
+                >
+                  <Heading
+                    color={'white'}
+                    fontSize={{base: '27px', md: '30px', lg: '40px'}}
+                    colorBl
+                    fontWeight={400}
+                  >
+                    {projetDatas?.title}
+                  </Heading>
+                </motion.div>
+                <motion.div
+                  initial={{opacity: 0, y: 30}}
+                  animate={{opacity: 1, y: 0}}
+                  transition={{delay: 0.4, duration: 0.5}}
+                >
+                  <Text
+                    color={'white'}
+                    display="flex"
+                    pl={5}
+                    pr={5}
+                    textAlign="center"
+                    w={'75%'}
+                    ml={'auto'}
+                    mr={'auto'}
+                  >
+                    {projetDatas?.description}
+                  </Text>
+                </motion.div>
+              </Flex>
+              <ScrollElement image={projetDatas?.image} />
+            </Flex>
+
+            <Flex
+              id={'stack'}
+              minH={{base: '0px', md: '100px', lg: '220px'}}
+              justifyContent="flex-end"
+              flexDirection={'column'}
+              w={{base: '90%', md: '90%', lg: '500px'}}
+              gap={3}
+              alignItems="center"
+            >
+              <Heading p={2} color={'white'}>
+                Stack
+              </Heading>
+              <Flex flexWrap={'wrap'} gap={2} justifyContent="center">
+                {projetDatas.stack.map((e, index) => {
+                  return (
+                    <StackList
+                      stack={e}
+                      color={projetDatas.color2}
+                      key={index}
+                      projetDatas={projetDatas}
+                    />
+                  )
+                })}
               </Flex>
             </Flex>
             <Flex
-              w={'calc(50% - 5px)'}
-              bg={projetDatas?.color1}
-              minH={'200px'}
-              p={5}
-              borderRadius={10}
+              id={'details'}
+              flexWrap={'wrap'}
+              w={{base: '90%', md: '90%', lg: '500px'}}
+              position="relative"
+              gap={2}
+              alignContent="flex-start"
               justifyContent={'center'}
-              alignItems={'center'}
             >
-              <Image
-                src={projetDatas?.logo}
-                width={170}
-                height={70}
-                alt={projetDatas?.description}
-              />
+              <Heading p={2} color={'white'} w={'100%'} textAlign="center">
+                Détails
+              </Heading>
+              <Gradient colorG={color1} versionG={1} />
+
+              <Flex
+                w={'calc(50% - 5px)'}
+                bg={`linear-gradient(290deg,${colorsDD.bgcolor},${color1})`}
+                minH={'200px'}
+                p={5}
+                borderRadius={10}
+                alignItems={'flex-start'}
+                flexDirection={'column'}
+                gap={5}
+                border={`0.5px solid ${projetDatas.color1}`}
+              >
+                <Badge
+                  bg={color1}
+                  color={projetDatas.color1}
+                  p={1}
+                  border={`0px solid ${color1}`}
+                  borderRadius={5}
+                >
+                  avis client
+                </Badge>
+                <Text color={projetDatas.color1}>{projetDatas?.comment}</Text>
+                <Flex>
+                  <Box color={projetDatas.color1}>
+                    <Text fontWeight="bold">{projetDatas?.projectOwner}</Text>
+                    <Text fontSize="sm">Project Owner</Text>
+                  </Box>
+                </Flex>
+              </Flex>
+              <Flex
+                w={'calc(50% - 5px)'}
+                bg={projetDatas?.color1}
+                minH={'200px'}
+                p={5}
+                borderRadius={10}
+                justifyContent={'center'}
+                alignItems={'center'}
+              >
+                <Image
+                  src={projetDatas?.logo}
+                  width={170}
+                  height={70}
+                  alt={projetDatas?.description}
+                />
+              </Flex>
+              <Flex
+                w={'100%'}
+                bg={projetDatas?.color1}
+                minH={'200px'}
+                p={5}
+                borderRadius={10}
+              >
+                <Text color={'white'}>{projetDatas?.contribution}</Text>
+              </Flex>
             </Flex>
             <Flex
-              w={'100%'}
-              bg={projetDatas?.color1}
-              minH={'200px'}
-              p={5}
-              borderRadius={10}
+              id={'mission'}
+              flexDirection={'column'}
+              gap={3}
+              alignItems="center"
             >
-              <Text color={'white'}>{projetDatas?.contribution}</Text>
-            </Flex>
-            <Flex flexDirection={'column'} gap={3} alignItems="center">
-              <Heading color={'white'}>Missions</Heading>
+              <Heading p={2} color={'white'}>
+                Missions
+              </Heading>
               {projetDatas.missions.map((e, index) => {
                 return (
                   <MissionsList
@@ -348,10 +370,8 @@ export function ContentPage({params}) {
                   />
                 )
               })}
-              <Heading color={'white'}>Stack</Heading>
             </Flex>
-
-            <Box mt={20}>
+            <Box mt={20} mb={20}>
               <ButtonDD
                 text={'Contactez-moi 🚀'}
                 colorButton={projetDatas?.color1}
@@ -367,20 +387,15 @@ export function ContentPage({params}) {
 }
 
 const MissionsList = ({mission, color}) => {
-  const color1 = color => {
-    const newColor = color + '30'
-    return newColor
-  }
-  const newColor = color1(color)
-  console.log(newColor)
+  const color1 = coopacityColor(color)
   return (
     <>
       <Box
-        bg={`linear-gradient(60deg,${colorsDD.bgcolor},${newColor})`}
+        bg={`linear-gradient(60deg,${colorsDD.bgcolor},${color1})`}
         p={2}
         borderRadius={5}
         width={{base: '350px', md: '500px'}}
-        border={`0.5px solid ${newColor}`}
+        border={`0.5px solid ${color1}`}
         transition={'0.5s ease'}
         _hover={{
           width: {base: 'calc(350px - 20px)', md: 'calc(500px - 20px)'},
@@ -394,4 +409,36 @@ const MissionsList = ({mission, color}) => {
       </Box>
     </>
   )
+}
+
+const StackList = ({stack, color, projetDatas}) => {
+  const color1 = coopacityColor(color)
+  const delay = Math.random() * 2
+
+  return (
+    <motion.div
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      transition={{duration: 0.5, delay}}
+    >
+      <Box
+        bg={color1}
+        border={`1px solid ${projetDatas.color2}`}
+        p={2}
+        borderRadius={5}
+        w={'auto'}
+        transition={'0.5s ease'}
+        _hover={{pl: 3, pr: 3}}
+      >
+        <Text color={'white'} fontSize={'13px'}>
+          {stack}
+        </Text>
+      </Box>
+    </motion.div>
+  )
+}
+
+export const coopacityColor = color => {
+  const newColor = color + '50'
+  return newColor
 }

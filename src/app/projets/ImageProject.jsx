@@ -27,9 +27,9 @@ export default function ImageProject({image, scale}) {
               lg: `calc(${widthImage}% - 20px)`,
             }}
             h={{
+              lg: `calc(${heightImage}vh - 20px)`,
               base: `calc(${heightImageBase}vh - 20px)`,
               md: `calc(${heightImageMd}vh - 20px)`,
-              lg: `calc(${heightImage}vh - 20px)`,
             }}
             borderRadius={20}
             position="absolute"
@@ -50,9 +50,9 @@ export default function ImageProject({image, scale}) {
               lg: `calc(${widthImage}% - 20px)`,
             }}
             h={{
+              lg: `calc(${heightImage}vh - 20px)`,
               base: `calc(${heightImageBase}vh - 20px)`,
               md: `calc(${heightImageMd}vh - 20px)`,
-              lg: `calc(${heightImage}vh - 20px)`,
             }}
             borderRadius={20}
             position="absolute"
@@ -73,9 +73,9 @@ export default function ImageProject({image, scale}) {
               lg: `calc(${widthImage}% - 20px)`,
             }}
             h={{
+              lg: `calc(${heightImage}vh - 20px)`,
               base: `calc(${heightImageBase}vh - 20px)`,
               md: `calc(${heightImageMd}vh - 20px)`,
-              lg: `calc(${heightImage}vh - 20px)`,
             }}
             borderRadius={20}
             zIndex={3}
@@ -93,9 +93,9 @@ export default function ImageProject({image, scale}) {
               lg: `calc(${widthImage}% )`,
             }}
             h={{
+              lg: `${heightImage}vh`,
               base: `${heightImageBase}vh`,
               md: `${heightImageMd}vh`,
-              lg: `${heightImage}vh`,
             }}
             borderRadius={20}
             position="absolute"
