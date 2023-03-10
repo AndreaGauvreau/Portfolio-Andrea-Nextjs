@@ -2,7 +2,7 @@
 import {Badge, Box, Button, Flex, Heading, Text} from '@chakra-ui/react'
 import {ArrowBackIcon, ArrowDownIcon} from '@chakra-ui/icons'
 import Link from 'next/link'
-import React, {useContext, useEffect, useRef, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {CursorContext} from '../../components/ui/cursor/CursorProvider'
 import Cursor from '../../components/ui/cursor/Cursor.jsx'
 import Menu from '../../components/ui/Menu/Menu'
@@ -15,8 +15,6 @@ import ButtonDD from '../../components/ui/ButtonDD/ButtonDD'
 import Image from 'next/image'
 import '../gradient.css'
 import ImageProject from '../ImageProject'
-import {Canvas, useFrame} from '@react-three/fiber'
-import {Center, PresentationControls, Text3D} from '@react-three/drei'
 import CanvasText from './CanvasText'
 
 const climatefont = Abril_Fatface({
@@ -352,7 +350,6 @@ export function ContentPage({params}) {
                 )
               })}
               <Heading color={'white'}>Stack</Heading>
-              <CanvasText projetDatas={projetDatas} />
             </Flex>
 
             <Box mt={20}>
