@@ -15,7 +15,6 @@ import ButtonDD from '../../components/ui/ButtonDD/ButtonDD'
 import Image from 'next/image'
 import '../gradient.css'
 import ImageProject from '../ImageProject'
-import CanvasText from './CanvasText'
 
 const climatefont = Abril_Fatface({
   subsets: ['latin-ext'],
