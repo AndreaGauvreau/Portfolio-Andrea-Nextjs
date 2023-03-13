@@ -4,7 +4,9 @@ import React from 'react'
 import {colorsDD} from './components/ui/colors/colors'
 import {Poppins} from 'next/font/google'
 import {Merienda} from 'next/font/google'
+import localFont from '@next/font/local'
 
+const belly = localFont({src: '/font/Bely_display.ttf', fontWeight: '400'})
 const fontBigPoppins = Poppins({
   subsets: ['latin'],
   weight: '900',
@@ -21,7 +23,7 @@ const fontBigMerianda = Merienda({
 const theme = extendTheme({
   fonts: {
     body: fontMedPoppins.style.fontFamily,
-    heading: fontBigMerianda.style.fontFamily,
+    heading: belly.style.fontFamily,
   },
   colors: {
     dew: {
@@ -47,6 +49,16 @@ const theme = extendTheme({
       900: colorsDD.pink,
     },
   },
+  fontFaces: [
+    {
+      fontFamily: 'Bely Display',
+      fontStyle: 'normal',
+      fontWeight: '400',
+      src: `
+          url('/public/font/Bely_display.ttf') format('truetype')
+        `,
+    },
+  ],
 })
 
 export default function Chakra({children}) {
