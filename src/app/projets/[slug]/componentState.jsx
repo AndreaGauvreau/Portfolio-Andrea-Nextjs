@@ -175,7 +175,7 @@ export function ContentPage({params}) {
         w={'100%'}
         padding={2}
         background={`linear-gradient(-45deg, ${projetDatas?.color1}, ${projetDatas?.color2},${projetDatas?.color1}, ${projetDatas?.color2})`}
-        maxH={'100vh'}
+        maxH={{base: '100svh', md: '100vh'}}
       >
         <Flex>
           <Cursor />
@@ -191,14 +191,14 @@ export function ContentPage({params}) {
             w={'100%'}
             flexDirection={'column'}
             alignItems={'center'}
-            maxH={'calc(100vh - 15px)'}
+            maxH={{base: 'calc(100svh - 15px)', md: 'calc(100vh - 15px)'}}
             borderRadius={20}
             overflow={'scroll'}
             overflowX={'hidden'}
             gap={5}
           >
             <Flex
-              minH={'100vh'}
+              minH={{base: '100svh', md: '100vh'}}
               flexDirection={'column'}
               justifyContent={'center'}
               alignItems={'center'}
@@ -256,7 +256,7 @@ export function ContentPage({params}) {
 
             <Flex
               id={'stack'}
-              minH={{base: '0px', md: '100px', lg: '220px'}}
+              minH={{base: 'auto', md: '100px', lg: '220px'}}
               justifyContent="flex-end"
               flexDirection={'column'}
               w={{base: '90%', md: '90%', lg: '500px'}}

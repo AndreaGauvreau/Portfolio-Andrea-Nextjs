@@ -6,7 +6,7 @@ import {Poppins} from 'next/font/google'
 import {Merienda} from 'next/font/google'
 import localFont from '@next/font/local'
 
-const belly = localFont({src: '/font/Bely_display.ttf'})
+const belly = localFont({src: '/font/Bely_display.ttf', fontWeight: '400'})
 const fontBigPoppins = Poppins({
   subsets: ['latin'],
   weight: '900',
