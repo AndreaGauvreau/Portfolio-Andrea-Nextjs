@@ -9,17 +9,12 @@ import Menu from '../../components/ui/Menu/Menu'
 import projetsdata from '../../../db/data-projets'
 import {colorsDD} from '../../components/ui/colors/colors'
 import {motion} from 'framer-motion'
-import {Abril_Fatface} from '@next/font/google'
 import Gradient from '../../components/ui/GradientBgElems/Gradient'
 import ButtonDD from '../../components/ui/ButtonDD/ButtonDD'
 import Image from 'next/image'
 import '../gradient.css'
 import ImageProject from '../ImageProject'
 
-const climatefont = Abril_Fatface({
-  subsets: ['latin-ext'],
-  weight: '400',
-})
 export default function ScrollElement({image}) {
   const [scrollY, setScrollY] = useState(1)
   const [scaleValue, setScaleValue] = useState(1)
