@@ -1,6 +1,4 @@
-import {ColorModeContext} from '@chakra-ui/react'
-import {color} from 'framer-motion'
-import {colorsDD} from '../app/components/ui/colors/colors'
+import {colorsDD} from '@/components/ui/colors/colors'
 const projetsdata = [
   {
     id: 1,
