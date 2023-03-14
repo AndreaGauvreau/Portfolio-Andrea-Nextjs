@@ -1,5 +1,13 @@
 'use client'
-import {Badge, Box, Button, Flex, Heading, Text} from '@chakra-ui/react'
+import {
+  AspectRatio,
+  Badge,
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Text,
+} from '@chakra-ui/react'
 import {ArrowBackIcon, ArrowDownIcon} from '@chakra-ui/icons'
 import Link from 'next/link'
 import React, {useContext, useEffect, useState} from 'react'
@@ -14,6 +22,7 @@ import ButtonDD from '../../components/ui/ButtonDD/ButtonDD'
 import Image from 'next/image'
 import '../gradient.css'
 import ImageProject from '../ImageProject'
+import ReactPlayer from 'react-player'
 
 export default function ScrollElement({image}) {
   const [scrollY, setScrollY] = useState(1)
@@ -366,6 +375,42 @@ export function ContentPage({params}) {
                 )
               })}
             </Flex>
+            {projetDatas?.retourVideo ? (
+              <Flex
+                id={'retourclient'}
+                flexDirection={'column'}
+                gap={3}
+                alignItems="center"
+              >
+                <Heading p={2} color={'white'}>
+                  Retour Client
+                </Heading>
+                <Box
+                  width="270px"
+                  height="480px"
+                  m={0}
+                  p={0}
+                  overflow="hidden"
+                  borderRadius={20}
+                >
+                  <ReactPlayer
+                    url={projetDatas?.retourVideo}
+                    width="100%"
+                    height="100%"
+                    controls={true}
+                    config={{
+                      youtube: {
+                        playerVars: {
+                          playerVars: {showinfo: 1},
+                        },
+                      },
+                    }}
+                  />
+                </Box>
+              </Flex>
+            ) : (
+              ''
+            )}
             <Box mt={20} mb={20}>
               <ButtonDD
                 text={'Contactez-moi 🚀'}
