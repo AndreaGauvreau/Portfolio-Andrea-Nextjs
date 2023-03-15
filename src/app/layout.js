@@ -1,7 +1,6 @@
 import {CursorProvider} from '@/components/ui/cursor/CursorProvider'
 import Chakra from '@/chakra'
 import '@/global.css'
-import {Suspense} from 'react'
 
 export default function RootLayout({children}) {
   return (

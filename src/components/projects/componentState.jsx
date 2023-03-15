@@ -167,7 +167,7 @@ export function ContentPage({params}) {
       console.log('passe pas')
     }
   }, [params?.slug])
-  const color1 = coopacityColor(projetDatas.color1)
+  const color1 = coopacityColor(projetDatas?.color1)
 
   return (
     <>
@@ -268,7 +268,7 @@ export function ContentPage({params}) {
                 Stack
               </Heading>
               <Flex flexWrap={'wrap'} gap={2} justifyContent="center">
-                {projetDatas.stack.map((e, index) => {
+                {projetDatas?.stack.map((e, index) => {
                   return (
                     <StackList
                       stack={e}
@@ -303,20 +303,20 @@ export function ContentPage({params}) {
                 alignItems={'flex-start'}
                 flexDirection={'column'}
                 gap={5}
-                border={`0.5px solid ${projetDatas.color1}`}
+                border={`0.5px solid ${projetDatas?.color1}`}
               >
                 <Badge
                   bg={color1}
-                  color={projetDatas.color1}
+                  color={projetDatas?.color1}
                   p={1}
                   border={`0px solid ${color1}`}
                   borderRadius={5}
                 >
                   avis client
                 </Badge>
-                <Text color={projetDatas.color1}>{projetDatas?.comment}</Text>
+                <Text color={projetDatas?.color1}>{projetDatas?.comment}</Text>
                 <Flex>
-                  <Box color={projetDatas.color1}>
+                  <Box color={projetDatas?.color1}>
                     <Text fontWeight="bold">{projetDatas?.projectOwner}</Text>
                     <Text fontSize="sm">Project Owner</Text>
                   </Box>
@@ -357,11 +357,11 @@ export function ContentPage({params}) {
               <Heading p={2} color={'white'}>
                 Missions
               </Heading>
-              {projetDatas.missions.map((e, index) => {
+              {projetDatas?.missions.map((e, index) => {
                 return (
                   <MissionsList
                     mission={e}
-                    color={projetDatas.color1}
+                    color={projetDatas?.color1}
                     key={index}
                   />
                 )
