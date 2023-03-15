@@ -13,17 +13,28 @@ import {
   Button,
   Flex,
   Input,
+  SliderMark,
+  IconButton,
 } from '@chakra-ui/react'
 import {ChromePicker} from 'react-color'
-
-export default function GlassMorphismTool() {
-  const [blurValue, setBlurValue] = useState(4)
-  const [transparency, setTransparency] = useState(0.4)
-  const [checked, setChecked] = useState(false)
-  const [checkedShadow, setCheckedShadow] = useState(false)
-  const [displayColorPicker, setDisplayColorPicker] = useState(false)
-  const [color, setColor] = useState({r: 0, g: 0, b: 0})
-
+import {motion} from 'framer-motion'
+import {colorsDD} from '@/components/ui/colors/colors'
+import {CheckIcon, CopyIcon} from '@chakra-ui/icons'
+export default function GlassMorphismTool(props) {
+  const {
+    blurValue,
+    setBlurValue,
+    transparency,
+    setTransparency,
+    checked,
+    setChecked,
+    checkedShadow,
+    setCheckedShadow,
+    color,
+    setColor,
+    setDisplayColorPicker,
+    displayColorPicker,
+  } = props
   const handleClick = () => {
     setDisplayColorPicker(!displayColorPicker)
   }
@@ -49,21 +60,42 @@ export default function GlassMorphismTool() {
     left: '0px',
   }
 
-  const textRef = useRef()
+  const [isCopied, setIsCopied] = useState(false)
+
+  const textRef = useRef(null)
+  let timeoutId = null
 
   const copyToClipboard = () => {
     textRef.current.select()
     document.execCommand('copy')
-    alert('Texte copié dans le presse-papiers')
+    setIsCopied(true)
+    timeoutId = setTimeout(() => setIsCopied(false), 2000)
+  }
+
+  const handleButtonClick = () => {
+    clearTimeout(timeoutId)
+    copyToClipboard()
   }
 
   return (
-    <Flex width="800px" height="350px" position={'relative'}>
-      <Box
+    <Flex
+      width={{base: 'auto', lg: '800px'}}
+      height="350px"
+      position={'relative'}
+      flexDirection={{base: 'column', lg: 'row'}}
+      justifyContent="center"
+      alignItems={'center'}
+    >
+      <Flex
         position={'absolute'}
-        top={'-150px'}
+        display={{base: 'none', lg: 'flex'}}
+        justifyContent="center"
+        alignItems="center"
+        fontSize={40}
+        top={'-190px'}
+        left={'-150px'}
         w={'200px'}
-        h={'90px'}
+        h={'120px'}
         borderRadius={10}
         backdropFilter={`blur(${blurValue}px)`}
         bg={`rgba( ${color.r}, ${color.g}, ${color.b}, ${transparency.toFixed(
@@ -72,41 +104,80 @@ export default function GlassMorphismTool() {
         zIndex={99}
         border={checked ? `1px solid rgba( 255,255,255, 0.22 );` : ''}
         boxShadow={
-          checkedShadow ? `0 10px 30px 0 rgba( 20, 20, 20, 0.37  );` : ''
+          checkedShadow ? `0 10px 30px 0 rgba( 20, 20, 20, 0.25  );` : ''
         }
-      />
-      <Box
+      >
+        <motion.div
+          initial={{scale: 0, opacity: 0}}
+          animate={{scale: 1, opacity: 1}}
+          transition={{
+            duration: 1,
+            delay: 0.6,
+            ease: [0.15, 0.84, 0.27, 0.96],
+          }}
+        >
+          🚀
+        </motion.div>
+      </Flex>
+
+      <Flex
+        justifyContent="center"
         position={'absolute'}
-        bottom={'-90px'}
-        right={20}
-        w={'100px'}
-        h={'90px'}
-        borderRadius={10}
+        display={{base: 'none', lg: 'flex'}}
+        alignItems="center"
+        bottom={'50px'}
+        right={'-150px'}
+        fontSize={80}
+        w={'clamp(6.25rem, -25rem + 50vw, 12.5rem)'}
+        h={'clamp(6.25rem, -25rem + 50vw, 12.5rem)'}
+        borderRadius={'50%'}
         backdropFilter={`blur(${blurValue}px)`}
         bg={`rgba( ${color.r}, ${color.g}, ${color.b}, ${transparency.toFixed(
           2,
         )} );`}
         zIndex={99}
         border={checked ? `1px solid rgba( 255,255,255, 0.22 );` : ''}
-        boxShadow={`0 8px 32px 0 rgba( 20, 20, 20, 0.37  );`}
-      />
-      <VStack
-        flex="0.8"
-        justifyContent="space-around"
-        borderRight="1px solid gray"
-        paddingRight="10px"
-        alignItems={'flex-start'}
+        boxShadow={
+          checkedShadow ? `0 10px 30px 0 rgba( 20, 20, 20, 0.25  );` : ''
+        }
       >
-        <HStack>
-          <Text>Blur value</Text>
+        <motion.div
+          initial={{scale: 0, opacity: 0}}
+          animate={{scale: 1, opacity: 1}}
+          transition={{
+            duration: 1,
+            delay: 0.6,
+            ease: [0.15, 0.84, 0.27, 0.96],
+          }}
+        >
+          🐣
+        </motion.div>
+      </Flex>
+
+      <VStack
+        flex={1}
+        justifyContent="space-around"
+        paddingRight="20px"
+        gap={5}
+        alignItems={{base: 'center', lg: 'flex-start'}}
+      >
+        <HStack flexDirection={{base: 'column', lg: 'row'}}>
+          <Text fontSize={'md'}>Intensité sur Flou</Text>
           <Slider
             min={0}
             w={200}
             max={20}
             step={1}
+            colorScheme="pink"
             value={blurValue}
             onChange={value => setBlurValue(value)}
           >
+            <SliderMark value={5} mt="3" ml="-2.5" fontSize="xs">
+              5px
+            </SliderMark>
+            <SliderMark value={15} mt="3" ml="-2.5" fontSize="xs">
+              15px
+            </SliderMark>
             <SliderTrack>
               <SliderFilledTrack />
             </SliderTrack>
@@ -114,25 +185,44 @@ export default function GlassMorphismTool() {
           </Slider>
         </HStack>
 
-        <HStack>
-          <Text>Transparency</Text>
+        <HStack flexDirection={{base: 'column', lg: 'row'}}>
+          <Text fontSize={'md'}>Transparence</Text>
           <Slider
             w={200}
             min={0}
             max={1}
-            step={0.01}
+            step={0.05}
             value={transparency}
+            colorScheme="pink"
             onChange={value => setTransparency(value)}
           >
+            <SliderMark value={0.1} mt="3" ml="-2.5" fontSize="xs">
+              10%
+            </SliderMark>
+
+            <SliderMark value={0.9} mt="3" ml="-2.5" fontSize="xs">
+              90%
+            </SliderMark>
             <SliderTrack>
               <SliderFilledTrack />
             </SliderTrack>
-            <SliderThumb />
+            <SliderThumb boxSize={5} />
           </Slider>
         </HStack>
 
         <HStack>
-          <Button onClick={handleClick}>Choisir une couleur</Button>
+          <Button
+            border={'1px solid #ffffff40'}
+            size={'md'}
+            backgroundColor={`rgba(${color.r}, ${color.g}, ${color.b},1)`}
+            color={color.r + color.g + color.b > 300 ? 'black' : 'white'}
+            onClick={handleClick}
+            _hover={{
+              backgroundColor: `rgba(${color.r}, ${color.g}, ${color.b},0.5)`,
+            }}
+          >
+            Choisir une couleur
+          </Button>
           {displayColorPicker ? (
             <Box style={popover}>
               <Box style={cover} onClick={handleClose} />
@@ -147,16 +237,21 @@ export default function GlassMorphismTool() {
             borderRadius="4px"
             backgroundColor={`rgb(${color.r}, ${color.g}, ${color.b})`}
             marginLeft="10px"
+            border={'1px solid #ffffff40'}
           />
         </HStack>
         <HStack>
           <Checkbox
+            size="md"
+            colorScheme={'whiteAlpha'}
             isChecked={checked}
             onChange={event => setChecked(event.target.checked)}
           >
             Bordures
           </Checkbox>
           <Checkbox
+            size="md"
+            colorScheme={'whiteAlpha'}
             isChecked={checkedShadow}
             onChange={event => setCheckedShadow(event.target.checked)}
           >
@@ -164,10 +259,19 @@ export default function GlassMorphismTool() {
           </Checkbox>
         </HStack>
       </VStack>
-      <VStack flex="1.2" justifyContent="center" alignItems="center">
-        <Text>
+      <VStack
+        flex="1"
+        justifyContent={{base: 'center', lg: 'flex-start'}}
+        alignItems={{base: 'center', lg: 'flex-start'}}
+        pl={'20px'}
+        pt={'20px'}
+        bg={'#ffffff10'}
+        pb={'20px'}
+        borderRadius={10}
+      >
+        <Text fontSize={'15px'}>
           {checkedShadow
-            ? `box-shadow: 0 8px 32px 0 rgba( 20, 20, 20, 0.37 );`
+            ? `box-shadow: 0 8px 32px 0 rgba( 20, 20, 20, 0.25 );`
             : ''}
           <br></br>
           background: rgba({color.r}, {color.g}, {color.b},
@@ -177,15 +281,20 @@ export default function GlassMorphismTool() {
           border-radius: 10px;<br></br>
           {checked ? `border: 1px solid rgba( 255,255,255, 0.18 );` : ''}
         </Text>
-        <Button onClick={copyToClipboard} marginTop="10px">
-          Copier le texte
-        </Button>
+        <IconButton
+          colorScheme={'whiteAlpha'}
+          onClick={handleButtonClick}
+          marginTop="10px"
+          pl={2}
+          leftIcon={isCopied ? <CheckIcon /> : <CopyIcon />}
+          disabled={isCopied}
+        />
         <textarea
           ref={textRef}
           value={`background: rgba( ${color.r}, ${color.g}, ${
             color.b
           }, ${transparency.toFixed(2)} );
-box-shadow: 0 8px 32px 0 rgba( 20, 20, 20, 0.37  );
+box-shadow: 0 8px 32px 0 rgba( 20, 20, 20, 0.25  );
 backdrop-filter: blur( ${blurValue}px );
 -webkit-backdrop-filter: blur( ${blurValue}px );
 border-radius: 10px;

@@ -1,11 +1,13 @@
 'use client'
 import React from 'react'
+import ContentPageBlur from '@/components/tools/glassmorphism/ContentPageBlur'
+import {Box} from '@chakra-ui/react'
+import {colorsDD} from '@/components/ui/colors/colors'
 
-import MainSection from '@/components/tools/glassmorphism/MainSection'
 export default function Page() {
   return (
     <>
-      <MainSection />
+      <ContentPageBlur />
     </>
   )
 }
