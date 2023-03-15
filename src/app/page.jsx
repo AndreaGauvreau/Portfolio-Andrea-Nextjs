@@ -11,6 +11,7 @@ import Contact from '@/components/Home/Contact/Contact'
 import Footer from '@/components/ui/Footer/Footer'
 import dynamic from 'next/dynamic'
 import {useEffect, useState} from 'react'
+import Script from 'next/script'
 
 export default function Page() {
   //const Project = dynamic(() => import('@/components/Home/Projects/Project'))
@@ -19,7 +20,7 @@ export default function Page() {
   //const Competences = dynamic(() =>
   //import('@/components/Home/Competences/Competences'),
   // )
-  const [mousePos, setMousePos] = useState({x: 500, y: 500})
+  const [mousePos, setMousePos] = useState({x: 150, y: 250})
 
   useEffect(() => {
     function handleMouseMove(event) {
