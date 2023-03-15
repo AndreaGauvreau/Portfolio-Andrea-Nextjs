@@ -80,7 +80,7 @@ export default function GlassMorphismTool(props) {
   return (
     <Flex
       width={{base: 'auto', lg: '800px'}}
-      height="350px"
+      height="auto"
       position={'relative'}
       flexDirection={{base: 'column', lg: 'row'}}
       justifyContent="center"
@@ -181,7 +181,7 @@ export default function GlassMorphismTool(props) {
             <SliderTrack>
               <SliderFilledTrack />
             </SliderTrack>
-            <SliderThumb />
+            <SliderThumb boxSize={5} />
           </Slider>
         </HStack>
 
@@ -243,6 +243,7 @@ export default function GlassMorphismTool(props) {
         <HStack>
           <Checkbox
             size="md"
+            color={'white'}
             colorScheme={'whiteAlpha'}
             isChecked={checked}
             onChange={event => setChecked(event.target.checked)}
@@ -251,6 +252,7 @@ export default function GlassMorphismTool(props) {
           </Checkbox>
           <Checkbox
             size="md"
+            color={'white'}
             colorScheme={'whiteAlpha'}
             isChecked={checkedShadow}
             onChange={event => setCheckedShadow(event.target.checked)}

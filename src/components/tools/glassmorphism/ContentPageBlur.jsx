@@ -21,6 +21,7 @@ import {colorsDD} from '@/components/ui/colors/colors'
 import Image from 'next/image'
 import Menu from '@/components/ui/Menu/Menu'
 import Footer from '@/components/ui/Footer/Footer'
+import Link from 'next/link'
 
 export default function ContentPageBlur() {
   return (
@@ -75,16 +76,18 @@ export default function ContentPageBlur() {
                 spacing={{base: 4, sm: 6}}
                 direction={{base: 'column', sm: 'row'}}
               >
-                <Button
-                  rounded={'full'}
-                  size={'lg'}
-                  fontWeight={'normal'}
-                  px={6}
-                  bg={colorsDD.pink20}
-                  _hover={{bg: colorsDD.pink}}
-                >
-                  Plus d'outils
-                </Button>
+                <Link href={'/tools'}>
+                  <Button
+                    rounded={'full'}
+                    size={'lg'}
+                    fontWeight={'normal'}
+                    px={6}
+                    bg={colorsDD.pink20}
+                    _hover={{bg: colorsDD.pink}}
+                  >
+                    Plus d'outils
+                  </Button>
+                </Link>
                 <Button
                   rounded={'full'}
                   color={colorsDD.pink}
@@ -134,7 +137,9 @@ export default function ContentPageBlur() {
                   transform={'translateX(-50%) translateY(-50%)'}
                 />
                 <Image
-                  alt={'Hero Image'}
+                  alt={
+                    'Ajouter un effet glassmorphism avec un generateur de code en ligne'
+                  }
                   width={700}
                   height={700}
                   src={'/images/identite/portfolio-andrea-gauvreau.jpg'}
@@ -200,17 +205,19 @@ export default function ContentPageBlur() {
               alignSelf={'center'}
               position={'relative'}
             >
-              <Button
-                colorScheme={'green'}
-                bg={colorsDD.green20}
-                rounded={'full'}
-                px={6}
-                _hover={{
-                  bg: colorsDD.green,
-                }}
-              >
-                Plus de générateur css
-              </Button>
+              <Link href={'/tools'}>
+                <Button
+                  colorScheme={'green'}
+                  bg={colorsDD.green20}
+                  rounded={'full'}
+                  px={6}
+                  _hover={{
+                    bg: colorsDD.green,
+                  }}
+                >
+                  Plus de générateur css
+                </Button>
+              </Link>
             </Stack>
           </Stack>
         </Container>
