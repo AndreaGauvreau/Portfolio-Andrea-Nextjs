@@ -1,6 +1,7 @@
 import {CursorProvider} from '@/components/ui/cursor/CursorProvider'
 import Chakra from '@/chakra'
 import '@/global.css'
+import {Suspense} from 'react'
 
 export default function RootLayout({children}) {
   return (
@@ -42,11 +43,7 @@ export default function RootLayout({children}) {
           content="andrea@teachizi.fr"
         />
       </head>
-      <body>
-        <Chakra>
-          <CursorProvider>{children}</CursorProvider>
-        </Chakra>
-      </body>
+      <body></body>
     </html>
   )
 }
