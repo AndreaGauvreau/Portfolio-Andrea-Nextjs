@@ -1,5 +1,5 @@
 'use client'
-import {Box, Flex, IconButton} from '@chakra-ui/react'
+import {Box, Flex, IconButton, Text} from '@chakra-ui/react'
 import Link from 'next/link'
 import React, {useState} from 'react'
 import {colorsDD} from '../colors/colors'
@@ -21,6 +21,7 @@ export default function Footer({color1, color2, blur}) {
       pt={{base: 4, md: 4, lg: 4}}
       pb={{base: 4, md: 5, lg: 5}}
       justifyContent={'space-between'}
+      alignItems="center"
       position={'absolute'}
       w={'100vw'}
       zIndex={20}
@@ -40,6 +41,13 @@ export default function Footer({color1, color2, blur}) {
             wait={wait2}
             color={'white'}
           />
+        </Link>
+      </Box>
+      <Box w={{base: '100px', md: '90px', lg: '150px'}}>
+        <Link href="/tools">
+          <Text color={'#ffffff'} _hover={{color: '#ffffff90'}}>
+            • Tools dev 🏅
+          </Text>
         </Link>
       </Box>
       <Flex gap={{base: 2, md: 5, lg: 10}} alignItems={'center'}>

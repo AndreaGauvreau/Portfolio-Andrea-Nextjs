@@ -74,7 +74,9 @@ export default function MainSection() {
           gap={20}
           borderRadius={10}
         >
-          <Heading as={'h1'}>Générateur GlassMorphism CSS</Heading>
+          <Heading as={'h1'} textAlign="center">
+            Générateur GlassMorphism CSS
+          </Heading>
           <GlassMorphismTool
             blurValue={blurValue}
             setBlurValue={setBlurValue}
