@@ -1,6 +1,7 @@
 import {CursorProvider} from '@/components/ui/cursor/CursorProvider'
 import Chakra from '@/chakra'
 import '@/global.css'
+import Script from 'next/script'
 
 export default function RootLayout({children}) {
   return (
@@ -41,6 +42,16 @@ export default function RootLayout({children}) {
           property="business:contact_data:email"
           content="andrea@teachizi.fr"
         />
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-35JK2D6CRX"
+        />
+        <Script>
+          {`  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-35JK2D6CRX');`}
+        </Script>
       </head>
       <body>
         <Chakra>
