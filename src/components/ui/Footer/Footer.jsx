@@ -31,8 +31,10 @@ export default function Footer({color1, color2, blur}) {
         md: 'blur(0px)',
         lg: 'blur(0px)',
       }}
+      flexDirection={{base: 'column', md: 'row'}}
+      gap={10}
     >
-      <Box w={{base: '100px', md: '90px', lg: '150px'}}>
+      <Box w={{base: 'auto', md: '90px', lg: '150px'}}>
         <Link href="/">
           <IconeAndrea
             width={'70px'}
@@ -43,7 +45,7 @@ export default function Footer({color1, color2, blur}) {
           />
         </Link>
       </Box>
-      <Box w={{base: '100px', md: '90px', lg: '150px'}}>
+      <Box w={{base: 'auto', md: 'auto', lg: '150px'}}>
         <Link href="/tools">
           <Text color={'#ffffff'} _hover={{color: '#ffffff90'}}>
             • Tools dev 🏅
