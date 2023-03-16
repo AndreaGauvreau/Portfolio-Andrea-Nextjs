@@ -1,4 +1,6 @@
+'use client'
 import {colorsDD} from '@/components/ui/colors/colors'
+import {useEffect, useState} from 'react'
 const projetsdata = [
   {
     id: 1,
@@ -379,6 +381,32 @@ const projetsdata = [
 
 export default projetsdata
 
-export const getProjetSlug = async slug => {
-  return Promise.resolve(projetsdata[slug])
+export const useGetDataProjet = slug => {
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    if (slug) {
+      try {
+        const project = projetsdata.find(item => item.slug === slug)
+
+        if (project) {
+          setData(project)
+          setLoading(false)
+        } else {
+          setError('Aucun projet trouvé avec ce slug.')
+          setLoading(false)
+        }
+      } catch (err) {
+        setError('Une erreur est survenue lors de la récupération des données.')
+        setLoading(false)
+      }
+    } else {
+      setError('Slug non fourni.')
+      setLoading(false)
+    }
+  }, [slug])
+
+  return {data, loading, error}
 }

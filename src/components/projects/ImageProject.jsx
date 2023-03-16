@@ -1,13 +1,44 @@
 'use client'
 import {Box, Flex} from '@chakra-ui/react'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 
-export default function ImageProject({image, scale}) {
-  const widthImage = 100 * scale
+export default function ImageProject({image}) {
+  const [scrollY, setScrollY] = useState(1)
+  const [scaleValue, setScaleValue] = useState(1)
+
+  function handleScroll() {
+    const scrollSection = document.getElementById('scrollsection')
+    const maxScroll = 100 - scrollSection?.clientHeight
+    setScrollY(scrollSection?.scrollTop)
+  }
+
+  useEffect(() => {
+    const scrollSection = document.getElementById('scrollsection')
+    const maxScroll = 100 - scrollSection?.clientHeight
+    scrollSection?.addEventListener('scroll', handleScroll)
+    return () => {
+      scrollSection?.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  useEffect(() => {
+    const maxScroll =
+      100 - document.getElementById('scrollsection')?.clientHeight
+    if (scrollY === 0) {
+      setScaleValue(1)
+    } else if (scrollY < 0.5) {
+      setScaleValue(0.5)
+    } else {
+      const newScaleValue = 1 + (scrollY / maxScroll) * 1.5
+      setScaleValue(Math.max(0.5, newScaleValue))
+    }
+  }, [scrollY])
+  const widthImage = 100 * scaleValue
   const widthImageBase = 100
-  const heightImage = 80 * scale
+  const heightImage = 80 * scaleValue
   const heightImageBase = 40
   const heightImageMd = 50
+
   return (
     <>
       <Flex justifyContent={'center'} alignItems={'center'} w={'100vw'}>

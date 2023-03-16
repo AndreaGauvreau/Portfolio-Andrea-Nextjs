@@ -15,8 +15,6 @@ export default function MainSection() {
   const [color, setColor] = useState({r: 0, g: 0, b: 0})
   return (
     <>
-      <Menu />
-
       <Flex
         className="gradient-bg"
         w={'100vw'}
