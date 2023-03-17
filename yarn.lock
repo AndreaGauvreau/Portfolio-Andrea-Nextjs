@@ -2372,6 +2372,11 @@
     "@utsubo/events" "^0.1.7"
     "zustand" "~4.1.5"
 
+"react-circular-input@^0.2.4":
+  "integrity" "sha512-zIWzZCrjewvE774tJSH+7iwkf9AuBQOgniS5JZJYFOxjDPr8OzGfPCBrPLdQ3mT3gnBbgb4GnF5k7/cdrFqrvA=="
+  "resolved" "https://registry.npmjs.org/react-circular-input/-/react-circular-input-0.2.4.tgz"
+  "version" "0.2.4"
+
 "react-clientside-effect@^1.2.6":
   "integrity" "sha512-XGGGRQAKY+q25Lz9a/4EPqom7WRjz3z9R2k4jhVKA/puQFH/5Nt27vFZYql4m4NVNdUvX8PS3O7r/Zzm7cjUlg=="
   "resolved" "https://registry.npmjs.org/react-clientside-effect/-/react-clientside-effect-1.2.6.tgz"
@@ -2399,7 +2404,7 @@
   dependencies:
     "prop-types" "^15.6.0"
 
-"react-dom@^18.0.0", "react-dom@^18.2.0", "react-dom@>=16.0.0", "react-dom@>=16.13", "react-dom@>=18", "react-dom@>=18.0", "react-dom@18.2.0":
+"react-dom@^18.0.0", "react-dom@^18.2.0", "react-dom@>= 16.8.0", "react-dom@>=16.0.0", "react-dom@>=16.13", "react-dom@>=18", "react-dom@>=18.0", "react-dom@18.2.0":
   "integrity" "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   "version" "18.2.0"
