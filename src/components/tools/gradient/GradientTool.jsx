@@ -1,5 +1,5 @@
 'use client'
-import React, {useState} from 'react'
+import React, {useReducer, useState} from 'react'
 import {
   Box,
   VStack,
@@ -8,6 +8,8 @@ import {
   SliderThumb,
   SliderFilledTrack,
   SliderTrack,
+  Button,
+  RangeSlider,
   Slider,
 } from '@chakra-ui/react'
 import {HuePicker, AlphaPicker} from 'react-color'
@@ -18,6 +20,7 @@ import {
   CircularThumb,
   useCircularInputContext,
 } from 'react-circular-input'
+import ReactSlider from 'react-slider'
 
 export default function GradientTool(props) {
   const {
@@ -36,16 +39,83 @@ export default function GradientTool(props) {
     setDisplayColorPicker,
     displayColorPicker,
   } = props
-  const handleClick = () => {
-    setDisplayColorPicker(!displayColorPicker)
+  const [lastTouchedTracker, setLastTouchedTracker] = useState(null)
+
+  const initialState = {
+    trackers: [
+      {id: Date.now() + 1, value: 20, color: '#ffffff'},
+      {id: Date.now() + 2, value: 70, color: '#f0f0f0'},
+    ],
+  }
+
+  function trackerReducer(state, action) {
+    switch (action.type) {
+      case 'ADD_TRACKER':
+        return {
+          ...state,
+          trackers: [
+            ...state.trackers,
+            {
+              id: action.payload.id,
+              value: action.payload.value,
+              color: action.payload.color,
+            },
+          ],
+        }
+      case 'UPDATE_TRACKER':
+        return {
+          ...state,
+          trackers: state.trackers.map(tracker =>
+            tracker.id === action.payload.id
+              ? {...tracker, value: action.payload.value}
+              : tracker,
+          ),
+        }
+      case 'UPDATE_COLOR':
+        return {
+          ...state,
+          trackers: state.trackers.map(tracker =>
+            tracker.id === action.payload.id
+              ? {...tracker, color: action.payload.color}
+              : tracker,
+          ),
+        }
+      default:
+        return state
+    }
+  }
+
+  const [state, dispatch] = useReducer(trackerReducer, initialState)
+
+  const addTracker = defaultColor => {
+    dispatch({
+      type: 'ADD_TRACKER',
+      payload: {id: Date.now(), value: 0, color: defaultColor},
+    })
+  }
+
+  const updateTrackerValue = (id, value) => {
+    dispatch({type: 'UPDATE_TRACKER', payload: {id, value}})
   }
 
   const handleHueChange = color => {
     setHue(color.rgb)
+    if (lastTouchedTracker !== null) {
+      dispatch({
+        type: 'UPDATE_COLOR',
+        payload: {id: lastTouchedTracker, color: rgbaToHex(color.rgb)},
+      })
+    }
   }
 
   const handleAlphaChange = color => {
     setAlpha(color.rgb.a)
+  }
+  function rgbaToHex(rgbaColor) {
+    const r = rgbaColor.r.toString(16).padStart(2, '0')
+    const g = rgbaColor.g.toString(16).padStart(2, '0')
+    const b = rgbaColor.b.toString(16).padStart(2, '0')
+    return `#${r}${g}${b}`
   }
 
   const rgbaColor = {
@@ -55,18 +125,7 @@ export default function GradientTool(props) {
     a: alpha,
   }
 
-  const popover = {
-    position: 'absolute',
-    zIndex: '2',
-  }
-
-  const cover = {
-    position: 'fixed',
-    top: '0px',
-    right: '0px',
-    bottom: '0px',
-    left: '0px',
-  }
+  const hexColor = rgbaToHex(rgbaColor)
 
   const valueToCopy = `background: rgba( ${rgbaColor.r}, ${rgbaColor.g}, ${
     rgbaColor.b
@@ -77,27 +136,7 @@ export default function GradientTool(props) {
   border-radius: 10px;
   ${checked ? `border: 1px solid rgba( 255,255,255, 0.18 );` : ''}
   `
-  const [colorControllers, setColorControllers] = useState([
-    {id: 0, value: 0},
-    {id: 1, value: 100},
-  ])
-
-  const addColorController = e => {
-    e.stopPropagation()
-    const newValue = (e.nativeEvent.offsetX / e.target.clientWidth) * 100
-    setColorControllers([
-      ...colorControllers,
-      {id: colorControllers.length, value: newValue},
-    ])
-  }
-
-  const handleControllerChange = (id, value) => {
-    setColorControllers(
-      colorControllers.map(controller =>
-        controller.id === id ? {...controller, value} : controller,
-      ),
-    )
-  }
+  console.log(state.trackers, 'track')
   return (
     <Flex
       width={{base: 'auto', lg: '800px'}}
@@ -137,28 +176,51 @@ export default function GradientTool(props) {
             color={rgbaColor}
             onChange={handleAlphaChange}
           />
-          <Box width="450px" height="40px" onClick={addColorController}>
-            <Slider width="100%" height="100%" min={0} max={100}>
-              <SliderTrack>
-                <SliderFilledTrack />
-              </SliderTrack>
-
-              <SliderThumb
-                boxSize="16px"
-                borderRadius="50%"
-                borderColor="white"
-                bg="blue.500"
-                value={20}
-              />
-              <SliderThumb
-                boxSize="16px"
-                borderRadius="50%"
-                borderColor="white"
-                bg="blue.500"
-                value={30}
-              />
-            </Slider>
+          <Box position={'relative'} minW={'450px'} maxW={'450px'}>
+            {state?.trackers?.map(tracker => (
+              <Box position={'absolute'} minW={'450px'} maxW={'450px'}>
+                <Slider
+                  key={tracker?.id}
+                  defaultValue={tracker.value}
+                  min={0}
+                  max={100}
+                  step={1}
+                  onChange={value => updateTrackerValue(tracker?.id, value)}
+                >
+                  <SliderTrack>
+                    <SliderFilledTrack />
+                  </SliderTrack>
+                  <SliderThumb
+                    key={`thumb-${tracker.id}`}
+                    bg={tracker?.color}
+                    onClick={() => setLastTouchedTracker(tracker.id)}
+                    width={5}
+                    h={12}
+                    borderRadius={5}
+                  />
+                </Slider>
+              </Box>
+            ))}{' '}
+            <Button mt={20} onClick={() => addTracker('blue')}>
+              Ajouter un tracker
+            </Button>
           </Box>
+          <Button mt={10} colorScheme={'whiteAlpha'} onClick={addTracker}>
+            Ajouter un tracker
+          </Button>
+          <Flex flexWrap={'wrap'} gap={2} maxW={'400px'}>
+            {state?.trackers?.map((tracker, index) => (
+              <Box
+                bg={'#ffffff10'}
+                key={index}
+                p={2}
+                borderRadius={10}
+                _hover={{bg: '#ffffff20'}}
+              >
+                Couleur {index + 1}: {tracker.color}
+              </Box>
+            ))}
+          </Flex>
         </Flex>
       </VStack>
 
