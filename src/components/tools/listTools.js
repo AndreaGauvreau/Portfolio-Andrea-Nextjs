@@ -26,7 +26,7 @@ export const listTools = [
   {
     id: 4,
     name: 'Animate Gradient',
-    lien: '/tools/glassmorphism',
+    lien: '/tools/gradient-animation',
     description:
       'Générez en quelques clics le css parfait pour appliquer vos plus beaux effets de glassmorphism sur votre site',
     image: '/images/identite/portfolio-andrea-gauvreau.jpg',

@@ -8,8 +8,9 @@ import {GithIcon} from '../icones/githubicon/githubIcon'
 import {IconeAndrea} from '../icones/iconeandrea/iconeandrea'
 import {LinkdinIcon} from '../icones/linkedin/linkedinIcon'
 import {LogoAndrea} from '../icones/logoandrea/logoandrea'
+import MiniMenu from './MiniMenu'
 
-export default function Menu({color1, color2, blur}) {
+export default function Menu({color1, color2, blur, isMain, linkList}) {
   const [githubColor, setGithubColor] = useState('#ffffff50')
   const [linkedinColor, setLinkdedinColor] = useState('#ffffff50')
   const [dribbleColor, setDribbleColor] = useState('#ffffff50')
@@ -113,6 +114,7 @@ export default function Menu({color1, color2, blur}) {
             }
           />
         </Link>
+        <MiniMenu />
       </Flex>
     </Flex>
   )

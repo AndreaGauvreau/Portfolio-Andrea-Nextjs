@@ -14,14 +14,15 @@ import {
   SimpleGrid,
   HStack,
   VStack,
+  Code,
 } from '@chakra-ui/react'
-import {CheckIcon, QuestionIcon} from '@chakra-ui/icons'
-import MainSection from './MainSection'
+import {QuestionIcon} from '@chakra-ui/icons'
+import MainSection from './MainSectionGradAnim'
 import {colorsDD} from '@/components/ui/colors/colors'
 import Image from 'next/image'
-import Menu from '@/components/ui/Menu/Menu'
 import Footer from '@/components/ui/Footer/Footer'
 import Link from 'next/link'
+import {CodeBlock} from '@/components/ui/CodeBlock/CodeBlock'
 
 export default function ContentPageBlur() {
   return (
@@ -68,7 +69,7 @@ export default function ContentPageBlur() {
                 </Text>
               </Heading>
               <Text color={'white'}>
-                Pour utiliser le générateur de dégradé il vous suffit de
+                Pour utiliser le générateur de dégradé animé il vous suffit de
                 selectionner correctement les paramètres voulu, puis de copier
                 le code, et enfin de le coller dans votre fichier css.
               </Text>
@@ -152,8 +153,7 @@ export default function ContentPageBlur() {
         <Box p={4}>
           <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
             <Heading fontSize={'3xl'}>
-              FAQ - Questions fréquentes sur le Glassmorphism et le générateur
-              de CSS
+              FAQ - Questions fréquentes sur le générateur de dégradé CSS animé
             </Heading>
           </Stack>
 
@@ -192,55 +192,60 @@ export default function ContentPageBlur() {
               </Text>
             </Heading>
             <Text color={'white'}>
-              Salut ! Es-tu prêt à plonger dans le monde passionnant des
-              dégradés CSS (linear-gradient) ?<br></br> Alors, laisse-moi te
-              présenter cette technique qui a révolutionné le design web et les
-              applications.<br></br>
-              <br></br>Les dégradés CSS, c'est quoi ? En gros, c'est une façon
-              super cool de créer une transition en douceur entre deux ou
-              plusieurs couleurs le long d'une ligne droite. Ils sont souvent
-              utilisés pour créer des arrière-plans, des boutons et d'autres
-              éléments de design attrayants sur les sites web et les
-              applications.<br></br>
-              <br></br> L'histoire des dégradés CSS remonte à quelques années,
-              lors de l'introduction de la fonction linear-gradient dans la
-              spécification CSS3. Les designers et les développeurs ont alors
-              commencé à expérimenter avec des dégradés pour créer des effets
-              visuels saisissants et dynamiques dans leurs projets.<br></br> Ce
-              style a rapidement gagné en popularité, et aujourd'hui, il est
-              utilisé partout, des interfaces utilisateur aux sites web et aux
-              applications mobiles.<br></br>
-              <br></br> Mais pourquoi les dégradés CSS sont-ils si populaires ?
-              Eh bien, c'est simple : ils offrent une manière élégante et
-              innovante de mettre en valeur les éléments d'une page tout en
-              ajoutant de la profondeur et de la dimension à un design.{' '}
-              <br></br>De plus, les dégradés CSS sont très polyvalents – tu peux
-              les adapter à n'importe quel contexte et les combiner avec
-              d'autres tendances pour créer des designs vraiment
-              impressionnants. <br></br>
-              <br></br>Pour te lancer dans l'aventure des dégradés CSS, tu peux
-              utiliser un générateur de dégradés en ligne et gratuit.<br></br>{' '}
-              Grâce à cet outil, tu pourras facilement créer des dégradés
-              personnalisés et générer le code CSS correspondant pour l'ajouter
-              à tes projets en un rien de temps.<br></br>
-              <br></br> Alors, prêt à rejoindre la révolution des dégradés CSS ?
-              N'hésite pas à explorer notre générateur de dégradés CSS
-              (linear-gradient) et à t'amuser avec les différentes options.
-              <br></br> Ensemble, créons des designs incroyables et faisons
-              briller le monde des dégradés CSS !<br></br>Les générateurs de
-              dégradés CSS en ligne, comme le nôtre, ont simplifié la tâche des
-              développeurs et des concepteurs en offrant un moyen rapide et
-              facile de créer des dégradés personnalisés. Ces outils gratuits
-              permettent de gagner du temps et d'assurer une cohérence
-              esthétique sans avoir à écrire manuellement le code CSS.<br></br>
-              <br></br>En utilisant notre générateur de dégradés CSS
-              (linear-gradient), tu pourras explorer de nombreuses possibilités
-              en choisissant les couleurs, les angles, les positions et d'autres
-              paramètres pour créer des dégradés uniques et adaptés à tes
-              besoins. N'oublie pas que les dégradés CSS fonctionnent sur la
-              plupart des navigateurs modernes, mais il peut être nécessaire
-              d'utiliser des préfixes spécifiques aux navigateurs ou des
-              solutions de repli pour assurer une expérience utilisateur.
+              Salut ! Es-tu prêt à découvrir le monde fascinant des dégradés
+              animés CSS ?<br></br> Alors, laisse-moi te présenter cette
+              technique innovante qui apporte une nouvelle dimension aux designs
+              web et aux applications.<br></br>
+              <br></br>Les dégradés animés CSS, c'est quoi ? En gros, c'est une
+              manière super cool de créer des dégradés CSS (linear-gradient) qui
+              s'animent grâce à l'utilisation de keyframes. Ces dégradés
+              dynamiques ajoutent une touche de vie et de mouvement à tes
+              projets, rendant les arrière-plans, les boutons et d'autres
+              éléments de design encore plus attrayants et captivants.<br></br>
+              <br></br> L'histoire des dégradés animés CSS remonte à
+              l'introduction des animations CSS3. Les designers et les
+              développeurs ont alors commencé à expérimenter avec des animations
+              pour apporter des effets visuels saisissants et dynamiques à leurs
+              projets.<br></br> Ce style a rapidement gagné en popularité, et
+              aujourd'hui, il est utilisé partout, des interfaces utilisateur
+              aux sites web et aux applications mobiles.<br></br>
+              <br></br> Mais pourquoi les dégradés animés CSS sont-ils si
+              populaires ? Eh bien, c'est simple : ils offrent une manière
+              élégante et innovante d'ajouter du mouvement et de la profondeur à
+              un design, rendant les pages web et les applications plus
+              engageantes et interactives. <br></br>De plus, les dégradés animés
+              CSS sont très polyvalents – tu peux les adapter à n'importe quel
+              contexte et les combiner avec d'autres tendances pour créer des
+              designs vraiment impressionnants. <br></br>
+              <br></br>Pour te lancer dans l'aventure des dégradés animés CSS,
+              tu peux utiliser des keyframes pour animer le dégradé, comme dans
+              l'exemple suivant :
+              <CodeBlock
+                language="css"
+                code={`#animationgrad {
+  background-size: 300% 300%;
+  animation: gradient-animation 10s ease infinite;
+}
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}`}
+              />
+              Grâce à ce code, tu pourras facilement créer des dégradés animés
+              pour tes projets et donner vie à tes designs en un rien de temps.
+              <br></br>
+              <br></br> Alors, prêt à rejoindre la révolution des dégradés
+              animés CSS ? N'hésite pas à expérimenter avec les différentes
+              options de keyframes et à t'amuser avec les couleurs et les angles
+              des dégradés.<br></br> Ensemble, créons des designs incroyables et
+              faisons briller le monde des dégradés animés CSS !
             </Text>
             <Stack
               direction={'column'}
@@ -299,35 +304,34 @@ export const Blob = props => {
 const features = [
   {
     id: 1,
-    title: "Qu'est-ce qu'un dégradé CSS (linear-gradient) ?",
-    text: "Un dégradé CSS (linear-gradient) est une fonction CSS qui permet de créer une transition en douceur entre deux ou plusieurs couleurs le long d'une ligne droite. Il est souvent utilisé pour créer des arrière-plans, des boutons et d'autres éléments de design attrayants sur les sites web et les applications.",
+    title: "Qu'est-ce qu'un dégradé CSS animé ?",
+    text: "Un dégradé CSS animé est une combinaison d'un dégradé CSS (linear-gradient) et d'une animation CSS. Cela permet de créer un effet de transition fluide entre les couleurs d'un dégradé au fil du temps, offrant une expérience visuelle dynamique et attrayante sur les sites web et les applications.",
   },
   {
     id: 2,
-    title: 'Pourquoi utiliser un générateur de dégradés CSS ?',
-    text: 'Un générateur de dégradés CSS facilite la création de dégradés personnalisés en générant automatiquement le code CSS correspondant. Cela permet aux développeurs et aux concepteurs de gagner du temps et de créer des dégradés cohérents et esthétiquement plaisants sans avoir à écrire manuellement le code.',
+    title: 'Pourquoi utiliser un générateur de dégradés CSS animés ?',
+    text: "Un générateur de dégradés CSS animés facilite la création d'effets de dégradé animés en générant automatiquement le code CSS nécessaire. Cela permet aux développeurs et aux concepteurs de gagner du temps et de créer des animations de dégradé cohérentes et esthétiquement plaisantes sans avoir à écrire manuellement le code.",
   },
   {
     id: 3,
-    title:
-      'Comment fonctionne le générateur de dégradés CSS (linear-gradient) ?',
-    text: 'Le générateur de dégradés CSS (linear-gradient) vous permet de choisir les couleurs et les paramètres du dégradé, puis génère automatiquement le code CSS correspondant. Il suffit de sélectionner les options souhaitées et de copier-coller le code dans votre projet.',
+    title: 'Comment fonctionne le générateur de dégradés CSS animés ?',
+    text: "Le générateur de dégradés CSS animés vous permet de choisir les couleurs, les paramètres du dégradé et les options d'animation, puis génère automatiquement le code CSS correspondant. Il suffit de sélectionner les options souhaitées et de copier-coller le code dans votre projet.",
   },
   {
     id: 4,
     title:
-      'Est-ce que les dégradés CSS (linear-gradient) fonctionnent sur tous les navigateurs ?',
-    text: "Les dégradés CSS (linear-gradient) sont pris en charge par la plupart des navigateurs modernes, mais il peut y avoir des problèmes de compatibilité avec certains navigateurs plus anciens. Dans ces cas-là, il est recommandé d'utiliser des préfixes spécifiques aux navigateurs ou des solutions de repli pour assurer une expérience utilisateur cohérente.",
+      'Est-ce que les dégradés CSS animés fonctionnent sur tous les navigateurs ?',
+    text: "Les dégradés CSS animés sont pris en charge par la plupart des navigateurs modernes, mais il peut y avoir des problèmes de compatibilité avec certains navigateurs plus anciens. Dans ces cas-là, il est recommandé d'utiliser des préfixes spécifiques aux navigateurs ou des solutions de repli pour assurer une expérience utilisateur cohérente.",
   },
   {
     id: 5,
     title:
-      'Comment puis-je adapter les dégradés CSS générés à mon propre projet ?',
-    text: "Il suffit d'utiliser le générateur pour créer le code CSS correspondant au dégradé souhaité, puis d'intégrer ce code dans votre projet. Vous pouvez également personnaliser les couleurs, les angles, les positions et d'autres aspects du dégradé pour l'adapter à vos besoins.",
+      'Comment puis-je adapter les dégradés CSS animés générés à mon propre projet ?',
+    text: "Il suffit d'utiliser le générateur pour créer le code CSS correspondant au dégradé animé souhaité, puis d'intégrer ce code dans votre projet. Vous pouvez également personnaliser les couleurs, les angles, les positions, les paramètres d'animation et d'autres aspects du dégradé pour l'adapter à vos besoins.",
   },
   {
     id: 6,
-    title: 'Le générateur de dégradés CSS (linear-gradient) est-il gratuit ?',
-    text: "Oui, le générateur est totalement gratuit et accessible à tous. Vous pouvez l'utiliser autant de fois que vous le souhaitez pour créer des dégradés CSS pour vos projets personnels ou professionnels.",
+    title: 'Le générateur de dégradés CSS animés est-il gratuit ?',
+    text: "Oui, le générateur est totalement gratuit et accessible à tous. Vous pouvez l'utiliser autant de fois que vous le souhaitez pour créer des dégradés CSS animés pour vos projets personnels ou professionnels.",
   },
 ]
