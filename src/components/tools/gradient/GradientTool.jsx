@@ -1,5 +1,11 @@
 'use client'
-import React, {useEffect, useReducer, useState} from 'react'
+import React, {
+  useCallback,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from 'react'
 import {
   Box,
   VStack,
@@ -19,6 +25,16 @@ import {
   EditablePreview,
   EditableInput,
   useToast,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverHeader,
+  PopoverBody,
+  InputGroup,
+  Input,
+  InputRightElement,
 } from '@chakra-ui/react'
 import {HuePicker, AlphaPicker} from 'react-color'
 import {
@@ -28,35 +44,37 @@ import {
   CircularThumb,
   useCircularInputContext,
 } from 'react-circular-input'
-import ReactSlider from 'react-slider'
+import {
+  hexToRgb,
+  rgbaToHex,
+  isColorTooDark,
+  isValidHexColor,
+} from '/src/helpers/function.js'
 import {CloseIcon, DeleteIcon} from '@chakra-ui/icons'
-import {colorsDD} from '@/components/ui/colors/colors'
+import {colorsDD} from '/src/components/ui/colors/colors'
+import Image from 'next/image'
 
 export default function GradientTool(props) {
   const {
     blurValue,
-    setBlurValue,
     transparency,
-    setTransparency,
     checked,
-    setChecked,
     angle,
     setAngle,
     alpha,
     setAlpha,
     hue,
     setHue,
-    setDisplayColorPicker,
-    displayColorPicker,
-    gradientColor,
     setGradientColor,
+    isLoading,
   } = props
   const [lastTouchedTracker, setLastTouchedTracker] = useState(null)
-
+  const edithexa = useRef()
   const initialState = {
     trackers: [
-      {id: Date.now() + 1, value: 20, color: colorsDD.pink, alpha: 1},
-      {id: Date.now() + 2, value: 70, color: colorsDD.green, alpha: 1},
+      {id: Date.now() + 1, value: 0, color: colorsDD.pink, alpha: 1},
+      {id: Date.now() + 2, value: 50, color: '#6b00ff', alpha: 1},
+      {id: Date.now() + 3, value: 100, color: colorsDD.green, alpha: 1},
     ],
   }
 
@@ -122,7 +140,8 @@ export default function GradientTool(props) {
         return state
     }
   }
-
+  const [inputColor, setInputColor] = useState('')
+  const [error, setError] = useState('')
   const [state, dispatch] = useReducer(trackerReducer, initialState)
 
   const addTracker = (defaultColor, alpha) => {
@@ -160,26 +179,6 @@ export default function GradientTool(props) {
     }
   }
 
-  function rgbaToHex(rgbaColor) {
-    const r = rgbaColor.r.toString(16).padStart(2, '0')
-    const g = rgbaColor.g.toString(16).padStart(2, '0')
-    const b = rgbaColor.b.toString(16).padStart(2, '0')
-    return `#${r}${g}${b}`
-  }
-  function hexToRgb(hexColor) {
-    // Enlever le caractère "#" si présent
-    if (hexColor[0] === '#') {
-      hexColor = hexColor.substring(1)
-    }
-
-    // Convertir la couleur hex en valeurs RGB
-    const red = parseInt(hexColor.substring(0, 2), 16)
-    const green = parseInt(hexColor.substring(2, 4), 16)
-    const blue = parseInt(hexColor.substring(4, 6), 16)
-
-    return [red, green, blue]
-  }
-
   const rgbaColor = {
     r: hue.r,
     g: hue.g,
@@ -207,14 +206,19 @@ export default function GradientTool(props) {
       )
       .join(', ')
 
-    const newGradient = `linear-gradient(${angle}deg, ${gradientColors})`
+    const newGradient = `linear-gradient(${Math.round(
+      angle,
+    )}deg, ${gradientColors})`
     setGradientColor(newGradient)
   }
 
   useEffect(() => {
     updateGradientColor()
   }, [state.trackers, angle, alpha])
-  console.log(state, 'track', gradientColor)
+  function validateHexColor(color) {
+    const hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/
+    return hexColorRegex.test(color)
+  }
   const getSelectedTrackerColor = () => {
     if (lastTouchedTracker !== null) {
       const selectedTracker = state.trackers.find(
@@ -231,29 +235,21 @@ export default function GradientTool(props) {
     }
     return rgbaColor // Retourner la couleur par défaut si aucun tracker n'est sélectionné
   }
-  function isColorTooDark(hexColor) {
-    // Enlever le caractère "#" si présent
-    if (hexColor[0] === '#') {
-      hexColor = hexColor.substring(1)
-    }
 
-    // Convertir la couleur hex en valeurs RGB
-    const red = parseInt(hexColor.substring(0, 2), 16)
-    const green = parseInt(hexColor.substring(2, 4), 16)
-    const blue = parseInt(hexColor.substring(4, 6), 16)
-
-    // Calculer la luminance de la couleur
-    const luminance = (0.299 * red + 0.587 * green + 0.114 * blue) / 255
-
-    // Si la luminance est inférieure à 0,5, la couleur est considérée comme trop foncée
-    return luminance < 0.5
-  }
   const toast = useToast()
+  const popoverRef = useRef(null)
 
-  function validateHexColor(color) {
-    const hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/
-    return hexColorRegex.test(color)
+  const closePopover = useCallback(() => {
+    popoverRef.current?.onClose()
+  }, [])
+
+  const handleKeyDown = (e, trackerId) => {
+    if (e.key === 'Enter') {
+      closePopover()
+      updateTrackerColor(trackerId, inputColor)
+    }
   }
+
   function updateTrackerColor(id, newColor) {
     if (validateHexColor(newColor)) {
       dispatch({
@@ -263,12 +259,11 @@ export default function GradientTool(props) {
     } else {
       toast({
         title: 'Couleur invalide',
-        description: 'Entrez une couleur hexadecimal valide',
+        description: 'Entrez une couleur hexadécimale valide',
         status: 'error',
         duration: 5000,
         isClosable: true,
       })
-
       dispatch({
         type: 'UPDATE_TRACKER_COLOR',
         payload: {id, newColor: '#ffffff'},
@@ -276,6 +271,37 @@ export default function GradientTool(props) {
     }
   }
 
+  if (isLoading) {
+    return (
+      <Flex
+        flexDirection={'column'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        position="relative"
+      >
+        <div style={{position: 'relative'}}>
+          <Image
+            src="/images/icones/icone-load-int-andrea.png"
+            alt="icone-andrea-gauvreau"
+            width={200}
+            height={200}
+          />
+          <Image
+            src="/images/icones/icone-ext-load-andrea.png"
+            alt="andrea-gauvreau-banderole"
+            width={200}
+            height={200}
+            className="spin"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+            }}
+          />
+        </div>
+      </Flex>
+    )
+  }
   return (
     <Flex
       width={{base: 'auto', lg: '800px'}}
@@ -290,34 +316,46 @@ export default function GradientTool(props) {
         justifyContent="space-around"
         paddingRight="20px"
         gap={5}
-        flexDirection={'row'}
+        flexDirection={{base: 'column', lg: 'row'}}
         alignItems={{base: 'center', lg: 'flex-start'}}
       >
         <Flex
           flexDirection={{base: 'column', lg: 'column'}}
           alignItems="center"
           w={'200px'}
+          pt={10}
         >
-          <Text fontSize={'md'} mb={10}>
-            Orientation
-          </Text>
-          <CircularRangeInput value={angle} onChange={setAngle} angle={angle} />
+          <CircularRangeInput
+            value={angle}
+            onChange={setAngle}
+            angle={angle}
+            colorStroke={rgbaToHex(rgbaColor)}
+          />
         </Flex>
 
         <Flex flexDirection={'column'} gap={2}>
           <HuePicker
-            width={'450px'}
+            width={'auto'}
             color={rgbaColor}
             onChange={handleHueChange}
           />
           <AlphaPicker
-            width={'450px'}
+            width={'auto'}
             color={getSelectedTrackerColor()}
             onChange={handleAlphaChange}
           />
-          <Box position={'relative'} minW={'450px'} maxW={'450px'}>
-            {state?.trackers?.map(tracker => (
-              <Box position={'absolute'} minW={'450px'} maxW={'450px'}>
+          <Box
+            position={'relative'}
+            minW={{base: '100%', lg: '450px'}}
+            maxW={{base: '100%', lg: '450px'}}
+          >
+            {state?.trackers?.map((tracker, index) => (
+              <Box
+                position={'absolute'}
+                minW={{base: '100%', lg: '450px'}}
+                maxW={{base: '100%', lg: '450px'}}
+                key={index}
+              >
                 <Slider
                   key={tracker?.id}
                   defaultValue={tracker.value}
@@ -359,47 +397,63 @@ export default function GradientTool(props) {
               +
             </Button>
             {state?.trackers?.map((tracker, index) => (
-              <Tag
-                bg={tracker?.color + 20}
-                key={index}
-                transition={'0.5s'}
-                borderRadius={5}
-                justifyContent="center"
-                alignItems={'center'}
-                p={2}
-                onClick={() => setLastTouchedTracker(tracker.id)}
-                color={
-                  isColorTooDark(tracker?.color) ? 'white' : tracker?.color
-                }
-                border={
-                  lastTouchedTracker === tracker?.id
-                    ? `2px solid ${
-                        isColorTooDark(tracker?.color)
-                          ? 'white'
-                          : tracker?.color
-                      }`
-                    : '2px solid #ffffff00'
-                }
-              >
-                <Editable
-                  defaultValue={tracker?.color}
-                  onSubmit={newColor =>
-                    updateTrackerColor(tracker.id, newColor)
-                  }
-                >
-                  <EditablePreview />
-                  <EditableInput />
-                </Editable>
-                <Icon
-                  as={DeleteIcon}
-                  color={
-                    isColorTooDark(tracker?.color) ? 'white' : tracker?.color
-                  }
-                  onClick={() => deleteTracker(tracker.id)}
-                  cursor={'pointer'}
-                  ml={2}
-                />
-              </Tag>
+              <Popover key={index}>
+                <PopoverTrigger>
+                  <Tag
+                    bg={tracker?.color + 20}
+                    transition={'0.5s'}
+                    borderRadius={5}
+                    justifyContent="center"
+                    alignItems={'center'}
+                    p={2}
+                    onClick={() => setLastTouchedTracker(tracker.id)}
+                    color={
+                      isColorTooDark(tracker?.color) ? 'white' : tracker?.color
+                    }
+                    border={
+                      lastTouchedTracker === tracker?.id
+                        ? `2px solid ${
+                            isColorTooDark(tracker?.color)
+                              ? 'white'
+                              : tracker?.color
+                          }`
+                        : '2px solid #ffffff00'
+                    }
+                  >
+                    <TagLabel>{tracker?.color}</TagLabel>
+                    {state?.trackers?.length < 3 ? (
+                      ''
+                    ) : (
+                      <Icon
+                        as={DeleteIcon}
+                        color={
+                          isColorTooDark(tracker?.color)
+                            ? 'white'
+                            : tracker?.color
+                        }
+                        onClick={() => deleteTracker(tracker.id)}
+                        cursor={'pointer'}
+                        ml={2}
+                      />
+                    )}
+                  </Tag>
+                </PopoverTrigger>
+                <PopoverContent bg={colorsDD.bgcolor}>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverHeader>Modifier la couleur</PopoverHeader>
+                  <PopoverBody>
+                    <InputGroup size="md">
+                      <Input
+                        placeholder="Entrez la couleur hex"
+                        defaultValue={tracker?.color}
+                        onChange={e => setInputColor(e.target?.value ?? '')}
+                        onKeyDown={e => handleKeyDown(e, tracker.id)}
+                      />
+                    </InputGroup>
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
             ))}
           </Flex>
         </Flex>
@@ -418,35 +472,39 @@ export default function GradientTool(props) {
   )
 }
 
-const CircularRangeInput = ({value, onChange, angle}) => {
+const CircularRangeInput = ({
+  value = 0,
+  onChange = () => {},
+  angle = 360,
+  colorStroke,
+}) => {
   const handleChange = newValue => {
     onChange(newValue * 360)
   }
 
   return (
     <Box width="136px" height="200px">
-      <CircularInput value={value / 360} radius={70} onChange={handleChange}>
+      <CircularInput
+        value={value / 360}
+        min={0}
+        max={360}
+        radius={70}
+        onChange={handleChange}
+      >
         <CircularTrack strokeWidth={40} stroke="#ffffff20" />
-        <CircularProgress
-          strokeWidth={40}
-          stroke={`rgba(61, 153, 255,${value / 360})`}
-        />
-        <CircularThumb
-          fill="white"
-          stroke="rgb(61, 153, 255)"
-          strokeWidth="5"
-        />
-        <CustomComponent />
+        <CircularProgress strokeWidth={40} stroke={`${colorStroke}`} />
+        <CircularThumb fill="white" stroke={`${colorStroke}`} strokeWidth="5" />
+        <CustomComponent colorStroke={colorStroke} />
       </CircularInput>
     </Box>
   )
 }
 const GradientCode = ({
-  checkedShadow,
-  color,
-  transparency,
-  blurValue,
-  checked,
+  checkedShadow = 1,
+  color = {r: 0, g: 0, b: 0},
+  transparency = 1,
+  blurValue = 0,
+  checked = true,
 }) => {
   return (
     <>
@@ -467,7 +525,7 @@ const GradientCode = ({
   )
 }
 
-function CustomComponent() {
+function CustomComponent({colorStroke}) {
   const {getPointFromValue, value} = useCircularInputContext()
   const point = getPointFromValue()
   if (!point) return null
@@ -476,7 +534,7 @@ function CustomComponent() {
       {...point}
       textAnchor="middle"
       dy="0.35em"
-      fill="rgb(61, 153, 255)"
+      fill={colorStroke}
       style={{pointerEvents: 'none', fontWeight: 'bold'}}
     >
       {Math.round(value * 100)}

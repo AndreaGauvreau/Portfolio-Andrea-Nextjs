@@ -1,17 +1,19 @@
 'use client'
-import React, {useState} from 'react'
-import {Box, Flex, Heading} from '@chakra-ui/react'
+import React, {Suspense, useEffect, useState} from 'react'
+import {Box, Flex, Heading, Text} from '@chakra-ui/react'
 import GradientTool from '@/components/tools/gradient/GradientTool'
 import {colorsDD} from '@/components/ui/colors/colors'
+import CodeSection from './CodeSection'
 export default function MainSection() {
   const [blurValue, setBlurValue] = useState(8)
+  const [isLoading, setIsLoading] = useState(true)
   const [transparency, setTransparency] = useState(0.3)
   const [checked, setChecked] = useState(true)
   const [checkedShadow, setCheckedShadow] = useState(false)
   const [displayColorPicker, setDisplayColorPicker] = useState(false)
   const [hue, setHue] = useState({r: 255, g: 0, b: 0})
   const [alpha, setAlpha] = useState(1)
-  const [angle, setAngle] = useState(10)
+  const [angle, setAngle] = useState(40)
   const [gradientColor, setGradientColor] = useState('')
 
   const rgbaColor = {
@@ -20,7 +22,14 @@ export default function MainSection() {
     b: hue.b,
     a: alpha,
   }
-  console.log(rgbaColor, angle)
+  useEffect(() => {
+    if (gradientColor) {
+      setIsLoading(false)
+    } else {
+      setIsLoading(true)
+    }
+  }, [gradientColor])
+
   return (
     <>
       <Flex
@@ -35,6 +44,8 @@ export default function MainSection() {
         bgSize="20px"
         color={'white'}
         position="relative"
+        flexDirection={'column'}
+        gap={5}
         zIndex={0}
       >
         <Box
@@ -47,14 +58,15 @@ export default function MainSection() {
         <Flex
           w={{base: '90vw', md: '80vw', lg: '992px'}}
           h={{base: 'auto', lg: '400px'}}
-          bg={colorsDD.bgcolor}
+          bg={'rgba(0,0,0,0.8)'}
           flexDirection="column"
           justifyContent={'center'}
           alignItems={'center'}
           p={10}
-          gap={20}
+          gap={5}
           borderRadius={10}
           zIndex={2}
+          backdropFilter={'blur(200px)'}
         >
           <Heading as={'h1'} textAlign="center">
             Générateur Dégradé CSS
@@ -78,8 +90,10 @@ export default function MainSection() {
             displayColorPicker={displayColorPicker}
             gradientColor={gradientColor}
             setGradientColor={setGradientColor}
+            isLoading={isLoading}
           />
         </Flex>
+        <CodeSection copyValue={gradientColor}>{gradientColor}</CodeSection>
       </Flex>
     </>
   )

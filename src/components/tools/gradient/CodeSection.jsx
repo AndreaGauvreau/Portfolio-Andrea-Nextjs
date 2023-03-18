@@ -1,6 +1,6 @@
 'use client'
 import {CheckIcon, CopyIcon} from '@chakra-ui/icons'
-import {IconButton, Text, VStack} from '@chakra-ui/react'
+import {Flex, IconButton, Text, VStack} from '@chakra-ui/react'
 import React, {useRef, useState} from 'react'
 
 export default function CodeSection({copyValue, children}) {
@@ -22,19 +22,25 @@ export default function CodeSection({copyValue, children}) {
   }
 
   return (
-    <VStack
-      flex="1"
+    <Flex
       justifyContent={{base: 'center', lg: 'flex-start'}}
       alignItems={{base: 'center', lg: 'flex-start'}}
+      w={{base: '90vw', md: '80vw', lg: '992px'}}
       pl={'20px'}
       pt={'20px'}
-      bg={'#ffffff10'}
+      bg={'#00000050'}
       pb={'20px'}
       borderRadius={10}
+      zIndex={2}
+      position="relative"
+      p={12}
     >
       <Text fontSize={'15px'}>{children}</Text>
       <IconButton
-        colorScheme={'whiteAlpha'}
+        position={'absolute'}
+        right={2}
+        bottom={2}
+        colorScheme={'blackAlpha'}
         onClick={handleButtonClick}
         marginTop="10px"
         pl={2}
@@ -49,6 +55,6 @@ export default function CodeSection({copyValue, children}) {
           left: '-9999px',
         }}
       />
-    </VStack>
+    </Flex>
   )
 }
