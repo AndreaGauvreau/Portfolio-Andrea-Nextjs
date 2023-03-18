@@ -18,9 +18,9 @@ export const listTools = [
   {
     id: 3,
     name: ' Gradient',
-    lien: '/tools/glassmorphism',
+    lien: '/tools/gradient',
     description:
-      'Générez en quelques clics le css parfait pour appliquer vos plus beaux effets de glassmorphism sur votre site',
+      'Générez en quelques clics le gradient parfait pour appliquer vos plus beaux effets',
     image: '/images/identite/portfolio-andrea-gauvreau.jpg',
   },
   {
