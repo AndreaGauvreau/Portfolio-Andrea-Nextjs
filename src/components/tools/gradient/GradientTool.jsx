@@ -35,6 +35,7 @@ import {
   InputGroup,
   Input,
   InputRightElement,
+  IconButton,
 } from '@chakra-ui/react'
 import {HuePicker, AlphaPicker} from 'react-color'
 import {
@@ -50,9 +51,10 @@ import {
   isColorTooDark,
   isValidHexColor,
 } from '/src/helpers/function.js'
-import {CloseIcon, DeleteIcon} from '@chakra-ui/icons'
+import {CloseIcon, DeleteIcon, SpinnerIcon, StarIcon} from '@chakra-ui/icons'
 import {colorsDD} from '/src/components/ui/colors/colors'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function GradientTool(props) {
   const {
@@ -67,6 +69,7 @@ export default function GradientTool(props) {
     setHue,
     setGradientColor,
     isLoading,
+    animate,
   } = props
   const [lastTouchedTracker, setLastTouchedTracker] = useState(null)
   const edithexa = useRef()
@@ -435,7 +438,7 @@ export default function GradientTool(props) {
                         cursor={'pointer'}
                         ml={2}
                       />
-                    )}
+                    )}{' '}
                   </Tag>
                 </PopoverTrigger>
                 <PopoverContent bg={colorsDD.bgcolor}>
@@ -454,7 +457,23 @@ export default function GradientTool(props) {
                   </PopoverBody>
                 </PopoverContent>
               </Popover>
-            ))}
+            ))}{' '}
+            <Link
+              href={animate ? '/tools/gradient-animation' : '/tools/gradient'}
+            >
+              <Text
+                p={2}
+                mt={2}
+                bg={animate ? '#ffffff50' : colorsDD.green + 20}
+                color={animate ? '#ffffff40' : colorsDD.green}
+                transition={'0.5s'}
+                _hover={{bg: animate ? '#ffffff90' : colorsDD.green + 60}}
+                borderRadius={5}
+              >
+                {animate ? 'animation désactivé' : 'animation activé'}
+                <Icon ml={3} as={StarIcon} />
+              </Text>
+            </Link>
           </Flex>
         </Flex>
       </VStack>
@@ -497,31 +516,6 @@ const CircularRangeInput = ({
         <CustomComponent colorStroke={colorStroke} />
       </CircularInput>
     </Box>
-  )
-}
-const GradientCode = ({
-  checkedShadow = 1,
-  color = {r: 0, g: 0, b: 0},
-  transparency = 1,
-  blurValue = 0,
-  checked = true,
-}) => {
-  return (
-    <>
-      {checkedShadow ? (
-        <Text>box-shadow: 0 8px 32px 0 rgba( 20, 20, 20, 0.25 );</Text>
-      ) : (
-        ''
-      )}
-      <Text>
-        background: rgba({color.r}, {color.g}, {color.b},
-        {transparency.toFixed(2)} )
-      </Text>
-      <Text>backdrop-filter: blur( {blurValue}px );</Text>
-      <Text>-webkit-backdrop-filter: blur( {blurValue}px );</Text>
-      <Text>border-radius: 10px;</Text>
-      {checked ? `border: 1px solid rgba( 255,255,255, 0.18 );` : ''}
-    </>
   )
 }
 

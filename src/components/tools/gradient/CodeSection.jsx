@@ -1,6 +1,6 @@
 'use client'
 import {CheckIcon, CopyIcon} from '@chakra-ui/icons'
-import {Flex, IconButton, Text, VStack} from '@chakra-ui/react'
+import {Flex, IconButton, Text} from '@chakra-ui/react'
 import React, {useRef, useState} from 'react'
 
 export default function CodeSection({copyValue, children}) {

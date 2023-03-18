@@ -1,9 +1,10 @@
 'use client'
-import React, {Suspense, useEffect, useState} from 'react'
-import {Box, Flex, Heading, Text} from '@chakra-ui/react'
+import React, {useEffect, useState} from 'react'
+import {Box, Flex, Heading} from '@chakra-ui/react'
 import GradientTool from '@/components/tools/gradient/GradientTool'
-import {colorsDD} from '@/components/ui/colors/colors'
 import CodeSection from './CodeSection'
+import './animatecssgrad.css'
+
 export default function MainSection() {
   const [blurValue, setBlurValue] = useState(8)
   const [isLoading, setIsLoading] = useState(true)
@@ -29,6 +30,36 @@ export default function MainSection() {
       setIsLoading(true)
     }
   }, [gradientColor])
+  const animate = false
+  const gradientValue = (
+    <>
+      {gradientColor}
+      <br />
+      {`
+  background-size: 300% 300%;`}
+      <br />
+      {` animation: gradient-animation 10s ease infinite;
+  `}
+      <br />
+      <br />
+      {`
+  @keyframes gradient-animation {
+    `}
+      <br />
+      {`0% {
+    background-position: 0% 50%;
+  }`}
+      <br />
+      {` 50% {
+    background-position: 100% 50%;
+  }`}
+      <br />
+      {`  100% {
+    background-position: 0% 50%;
+  }
+  `}
+    </>
+  )
 
   return (
     <>
@@ -53,6 +84,8 @@ export default function MainSection() {
           w={'100vw'}
           h={'100vh'}
           bg={gradientColor}
+          id={'animationgrad'}
+
           //bg={`linear-gradient(${angle}deg,rgba(${hue.r},${hue.g},${hue.b},${alpha}),blue)`}
         />
         <Flex
@@ -69,7 +102,7 @@ export default function MainSection() {
           backdropFilter={'blur(200px)'}
         >
           <Heading as={'h1'} textAlign="center">
-            Générateur Dégradé CSS
+            Générateur Dégradé Animé CSS
           </Heading>
           <GradientTool
             blurValue={blurValue}
@@ -91,9 +124,22 @@ export default function MainSection() {
             gradientColor={gradientColor}
             setGradientColor={setGradientColor}
             isLoading={isLoading}
+            animate={animate}
           />
         </Flex>
-        <CodeSection copyValue={gradientColor}>{gradientColor}</CodeSection>
+        <CodeSection
+          copyValue={`.classElement{background:${gradientColor};
+      background-size: 300% 300%  ;
+      animation: gradient-animation 10s ease infinite;}
+      @keyframes gradient-animation {
+        0% {background-position: 0% 50%;
+      } 50% {
+        background-position: 100% 50%;
+      } 100% {
+        background-position: 0% 50%;}}`}
+        >
+          {gradientValue}
+        </CodeSection>
       </Flex>
     </>
   )
