@@ -52,6 +52,12 @@ export default function MiniMenu() {
           <Link href="/tools/gradient-animation">
             <MenuItem pl={10}>Gradient Animation</MenuItem>
           </Link>
+          <Link href="/tools/boxshadow">
+            <MenuItem pl={10}>BoxShadow</MenuItem>
+          </Link>
+          <Link href="/tools/textclamp">
+            <MenuItem pl={10}>TextClamp</MenuItem>
+          </Link>
         </Collapse>
       </MenuList>
     </Menu>

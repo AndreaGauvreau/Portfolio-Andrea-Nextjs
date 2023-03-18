@@ -10,7 +10,7 @@ export const listTools = [
   {
     id: 2,
     name: ' BoxShadow',
-    lien: '/tools/glassmorphism',
+    lien: '/tools/boxshadow',
     description:
       'Générez en quelques clics le css parfait pour appliquer vos plus beaux effets de glassmorphism sur votre site',
     image: '/images/identite/portfolio-andrea-gauvreau.jpg',
@@ -34,7 +34,7 @@ export const listTools = [
   {
     id: 5,
     name: ' Text CLamp',
-    lien: '/tools/glassmorphism',
+    lien: '/tools/textclamp',
     description:
       'Générez en quelques clics le css parfait pour appliquer vos plus beaux effets de glassmorphism sur votre site',
     image: '/images/identite/portfolio-andrea-gauvreau.jpg',
