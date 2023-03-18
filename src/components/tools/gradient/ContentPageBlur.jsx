@@ -68,7 +68,7 @@ export default function ContentPageBlur() {
                 </Text>
               </Heading>
               <Text color={'white'}>
-                Pour utiliser le générateur de glassmorphism il vous suffit de
+                Pour utiliser le générateur de dégradé il vous suffit de
                 selectionner correctement les paramètres voulu, puis de copier
                 le code, et enfin de le coller dans votre fichier css.
               </Text>
@@ -148,79 +148,7 @@ export default function ContentPageBlur() {
             </Flex>
           </Stack>
         </Container>
-        <Container maxW={'3xl'}>
-          <Stack
-            as={Box}
-            textAlign={'center'}
-            spacing={{base: 8, md: 14}}
-            py={{base: 20, md: 36}}
-          >
-            <Heading
-              fontWeight={600}
-              fontSize={{base: '2xl', sm: '4xl', md: '6xl'}}
-              lineHeight={'110%'}
-              color={'white'}
-            >
-              C'est quoi le <br />
-              <Text as={'span'} color={colorsDD.green}>
-                GlassMorphism ?
-              </Text>
-            </Heading>
-            <Text color={'white'}>
-              Salut ! T'es prêt à plonger dans le monde fascinant du
-              Glassmorphism ? <br></br>Alors, laisse-moi te présenter ce nouveau
-              style qui fait fureur dans l'univers du design.<br></br>
-              <br></br>Le Glassmorphism, c'est quoi ? En gros, c'est un style de
-              design super cool basé sur l'effet de verre "frosted" (comme du
-              verre dépoli). Il s'appuie sur des éléments de transparence, des
-              ombres floues et des bords arrondis pour donner un look moderne et
-              sophistiqué à tes projets.<br></br>
-              <br></br> L'histoire du Glassmorphism a commencé il y a quelques
-              années, lorsqu'on a vu des designers expérimenter avec des effets
-              de transparence et de flou pour apporter un aspect "glassy" à
-              leurs créations<br></br> Ce style a rapidement gagné en
-              popularité, et aujourd'hui, il est utilisé partout, des interfaces
-              utilisateur aux sites web et aux applications mobiles.<br></br>
-              <br></br> Mais pourquoi le Glassmorphism est-il si populaire ? Eh
-              bien, c'est simple : il a un côté à la fois élégant et innovant,
-              qui permet de créer des designs uniques et mémorables. <br></br>De
-              plus, le Glassmorphism est super versatile – tu peux l'adapter à
-              n'importe quel contexte et l'associer à d'autres tendances pour
-              créer des designs vraiment impressionnants. <br></br>
-              <br></br>Pour te lancer dans l'aventure Glassmorphism, tu peux
-              utiliser le générateur de CSS dédié.<br></br> Grâce à cet outil,
-              tu pourras facilement appliquer l'effet de verre dépoli à tes
-              projets et créer des designs époustouflants en un rien de temps.
-              <br></br>
-              <br></br> Alors, prêt à rejoindre la révolution Glassmorphism ?
-              N'hésite pas à explorer le générateur de CSS Glassmorphism et à
-              t'amuser avec les différentes options.<br></br> Ensemble, créons
-              des designs incroyables et faisons briller le monde du
-              Glassmorphism !
-            </Text>
-            <Stack
-              direction={'column'}
-              spacing={3}
-              align={'center'}
-              alignSelf={'center'}
-              position={'relative'}
-            >
-              <Link href={'/tools'}>
-                <Button
-                  colorScheme={'green'}
-                  bg={colorsDD.green20}
-                  rounded={'full'}
-                  px={6}
-                  _hover={{
-                    bg: colorsDD.green,
-                  }}
-                >
-                  Plus de générateur css
-                </Button>
-              </Link>
-            </Stack>
-          </Stack>
-        </Container>
+
         <Box p={4}>
           <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
             <Heading fontSize={'3xl'}>
@@ -245,6 +173,98 @@ export default function ContentPageBlur() {
             </SimpleGrid>
           </Container>
         </Box>
+        <Container maxW={'3xl'}>
+          <Stack
+            as={Box}
+            textAlign={'center'}
+            spacing={{base: 8, md: 14}}
+            py={{base: 20, md: 36}}
+          >
+            <Heading
+              fontWeight={600}
+              fontSize={{base: '2xl', sm: '4xl', md: '6xl'}}
+              lineHeight={'110%'}
+              color={'white'}
+            >
+              C'est quoi le <br />
+              <Text as={'span'} color={colorsDD.green}>
+                Dégradé css ?
+              </Text>
+            </Heading>
+            <Text color={'white'}>
+              Salut ! Es-tu prêt à plonger dans le monde passionnant des
+              dégradés CSS (linear-gradient) ?<br></br> Alors, laisse-moi te
+              présenter cette technique qui a révolutionné le design web et les
+              applications.<br></br>
+              <br></br>Les dégradés CSS, c'est quoi ? En gros, c'est une façon
+              super cool de créer une transition en douceur entre deux ou
+              plusieurs couleurs le long d'une ligne droite. Ils sont souvent
+              utilisés pour créer des arrière-plans, des boutons et d'autres
+              éléments de design attrayants sur les sites web et les
+              applications.<br></br>
+              <br></br> L'histoire des dégradés CSS remonte à quelques années,
+              lors de l'introduction de la fonction linear-gradient dans la
+              spécification CSS3. Les designers et les développeurs ont alors
+              commencé à expérimenter avec des dégradés pour créer des effets
+              visuels saisissants et dynamiques dans leurs projets.<br></br> Ce
+              style a rapidement gagné en popularité, et aujourd'hui, il est
+              utilisé partout, des interfaces utilisateur aux sites web et aux
+              applications mobiles.<br></br>
+              <br></br> Mais pourquoi les dégradés CSS sont-ils si populaires ?
+              Eh bien, c'est simple : ils offrent une manière élégante et
+              innovante de mettre en valeur les éléments d'une page tout en
+              ajoutant de la profondeur et de la dimension à un design.{' '}
+              <br></br>De plus, les dégradés CSS sont très polyvalents – tu peux
+              les adapter à n'importe quel contexte et les combiner avec
+              d'autres tendances pour créer des designs vraiment
+              impressionnants. <br></br>
+              <br></br>Pour te lancer dans l'aventure des dégradés CSS, tu peux
+              utiliser un générateur de dégradés en ligne et gratuit.<br></br>{' '}
+              Grâce à cet outil, tu pourras facilement créer des dégradés
+              personnalisés et générer le code CSS correspondant pour l'ajouter
+              à tes projets en un rien de temps.<br></br>
+              <br></br> Alors, prêt à rejoindre la révolution des dégradés CSS ?
+              N'hésite pas à explorer notre générateur de dégradés CSS
+              (linear-gradient) et à t'amuser avec les différentes options.
+              <br></br> Ensemble, créons des designs incroyables et faisons
+              briller le monde des dégradés CSS !<br></br>Les générateurs de
+              dégradés CSS en ligne, comme le nôtre, ont simplifié la tâche des
+              développeurs et des concepteurs en offrant un moyen rapide et
+              facile de créer des dégradés personnalisés. Ces outils gratuits
+              permettent de gagner du temps et d'assurer une cohérence
+              esthétique sans avoir à écrire manuellement le code CSS.<br></br>
+              <br></br>En utilisant notre générateur de dégradés CSS
+              (linear-gradient), tu pourras explorer de nombreuses possibilités
+              en choisissant les couleurs, les angles, les positions et d'autres
+              paramètres pour créer des dégradés uniques et adaptés à tes
+              besoins. N'oublie pas que les dégradés CSS fonctionnent sur la
+              plupart des navigateurs modernes, mais il peut être nécessaire
+              d'utiliser des préfixes spécifiques aux navigateurs ou des
+              solutions de repli pour assurer une expérience utilisateur.
+            </Text>
+            <Stack
+              direction={'column'}
+              spacing={3}
+              align={'center'}
+              alignSelf={'center'}
+              position={'relative'}
+            >
+              <Link href={'/tools'}>
+                <Button
+                  colorScheme={'green'}
+                  bg={colorsDD.green20}
+                  rounded={'full'}
+                  px={6}
+                  _hover={{
+                    bg: colorsDD.green,
+                  }}
+                >
+                  Plus de générateur css
+                </Button>
+              </Link>
+            </Stack>
+          </Stack>
+        </Container>
       </Box>
       <Footer />
     </>
@@ -279,32 +299,35 @@ export const Blob = props => {
 const features = [
   {
     id: 1,
-    title: "Qu'est-ce que le Glassmorphism exactement ?",
-    text: "Le Glassmorphism est une tendance de design qui met l'accent sur l'utilisation d'effets de verre dépoli (frosted glass), avec une combinaison de transparence, d'ombres floues et de bords arrondis pour créer un style moderne et sophistiqué.",
+    title: "Qu'est-ce qu'un dégradé CSS (linear-gradient) ?",
+    text: "Un dégradé CSS (linear-gradient) est une fonction CSS qui permet de créer une transition en douceur entre deux ou plusieurs couleurs le long d'une ligne droite. Il est souvent utilisé pour créer des arrière-plans, des boutons et d'autres éléments de design attrayants sur les sites web et les applications.",
   },
   {
     id: 2,
-    title: 'Pourquoi le Glassmorphism est-il populaire ?',
-    text: "Le Glassmorphism est populaire parce qu'il offre un look élégant et innovant, tout en étant suffisamment polyvalent pour s'adapter à de nombreux contextes de design. Il permet de créer des interfaces et des éléments visuels attrayants et mémorables.",
+    title: 'Pourquoi utiliser un générateur de dégradés CSS ?',
+    text: 'Un générateur de dégradés CSS facilite la création de dégradés personnalisés en générant automatiquement le code CSS correspondant. Cela permet aux développeurs et aux concepteurs de gagner du temps et de créer des dégradés cohérents et esthétiquement plaisants sans avoir à écrire manuellement le code.',
   },
   {
     id: 3,
-    title: 'Comment fonctionne le générateur de CSS Glassmorphism ?',
-    text: 'le générateur de CSS Glassmorphism te permet de personnaliser les éléments clés du style, tels que la transparence, les ombres et les bords arrondis, et de générer automatiquement le code CSS correspondant. Il suffit de sélectionner les options souhaitées et de copier-coller le code dans ton projet.',
+    title:
+      'Comment fonctionne le générateur de dégradés CSS (linear-gradient) ?',
+    text: 'Le générateur de dégradés CSS (linear-gradient) vous permet de choisir les couleurs et les paramètres du dégradé, puis génère automatiquement le code CSS correspondant. Il suffit de sélectionner les options souhaitées et de copier-coller le code dans votre projet.',
   },
   {
     id: 4,
-    title: 'Est-ce que le Glassmorphism fonctionne sur tous les navigateurs ?',
-    text: "Le Glassmorphism fonctionne sur la plupart des navigateurs modernes, mais il peut y avoir des problèmes de compatibilité avec certains navigateurs plus anciens. Dans ces cas-là, il est recommandé d'utiliser des préfixes spécifiques aux navigateurs ou des solutions de repli pour assurer une expérience utilisateur cohérente.",
+    title:
+      'Est-ce que les dégradés CSS (linear-gradient) fonctionnent sur tous les navigateurs ?',
+    text: "Les dégradés CSS (linear-gradient) sont pris en charge par la plupart des navigateurs modernes, mais il peut y avoir des problèmes de compatibilité avec certains navigateurs plus anciens. Dans ces cas-là, il est recommandé d'utiliser des préfixes spécifiques aux navigateurs ou des solutions de repli pour assurer une expérience utilisateur cohérente.",
   },
   {
     id: 5,
-    title: 'Comment puis-je adapter le Glassmorphism à mon propre projet ?',
-    text: "Il te suffit d'utiliser le générateur pour créer le code CSS correspondant à l'effet Glassmorphism souhaité, puis d'intégrer ce code dans ton projet. Tu peux également personnaliser les couleurs, les dimensions et d'autres aspects du design pour l'adapter à tes besoins.",
+    title:
+      'Comment puis-je adapter les dégradés CSS générés à mon propre projet ?',
+    text: "Il suffit d'utiliser le générateur pour créer le code CSS correspondant au dégradé souhaité, puis d'intégrer ce code dans votre projet. Vous pouvez également personnaliser les couleurs, les angles, les positions et d'autres aspects du dégradé pour l'adapter à vos besoins.",
   },
   {
     id: 6,
-    title: 'Le générateur de CSS Glassmorphism est-il gratuit ?',
-    text: "Oui, le générateur est totalement gratuit et accessible à tous. Tu peux l'utiliser autant de fois que tu le souhaites pour créer des designs Glassmorphism pour tes projets personnels ou professionnels.",
+    title: 'Le générateur de dégradés CSS (linear-gradient) est-il gratuit ?',
+    text: "Oui, le générateur est totalement gratuit et accessible à tous. Vous pouvez l'utiliser autant de fois que vous le souhaitez pour créer des dégradés CSS pour vos projets personnels ou professionnels.",
   },
 ]
