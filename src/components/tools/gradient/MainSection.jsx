@@ -12,6 +12,8 @@ export default function MainSection() {
   const [hue, setHue] = useState({r: 255, g: 0, b: 0})
   const [alpha, setAlpha] = useState(1)
   const [angle, setAngle] = useState(10)
+  const [gradientColor, setGradientColor] = useState('')
+
   const rgbaColor = {
     r: hue.r,
     g: hue.g,
@@ -39,7 +41,8 @@ export default function MainSection() {
           position={'absolute'}
           w={'100vw'}
           h={'100vh'}
-          bg={`linear-gradient(${angle}deg,rgba(${hue.r},${hue.g},${hue.b},${alpha}),blue)`}
+          bg={gradientColor}
+          //bg={`linear-gradient(${angle}deg,rgba(${hue.r},${hue.g},${hue.b},${alpha}),blue)`}
         />
         <Flex
           w={{base: '90vw', md: '80vw', lg: '992px'}}
@@ -73,6 +76,8 @@ export default function MainSection() {
             setAngle={setAngle}
             setDisplayColorPicker={setDisplayColorPicker}
             displayColorPicker={displayColorPicker}
+            gradientColor={gradientColor}
+            setGradientColor={setGradientColor}
           />
         </Flex>
       </Flex>
