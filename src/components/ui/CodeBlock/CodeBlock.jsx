@@ -1,14 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import Highlight, {defaultProps} from 'prism-react-renderer'
-import theme from 'prism-react-renderer/themes/nightOwl'
+import theme from 'prism-react-renderer/themes/dracula'
 
 const Pre = styled.pre`
   text-align: left;
   margin: 1em 0;
-  padding: 2.5em;
+  padding: 1.5em;
   overflow: scroll;
-  border-radius: 20px;
+  border-radius: 10px;
+  width: 100%;
 `
 
 const Line = styled.div`
@@ -26,14 +27,14 @@ const LineNo = styled.span`
 const LineContent = styled.span`
   display: table-cell;
 `
-export const CodeBlock = ({code, language}) => {
+export const CodeBlock = ({code, language = 'css', lineNB = true}) => {
   return (
     <Highlight {...defaultProps} theme={theme} code={code} language={language}>
       {({className, style, tokens, getLineProps, getTokenProps}) => (
         <Pre className={className} style={style}>
           {tokens.map((line, i) => (
             <Line key={i} {...getLineProps({line, key: i})}>
-              <LineNo>{i + 1}</LineNo>
+              {lineNB ? <LineNo>{i + 1}</LineNo> : ''}
               <LineContent>
                 {line.map((token, key) => (
                   <span key={key} {...getTokenProps({token, key})} />
