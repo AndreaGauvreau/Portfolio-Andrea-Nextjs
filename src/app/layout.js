@@ -16,6 +16,8 @@ export default function RootLayout({children}) {
           href="/images/icones/favicon.ico"
         />
         <link rel="apple-touch-icon" href="/images/icones/favicon.ico" />
+        <link rel="icon" href="/icones/icone-andrea-32.svg" sizes="32x32" />
+        <link rel="icon" href="/icones/icone-andrea-16.svg" sizes="16x16" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
         <meta
