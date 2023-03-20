@@ -1,18 +1,77 @@
 'use client'
-import React, {useState} from 'react'
-import {Box, Flex, Heading} from '@chakra-ui/react'
-import GlassMorphismTool from '@/components/tools/glassmorphism/glassmorphismtool'
-import Menu from '@/components/ui/Menu/Menu'
+import React, {useEffect, useState} from 'react'
+import {Box, Flex, Heading, Icon, Text} from '@chakra-ui/react'
+import Tool from '@/components/tools/textclamp/tool'
+import {motion} from 'framer-motion'
+
 import {colorsDD} from '@/components/ui/colors/colors'
 import './gradientbg.css'
-import {motion} from 'framer-motion'
+import {DragHandleIcon, ViewIcon} from '@chakra-ui/icons'
+
 export default function MainSection() {
-  const [blurValue, setBlurValue] = useState(8)
-  const [transparency, setTransparency] = useState(0.3)
-  const [checked, setChecked] = useState(true)
-  const [checkedShadow, setCheckedShadow] = useState(false)
-  const [displayColorPicker, setDisplayColorPicker] = useState(false)
-  const [color, setColor] = useState({r: 0, g: 0, b: 0})
+  const [fontSizeMin, setFontSizeMin] = useState('20')
+  const [fontSizeMax, setFontSizeMax] = useState('50')
+  const [viewportWidthMin, setViewportWidthMin] = useState('400')
+  const [viewportWidthMax, setViewportWidthMax] = useState('800')
+
+  const [fontSizeMinUnit, setFontSizeMinUnit] = useState('px')
+  const [fontSizeMaxUnit, setFontSizeMaxUnit] = useState('px')
+  const [viewportWidthMinUnit, setViewportWidthMinUnit] = useState('px')
+  const [viewportWidthMaxUnit, setViewportWidthMaxUnit] = useState('px')
+  const generateClampValue = () => {
+    if (fontSizeMin && fontSizeMax && viewportWidthMin && viewportWidthMax) {
+      const minFontSize = `${fontSizeMin}${fontSizeMinUnit}`
+      const maxFontSize = `${fontSizeMax}${fontSizeMaxUnit}`
+      const minViewportWidth = `${viewportWidthMin}${viewportWidthMinUnit}`
+      const maxViewportWidth = `${viewportWidthMax}${viewportWidthMaxUnit}`
+
+      const slope =
+        (fontSizeMax - fontSizeMin) / (viewportWidthMax - viewportWidthMin)
+      const intercept = fontSizeMin - slope * viewportWidthMin
+
+      return `font-size: clamp(${parseFloat(minFontSize).toFixed(
+        1,
+      )}px, ${parseFloat(intercept).toFixed(
+        2,
+      )}${fontSizeMinUnit} + ${parseFloat(slope * 100).toFixed(
+        2,
+      )}vw, ${parseFloat(maxFontSize).toFixed(2)}px);`
+    }
+
+    return 'font-size: 1rem;' // Valeur par défaut si les champs ne sont pas remplis
+  }
+
+  const codeCopy = generateClampValue()
+
+  const [width, setWidth] = useState(400)
+  const [height, setHeight] = useState(200)
+  const [fontSize, setFontSize] = useState('1rem')
+
+  const handleDragWidth = (e, info) => {
+    setWidth(prevWidth => prevWidth + info.delta.x)
+  }
+
+  useEffect(() => {
+    const slope =
+      (fontSizeMax - fontSizeMin) / (viewportWidthMax - viewportWidthMin)
+    const intercept = fontSizeMin - slope * viewportWidthMin
+
+    const newFontSize = slope * width + parseFloat(intercept.toFixed(2))
+    setFontSize(
+      `${Math.round(
+        Math.min(Math.max(newFontSize, fontSizeMin), fontSizeMax),
+      )}px`,
+    )
+  }, [width, fontSizeMin, fontSizeMax, viewportWidthMin, viewportWidthMax])
+  const bgcolor =
+    fontSize === `${fontSizeMax}px` || fontSize === `${fontSizeMin}px`
+      ? colorsDD.bgcolor
+      : 'orange'
+  const bgcolorBox =
+    width >= viewportWidthMax || width <= viewportWidthMin
+      ? colorsDD.bgcolor
+      : 'orange'
+
   return (
     <>
       <Flex
@@ -26,69 +85,115 @@ export default function MainSection() {
         bgGradient={`linear(to-l, ${colorsDD.green}, ${colorsDD.pink},${colorsDD.green}, ${colorsDD.pink})`}
         color={'white'}
         position="relative"
+        flexDir={'column'}
+        gap={5}
       >
         <Flex
-          position={'absolute'}
-          justifyContent="center"
-          alignItems="center"
-          fontSize={40}
-          bottom={'40px'}
-          left={'50%'}
-          transform={'translate(-50%,0px)'}
-          w={'120px'}
-          h={'120px'}
-          borderRadius={10}
-          backdropFilter={`blur(${blurValue}px)`}
-          bg={`rgba( ${color.r}, ${color.g}, ${color.b}, ${transparency.toFixed(
-            2,
-          )} );`}
-          zIndex={99}
-          border={checked ? `1px solid rgba( 255,255,255, 0.22 );` : ''}
-          boxShadow={
-            checkedShadow ? `0 10px 30px 0 rgba( 20, 20, 20, 0.25  );` : ''
-          }
-          display={{base: 'none', lg: 'flex'}}
-        >
-          <motion.div
-            initial={{scale: 0, opacity: 0}}
-            animate={{scale: 1, opacity: 1}}
-            transition={{
-              duration: 1,
-              delay: 0.6,
-              ease: [0.15, 0.84, 0.27, 0.96],
-            }}
-          >
-            ⬇️
-          </motion.div>
-        </Flex>
-        <Flex
           w={{base: '90vw', md: '80vw', lg: '992px'}}
-          h={{base: 'auto', lg: '400px'}}
+          h={{base: 'auto', lg: 'auto'}}
           bg={colorsDD.bgcolor}
           flexDirection="column"
           justifyContent={'center'}
           alignItems={'center'}
           p={10}
-          gap={20}
+          gap={10}
           borderRadius={10}
         >
           <Heading as={'h1'} textAlign="center">
-            Générateur GlassMorphism CSS
+            Générateur Css Font-Size clamp()
           </Heading>
-          <GlassMorphismTool
-            blurValue={blurValue}
-            setBlurValue={setBlurValue}
-            transparency={transparency}
-            setTransparency={setTransparency}
-            checked={checked}
-            setChecked={setChecked}
-            checkedShadow={checkedShadow}
-            setCheckedShadow={setCheckedShadow}
-            color={color}
-            setColor={setColor}
-            setDisplayColorPicker={setDisplayColorPicker}
-            displayColorPicker={displayColorPicker}
+          <Tool
+            fontSizeMin={fontSizeMin}
+            setFontSizeMin={setFontSizeMin}
+            fontSizeMax={fontSizeMax}
+            setFontSizeMax={setFontSizeMax}
+            viewportWidthMin={viewportWidthMin}
+            setViewportWidthMin={setViewportWidthMin}
+            viewportWidthMax={viewportWidthMax}
+            setViewportWidthMax={setViewportWidthMax}
+            fontSizeMinUnit={fontSizeMinUnit}
+            setFontSizeMinUnit={setFontSizeMinUnit}
+            fontSizeMaxUnit={fontSizeMaxUnit}
+            setFontSizeMaxUnit={setFontSizeMaxUnit}
+            viewportWidthMinUnit={viewportWidthMinUnit}
+            setViewportWidthMinUnit={setViewportWidthMinUnit}
+            viewportWidthMaxUnit={viewportWidthMaxUnit}
+            codeCopy={codeCopy}
+            setViewportWidthMaxUnit={setViewportWidthMaxUnit}
           />
+        </Flex>
+        <Flex
+          w={{base: '90vw', md: '80vw', lg: '992px'}}
+          h={{base: 'auto', lg: 'auto'}}
+          flexDirection="column"
+          justifyContent={'center'}
+          alignItems={'center'}
+          p={10}
+          gap={10}
+          borderRadius={10}
+          maxW={{base: '90vw', md: 'auto'}}
+          overflow="scroll"
+        >
+          <Box
+            position="relative"
+            width={`${width}px`}
+            height={`${height}px`}
+            borderRadius={10}
+            bg={'#00000015'}
+            h={'auto'}
+            p={5}
+          >
+            <motion.div
+              onDrag={handleDragWidth}
+              drag="x"
+              dragConstraints={{left: 0, right: 0}}
+              style={{
+                position: 'absolute',
+                top: 0,
+                bottom: 0,
+                right: -5,
+                width: 10,
+                cursor: 'ew-resize',
+              }}
+            >
+              <Icon
+                as={DragHandleIcon}
+                position={'absolute'}
+                top={'50%'}
+                transform={'translateY(-50%)'}
+                ml={'10px'}
+              />
+            </motion.div>
+            <Heading
+              as={'h2'}
+              textAlign="center"
+              fontSize={fontSize}
+              noOfLines={1}
+            >
+              Resize la boite et test
+            </Heading>
+
+            <Text
+              position="absolute"
+              top={2}
+              right={2}
+              bg={bgcolorBox}
+              p={1}
+              borderRadius={5}
+            >
+              {Math.round(width)}px
+            </Text>
+            <Text
+              position="absolute"
+              left={2}
+              bottom={2}
+              bg={bgcolor}
+              p={1}
+              borderRadius={5}
+            >
+              {fontSize}
+            </Text>
+          </Box>
         </Flex>
       </Flex>
     </>

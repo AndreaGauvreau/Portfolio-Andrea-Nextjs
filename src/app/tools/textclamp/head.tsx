@@ -3,10 +3,10 @@ import Script from 'next/script'
 export default function Head() {
   return (
     <>
-      <title>Animate Gradient Css Generator - Générateur Gratuit</title>
+      <title>Générateur de Font-size Clamp() Css </title>
       <meta
         name="description"
-        content="Générateur de Dégradé animé en Css. Copiez coller le code généré dans votre fichier css"
+        content="Passez au niveau superieur avec des tailles de polices dynamiques en full css grâce au générateur de Font-size Clamp() Css."
       />
       <link
         rel="canonical"

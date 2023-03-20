@@ -9,50 +9,50 @@ export default function Page() {
     mainEntity: [
       {
         '@type': 'Question',
-        name: "Qu'est-ce qu'un dégradé CSS animé ?",
+        name: "Qu'est-ce que la fonction CSS clamp() ?",
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "Un dégradé CSS animé est une combinaison d'un dégradé CSS (linear-gradient) et d'une animation CSS. Cela permet de créer un effet de transition fluide entre les couleurs d'un dégradé au fil du temps, offrant une expérience visuelle dynamique et attrayante sur les sites web et les applications.",
+          text: "La fonction CSS clamp() est une fonction permettant d'ajuster une valeur CSS entre une limite minimale et une limite maximale, en fonction d'une valeur préférée. Elle est particulièrement utile pour créer des designs responsives et fluides en ajustant les propriétés telles que la taille de la police, la largeur, la hauteur et les marges.",
         },
       },
       {
         '@type': 'Question',
-        name: 'Pourquoi utiliser un générateur de dégradés CSS animés ?',
+        name: 'Pourquoi la fonction clamp() est-elle pratique pour le responsive design ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "Un générateur de dégradés CSS animés facilite la création d'effets de dégradé animés en générant automatiquement le code CSS nécessaire. Cela permet aux développeurs et aux concepteurs de gagner du temps et de créer des animations de dégradé cohérentes et esthétiquement plaisantes sans avoir à écrire manuellement le code.",
+          text: "La fonction clamp() est pratique pour le responsive design car elle permet d'ajuster automatiquement les propriétés CSS en fonction des dimensions de l'écran ou de la fenêtre, tout en définissant des limites minimales et maximales pour garantir une expérience utilisateur cohérente et lisible.",
         },
       },
       {
         '@type': 'Question',
-        name: 'Comment fonctionne le générateur de dégradés CSS animés ?',
+        name: 'Comment fonctionne le générateur gratuit en ligne de clamp() ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "Le générateur de dégradés CSS animés vous permet de choisir les couleurs, les paramètres du dégradé et les options d'animation, puis génère automatiquement le code CSS correspondant. Il suffit de sélectionner les options souhaitées et de copier-coller le code dans votre projet.",
+          text: 'Le générateur de clamp() en ligne te permet de personnaliser les éléments clés de la fonction, tels que les limites minimale et maximale et la valeur préférée, puis de générer automatiquement le code CSS correspondant. Il suffit de sélectionner les options souhaitées et de copier-coller le code dans ton projet.',
         },
       },
       {
         '@type': 'Question',
-        name: 'Est-ce que les dégradés CSS animés fonctionnent sur tous les navigateurs ?',
+        name: 'Est-ce que la fonction CSS clamp() est compatible avec tous les navigateurs ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "Les dégradés CSS animés sont pris en charge par la plupart des navigateurs modernes, mais il peut y avoir des problèmes de compatibilité avec certains navigateurs plus anciens. Dans ces cas-là, il est recommandé d'utiliser des préfixes spécifiques aux navigateurs ou des solutions de repli pour assurer une expérience utilisateur cohérente.",
+          text: "La fonction CSS clamp() est compatible avec la plupart des navigateurs modernes, y compris Chrome, Firefox, Safari et Edge. Cependant, elle n'est pas prise en charge par Internet Explorer. Pour assurer une expérience utilisateur cohérente sur les anciens navigateurs, il est recommandé d'utiliser des solutions de repli ou des techniques alternatives.",
         },
       },
       {
         '@type': 'Question',
-        name: 'Comment puis-je adapter les dégradés CSS animés générés à mon propre projet ?',
+        name: 'Comment puis-je intégrer la fonction CSS clamp() dans mon propre projet ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "Il suffit d'utiliser le générateur pour créer le code CSS correspondant au dégradé animé souhaité, puis d'intégrer ce code dans votre projet. Vous pouvez également personnaliser les couleurs, les angles, les positions, les paramètres d'animation et d'autres aspects du dégradé pour l'adapter à vos besoins.",
+          text: "Il te suffit d'utiliser le générateur en ligne pour créer le code CSS correspondant à l'utilisation de la fonction clamp() souhaitée, puis d'intégrer ce code dans ton projet. Tu peux également personnaliser les valeurs et les propriétés pour les adapter à tes besoins.",
         },
       },
       {
         '@type': 'Question',
-        name: 'Le générateur de dégradés CSS animés est-il gratuit ?',
+        name: 'Le générateur en ligne de clamp() est-il gratuit ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "Oui, le générateur est totalement gratuit et accessible à tous. Vous pouvez l'utiliser autant de fois que vous le souhaitez pour créer des dégradés CSS animés pour vos projets personnels ou professionnels.",
+          text: "Oui, le générateur de clamp() en ligne est totalement gratuit et accessible à tous. Tu peux l'utiliser autant de fois que tu le souhaites pour créer des designs responsives et fluides pour tes projets personnels ou professionnels.",
         },
       },
     ],
