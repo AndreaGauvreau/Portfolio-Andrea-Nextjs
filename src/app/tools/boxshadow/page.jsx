@@ -9,50 +9,50 @@ export default function Page() {
     mainEntity: [
       {
         '@type': 'Question',
-        name: "Qu'est-ce qu'un dégradé CSS animé ?",
+        name: "Qu'est-ce que le Box Shadow exactement ?",
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "Un dégradé CSS animé est une combinaison d'un dégradé CSS (linear-gradient) et d'une animation CSS. Cela permet de créer un effet de transition fluide entre les couleurs d'un dégradé au fil du temps, offrant une expérience visuelle dynamique et attrayante sur les sites web et les applications.",
+          text: "Le Box Shadow est un effet CSS qui permet d'ajouter des ombres portées aux éléments graphiques, créant ainsi de la profondeur et de la dimension. Il repose sur des ombres floues et des décalages pour donner un aspect moderne et sophistiqué aux projets.",
         },
       },
       {
         '@type': 'Question',
-        name: 'Pourquoi utiliser un générateur de dégradés CSS animés ?',
+        name: 'Pourquoi le Box Shadow est-il populaire ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "Un générateur de dégradés CSS animés facilite la création d'effets de dégradé animés en générant automatiquement le code CSS nécessaire. Cela permet aux développeurs et aux concepteurs de gagner du temps et de créer des animations de dégradé cohérentes et esthétiquement plaisantes sans avoir à écrire manuellement le code.",
+          text: "Le Box Shadow est populaire parce qu'il offre un aspect élégant et réaliste, tout en étant extrêmement polyvalent et adaptable à de nombreux contextes de design. Il permet de créer des interfaces et des éléments visuels attrayants et mémorables.",
         },
       },
       {
         '@type': 'Question',
-        name: 'Comment fonctionne le générateur de dégradés CSS animés ?',
+        name: 'Comment fonctionne le générateur de CSS Box Shadow ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "Le générateur de dégradés CSS animés vous permet de choisir les couleurs, les paramètres du dégradé et les options d'animation, puis génère automatiquement le code CSS correspondant. Il suffit de sélectionner les options souhaitées et de copier-coller le code dans votre projet.",
+          text: "Le générateur de CSS Box Shadow te permet de personnaliser les éléments clés de l'effet, tels que les décalages, les ombres et les flous, et de générer automatiquement le code CSS correspondant. Il suffit de sélectionner les options souhaitées et de copier-coller le code dans ton projet.",
         },
       },
       {
         '@type': 'Question',
-        name: 'Est-ce que les dégradés CSS animés fonctionnent sur tous les navigateurs ?',
+        name: 'Est-ce que le Box Shadow fonctionne sur tous les navigateurs ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "Les dégradés CSS animés sont pris en charge par la plupart des navigateurs modernes, mais il peut y avoir des problèmes de compatibilité avec certains navigateurs plus anciens. Dans ces cas-là, il est recommandé d'utiliser des préfixes spécifiques aux navigateurs ou des solutions de repli pour assurer une expérience utilisateur cohérente.",
+          text: "Le Box Shadow fonctionne sur la plupart des navigateurs modernes, mais il peut y avoir des problèmes de compatibilité avec certains navigateurs plus anciens. Dans ces cas-là, il est recommandé d'utiliser des préfixes spécifiques aux navigateurs ou des solutions de repli pour assurer une expérience utilisateur cohérente.",
         },
       },
       {
         '@type': 'Question',
-        name: 'Comment puis-je adapter les dégradés CSS animés générés à mon propre projet ?',
+        name: 'Comment puis-je adapter le Box Shadow à mon propre projet ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "Il suffit d'utiliser le générateur pour créer le code CSS correspondant au dégradé animé souhaité, puis d'intégrer ce code dans votre projet. Vous pouvez également personnaliser les couleurs, les angles, les positions, les paramètres d'animation et d'autres aspects du dégradé pour l'adapter à vos besoins.",
+          text: "Il te suffit d'utiliser le générateur pour créer le code CSS correspondant à l'effet Box Shadow souhaité, puis d'intégrer ce code dans ton projet. Tu peux également personnaliser les couleurs, les dimensions et d'autres aspects du design pour l'adapter à tes besoins.",
         },
       },
       {
         '@type': 'Question',
-        name: 'Le générateur de dégradés CSS animés est-il gratuit ?',
+        name: 'Le générateur de CSS Box Shadow est-il gratuit ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "Oui, le générateur est totalement gratuit et accessible à tous. Vous pouvez l'utiliser autant de fois que vous le souhaitez pour créer des dégradés CSS animés pour vos projets personnels ou professionnels.",
+          text: "Oui, le générateur est totalement gratuit et accessible à tous. Tu peux l'utiliser autant de fois que tu le souhaites pour créer des designs Box Shadow pour tes projets personnels ou professionnels.",
         },
       },
     ],

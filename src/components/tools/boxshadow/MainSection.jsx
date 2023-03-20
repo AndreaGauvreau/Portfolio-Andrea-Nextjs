@@ -6,40 +6,56 @@ import {colorsDD} from '@/components/ui/colors/colors'
 import './gradientbg.css'
 
 export default function MainSection() {
-  const [blurValue, setBlurValue] = useState(8)
+  const [blurValue, setBlurValue] = useState(100)
   const [lissage, setLissage] = useState(5)
-  const [transparency, setTransparency] = useState(0.8)
+  const [transparency, setTransparency] = useState(4)
   const [checked, setChecked] = useState(true)
   const [checkedShadow, setCheckedShadow] = useState(false)
   const [displayColorPicker, setDisplayColorPicker] = useState(false)
+  const [displayColorPickerBack, setDisplayColorPickerBack] = useState(false)
   const [color, setColor] = useState({r: 0, g: 0, b: 0})
-  const [position, setPosition] = useState({y: 4, x: 4})
+  const [colorBack, setColorBack] = useState({r: 175, g: 11, b: 255})
+  const [position, setPosition] = useState({y: 100, x: 0})
 
   function generateBoxShadows(
-    numShadows,
+    lissage,
     color,
     transparency,
-    lissage,
+    blurValue,
     position,
   ) {
-    const baseOffset = 2.5
-    const baseBlur = 1.5
-    const baseOpacity = 0.02
-    const opacityStep = 0.012
-
     let boxShadow = ''
 
-    for (let i = 0; i < numShadows; i++) {
-      const offsetX = parseFloat((position?.x ** (i / 2)).toFixed(2))
-      const offsetY = parseFloat((position?.y ** (i / 2)).toFixed(2))
-      const blurRadius = parseFloat((lissage ** i).toFixed(1))
-      const opacity = parseFloat((baseOpacity + i * opacityStep * 5).toFixed(3))
+    const maxOffsetX = position.x
+    const maxOffsetY = position.y
+    const maxBlur = blurValue
+    const minOpacity = 0.07
+    const opacityStep = (minOpacity - 0.01) / lissage
 
-      boxShadow += `${offsetX}px ${offsetY}px ${blurRadius}px rgba(${
-        color.r
-      }, ${color.g}, ${color.b}, ${(opacity * transparency).toFixed(3)})`
+    for (let i = 0; i < lissage; i++) {
+      const offsetX = parseFloat((maxOffsetX / (i + 1)).toFixed(2))
+      const offsetY = parseFloat((maxOffsetY / (i + 1)).toFixed(2))
+      const blurRadius = parseFloat((maxBlur / (i + 1)).toFixed(1))
+      const opacity = parseFloat(
+        ((minOpacity - i * opacityStep) * transparency).toFixed(3),
+      )
+      let offsetXValue
+      let offsetYValue
 
-      if (i < numShadows - 1) {
+      if (i == lissage - 1) {
+        offsetXValue = (offsetX / 10).toFixed(1)
+        offsetYValue = (offsetY / 10).toFixed(1)
+      } else if (i == lissage - 2) {
+        offsetXValue = (offsetX / 3).toFixed(1)
+        offsetYValue = (offsetY / 3).toFixed(1)
+      } else {
+        offsetXValue = offsetX.toFixed(1)
+        offsetYValue = offsetY.toFixed(1)
+      }
+
+      boxShadow += `${offsetXValue}px ${offsetYValue}px ${blurRadius}px rgba(${color.r}, ${color.g}, ${color.b}, ${opacity})`
+
+      if (i < lissage - 1) {
         boxShadow += ',\n       '
       }
     }
@@ -51,20 +67,19 @@ export default function MainSection() {
   .myClass{  
     box-shadow:
        ${generateBoxShadows(
-         blurValue,
+         lissage,
          color,
          transparency,
-         lissage,
+         blurValue,
          position,
        )};}`
   const shadowStyle = `${generateBoxShadows(
-    blurValue,
+    lissage,
     color,
     transparency,
-    lissage,
+    blurValue,
     position,
   )}`
-
   return (
     <>
       <Flex
@@ -75,7 +90,7 @@ export default function MainSection() {
         justifyContent="center"
         alignItems={'center'}
         color={'white'}
-        bg={'#ffffff'}
+        bg={`rgba(${colorBack.r}, ${colorBack.g}, ${colorBack.b},1)`}
         position="relative"
       >
         <Box
@@ -119,6 +134,10 @@ export default function MainSection() {
             position={position}
             setPosition={setPosition}
             setLissage={setLissage}
+            setColorBack={setColorBack}
+            colorBack={colorBack}
+            displayColorPickerBack={displayColorPickerBack}
+            setDisplayColorPickerBack={setDisplayColorPickerBack}
           />
         </Flex>
       </Flex>
