@@ -1,12 +1,11 @@
-import Script from 'next/script'
-
+import React from 'react'
 export default function Head() {
   return (
     <>
-      <title>Animate Gradient Css Generator - Générateur Gratuit</title>
+      <title>Smooth Box-Shadow - Générateur de Css</title>
       <meta
         name="description"
-        content="Générateur de Dégradé animé en Css. Copiez coller le code généré dans votre fichier css"
+        content="Générateur gratuit de Box-shadow en Css. Copiez coller le code généré dans votre fichier css"
       />
       <link
         rel="canonical"
