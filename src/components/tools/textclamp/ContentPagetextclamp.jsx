@@ -21,6 +21,7 @@ import {colorsDD} from '@/components/ui/colors/colors'
 import Image from 'next/image'
 import Footer from '@/components/ui/Footer/Footer'
 import Link from 'next/link'
+import {CodeBlock} from '@/components/ui/CodeBlock/CodeBlock'
 
 export default function ContentPagetextclamp() {
   return (
@@ -160,42 +161,115 @@ export default function ContentPagetextclamp() {
               lineHeight={'110%'}
               color={'white'}
             >
-              C'est quoi le <br />
+              Introduction à <br />
               <Text as={'span'} color={colorsDD.green}>
-                GlassMorphism ?
+                la fonction CSS clamp{' '}
               </Text>
             </Heading>
-            <Text color={'white'}>
-              Salut ! T'es prêt à plonger dans le monde fascinant du
-              Glassmorphism ? <br></br>Alors, laisse-moi te présenter ce nouveau
-              style qui fait fureur dans l'univers du design.<br></br>
-              <br></br>Le Glassmorphism, c'est quoi ? En gros, c'est un style de
-              design super cool basé sur l'effet de verre "frosted" (comme du
-              verre dépoli). Il s'appuie sur des éléments de transparence, des
-              ombres floues et des bords arrondis pour donner un look moderne et
-              sophistiqué à tes projets.<br></br>
-              <br></br> L'histoire du Glassmorphism a commencé il y a quelques
-              années, lorsqu'on a vu des designers expérimenter avec des effets
-              de transparence et de flou pour apporter un aspect "glassy" à
-              leurs créations<br></br> Ce style a rapidement gagné en
-              popularité, et aujourd'hui, il est utilisé partout, des interfaces
-              utilisateur aux sites web et aux applications mobiles.<br></br>
-              <br></br> Mais pourquoi le Glassmorphism est-il si populaire ? Eh
-              bien, c'est simple : il a un côté à la fois élégant et innovant,
-              qui permet de créer des designs uniques et mémorables. <br></br>De
-              plus, le Glassmorphism est super versatile – tu peux l'adapter à
-              n'importe quel contexte et l'associer à d'autres tendances pour
-              créer des designs vraiment impressionnants. <br></br>
-              <br></br>Pour te lancer dans l'aventure Glassmorphism, tu peux
-              utiliser le générateur de CSS dédié.<br></br> Grâce à cet outil,
-              tu pourras facilement appliquer l'effet de verre dépoli à tes
-              projets et créer des designs époustouflants en un rien de temps.
-              <br></br>
-              <br></br> Alors, prêt à rejoindre la révolution Glassmorphism ?
-              N'hésite pas à explorer le générateur de CSS Glassmorphism et à
-              t'amuser avec les différentes options.<br></br> Ensemble, créons
-              des designs incroyables et faisons briller le monde du
-              Glassmorphism !
+            <Text>
+              La fonction CSS clamp() est une fonction très utile pour créer des
+              designs responsives, en particulier pour ajuster la taille des
+              polices de caractères. Elle permet de définir une taille minimale,
+              une taille maximale et une taille optimale pour un élément, tout
+              en s'adaptant automatiquement en fonction des dimensions de
+              l'écran ou de la fenêtre. Cette fonction est particulièrement
+              utile pour les designs fluides, où vous souhaitez que la taille
+              des éléments s'ajuste automatiquement en fonction de la taille de
+              l'écran.
+            </Text>
+
+            <Heading as="h3">Comment utiliser la fonction clamp()</Heading>
+            <Text>
+              Pour utiliser la fonction clamp(), vous devez spécifier trois
+              valeurs : la taille minimale, la taille optimale et la taille
+              maximale. La syntaxe générale de la fonction est la suivante :
+            </Text>
+
+            <CodeBlock
+              lineNB={false}
+              language={'css'}
+              code={'font-size: clamp(min, optimal, max);'}
+            />
+
+            <Text>
+              Voici un exemple concret d'utilisation de la fonction `clamp()`
+              pour définir la taille de la police d'un élément en fonction de la
+              largeur de l'écran :
+            </Text>
+            <CodeBlock
+              lineNB={false}
+              language={'css'}
+              code={`h1 { font-size: clamp(24px, 4vw, 36px); }`}
+            />
+
+            <Text>
+              Dans cet exemple, la taille de la police de l'élément `h1` sera de
+              24 pixels au minimum, de 36 pixels au maximum, et elle s'ajustera
+              de manière optimale en fonction de la largeur de l'écran, avec une
+              taille correspondant à 4% de cette largeur (4vw).
+            </Text>
+            <Heading as="h3">Avantages de la fonction clamp()</Heading>
+            <Text>
+              La fonction clamp() présente plusieurs avantages pour les
+              développeurs et les designers. Voici quelques-uns de ces avantages
+              :
+            </Text>
+
+            <Text>
+              1. <strong>Responsive</strong> : La fonction `clamp()` permet de
+              créer des designs responsives sans avoir besoin de plusieurs
+              règles `@media`. Cela simplifie considérablement le code CSS et
+              facilite la maintenance.
+            </Text>
+            <Text>
+              2. <strong>Contrôle précis</strong> : Grâce à la fonction
+              `clamp()`, vous pouvez définir des limites minimales et maximales
+              pour la taille d'un élément, ce qui garantit que votre design
+              reste cohérent et lisible sur tous les écrans.
+            </Text>
+            <Text>
+              3. <strong>Flexibilité</strong> : La fonction `clamp()` peut être
+              utilisée avec diverses unités CSS, telles que les pixels, les
+              pourcentages, les ems, les rems et les unités relatives à la
+              taille de la fenêtre (vh, vw, vmin, vmax). Cela offre une grande
+              flexibilité pour adapter votre design à différents dispositifs et
+              résolutions d'écran.
+            </Text>
+            <Heading as="h3">
+              Exemple d'utilisation de la fonction clamp() pour le font-size
+            </Heading>
+            <Text>
+              Voici un exemple de code CSS utilisant la fonction clamp() pour
+              ajuster la taille de la police d'un paragraphe en fonction de la
+              largeur de l'écran :
+            </Text>
+
+            <CodeBlock
+              lineNB={false}
+              language={'css'}
+              code={`p { font-size: clamp(14px, 2vw, 20px); }`}
+            />
+            <Text>
+              Dans cet exemple, la taille de la police du paragraphe (élément
+              `p`) sera de 14 pixels au minimum, de 20 pixels au maximum, et
+              elle s'ajustera de manière optimale en fonction de la largeur de
+              l'écran, avec une taille correspondant à 2% de cette largeur
+              (2vw).
+            </Text>
+            <Heading as="h3">Conclusion</Heading>
+            <Text>
+              La fonction CSS clamp() est un outil puissant et flexible pour
+              créer des designs responsives et fluides. Elle permet d'ajuster la
+              taille des éléments, comme la taille de la police, en fonction des
+              dimensions de l'écran ou de la fenêtre, tout en définissant des
+              limites minimales et maximales pour garantir une expérience
+              utilisateur cohérente et lisible. N'hésitez pas à expérimenter
+              avec la fonction clamp() et à l'intégrer dans vos projets pour
+              créer des designs plus adaptatifs et maintenables. Elle peut être
+              utilisée non seulement pour ajuster la taille de la police, mais
+              également pour d'autres propriétés CSS, telles que la largeur, la
+              hauteur, et les marges, offrant ainsi une solution complète pour
+              créer des designs responsives et fluides.
             </Text>
             <Stack
               direction={'column'}
@@ -223,8 +297,8 @@ export default function ContentPagetextclamp() {
         <Box p={4}>
           <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
             <Heading fontSize={'3xl'}>
-              FAQ - Questions fréquentes sur le Glassmorphism et le générateur
-              de CSS
+              FAQ - Questions fréquentes sur la fonction css clamp() et le
+              générateur de CSS
             </Heading>
           </Stack>
 
@@ -278,32 +352,35 @@ export const Blob = props => {
 const features = [
   {
     id: 1,
-    title: "Qu'est-ce que le Glassmorphism exactement ?",
-    text: "Le Glassmorphism est une tendance de design qui met l'accent sur l'utilisation d'effets de verre dépoli (frosted glass), avec une combinaison de transparence, d'ombres floues et de bords arrondis pour créer un style moderne et sophistiqué.",
+    title: "Qu'est-ce que la fonction CSS clamp() ?",
+    text: "La fonction CSS clamp() est une fonction permettant d'ajuster une valeur CSS entre une limite minimale et une limite maximale, en fonction d'une valeur préférée. Elle est particulièrement utile pour créer des designs responsives et fluides en ajustant les propriétés telles que la taille de la police, la largeur, la hauteur et les marges.",
   },
   {
     id: 2,
-    title: 'Pourquoi le Glassmorphism est-il populaire ?',
-    text: "Le Glassmorphism est populaire parce qu'il offre un look élégant et innovant, tout en étant suffisamment polyvalent pour s'adapter à de nombreux contextes de design. Il permet de créer des interfaces et des éléments visuels attrayants et mémorables.",
+    title:
+      'Pourquoi la fonction clamp() est-elle pratique pour le responsive design ?',
+    text: "La fonction clamp() est pratique pour le responsive design car elle permet d'ajuster automatiquement les propriétés CSS en fonction des dimensions de l'écran ou de la fenêtre, tout en définissant des limites minimales et maximales pour garantir une expérience utilisateur cohérente et lisible.",
   },
   {
     id: 3,
-    title: 'Comment fonctionne le générateur de CSS Glassmorphism ?',
-    text: 'le générateur de CSS Glassmorphism te permet de personnaliser les éléments clés du style, tels que la transparence, les ombres et les bords arrondis, et de générer automatiquement le code CSS correspondant. Il suffit de sélectionner les options souhaitées et de copier-coller le code dans ton projet.',
+    title: 'Comment fonctionne le générateur gratuit en ligne de clamp() ?',
+    text: 'Le générateur de clamp() en ligne te permet de personnaliser les éléments clés de la fonction, tels que les limites minimale et maximale et la valeur préférée, puis de générer automatiquement le code CSS correspondant. Il suffit de sélectionner les options souhaitées et de copier-coller le code dans ton projet.',
   },
   {
     id: 4,
-    title: 'Est-ce que le Glassmorphism fonctionne sur tous les navigateurs ?',
-    text: "Le Glassmorphism fonctionne sur la plupart des navigateurs modernes, mais il peut y avoir des problèmes de compatibilité avec certains navigateurs plus anciens. Dans ces cas-là, il est recommandé d'utiliser des préfixes spécifiques aux navigateurs ou des solutions de repli pour assurer une expérience utilisateur cohérente.",
+    title:
+      'Est-ce que la fonction CSS clamp() est compatible avec tous les navigateurs ?',
+    text: "La fonction CSS clamp() est compatible avec la plupart des navigateurs modernes, y compris Chrome, Firefox, Safari et Edge. Cependant, elle n'est pas prise en charge par Internet Explorer. Pour assurer une expérience utilisateur cohérente sur les anciens navigateurs, il est recommandé d'utiliser des solutions de repli ou des techniques alternatives.",
   },
   {
     id: 5,
-    title: 'Comment puis-je adapter le Glassmorphism à mon propre projet ?',
-    text: "Il te suffit d'utiliser le générateur pour créer le code CSS correspondant à l'effet Glassmorphism souhaité, puis d'intégrer ce code dans ton projet. Tu peux également personnaliser les couleurs, les dimensions et d'autres aspects du design pour l'adapter à tes besoins.",
+    title:
+      'Comment puis-je intégrer la fonction CSS clamp() dans mon propre projet ?',
+    text: "Il te suffit d'utiliser le générateur en ligne pour créer le code CSS correspondant à l'utilisation de la fonction clamp() souhaitée, puis d'intégrer ce code dans ton projet. Tu peux également personnaliser les valeurs et les propriétés pour les adapter à tes besoins.",
   },
   {
     id: 6,
-    title: 'Le générateur de CSS Glassmorphism est-il gratuit ?',
-    text: "Oui, le générateur est totalement gratuit et accessible à tous. Tu peux l'utiliser autant de fois que tu le souhaites pour créer des designs Glassmorphism pour tes projets personnels ou professionnels.",
+    title: 'Le générateur en ligne de clamp() est-il gratuit ?',
+    text: "Oui, le générateur de clamp() en ligne est totalement gratuit et accessible à tous. Tu peux l'utiliser autant de fois que tu le souhaites pour créer des designs responsives et fluides pour tes projets personnels ou professionnels.",
   },
 ]
