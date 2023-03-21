@@ -37,6 +37,17 @@ export default function Gradient({versionG, colorG, indexG}) {
         right: '20%',
         bottom: '10%',
       })
+    } else if (versionG === 4) {
+      setVersion({
+        width: '40vw',
+        height: '50vh',
+        filter: 'blur(120px)',
+        borderRadius: '50%',
+        background: `${colorG}`,
+        left: '0%',
+        top: '50%',
+        transform: 'translate(-50%,-50%)',
+      })
     }
   }, [colorG, versionG])
 

@@ -19,7 +19,7 @@ export default function Canvas3d({mousePos}) {
     <>
       {isMounted ? (
         <Suspense fallback={<Loader progress={progress} />}>
-          <Box h={{base: '400px', md: '550px'}} w={'400px'}>
+          <Box h={{base: '400px', md: '450px', lg: '550px'}} w={'400px'}>
             <Canvas
               flat
               camera={{

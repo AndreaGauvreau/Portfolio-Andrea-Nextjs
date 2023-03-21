@@ -39,7 +39,7 @@ export default function Competences({mousePos}) {
       position="relative"
     >
       <Flex
-        w={{base: '100%', md: '100%', lg: '1024px'}}
+        w={{base: '100%', md: '60%', lg: '1024px'}}
         flexDirection={{base: 'column', md: 'column', lg: 'row'}}
       >
         <Gradient colorG={colorsDD.green} versionG={3} />

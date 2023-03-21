@@ -7,6 +7,7 @@ import Main from '@/components/Home/Main/Main'
 import Competences from '@/components/Home/Competences/Competences'
 import Project from '@/components/Home/Projects/Project'
 import Parcours from '@/components/Home/Parcours/Parcours'
+import ListCompetence from '@/components/Home/ListCompetence/ListCompetence'
 import Contact from '@/components/Home/Contact/Contact'
 import Footer from '@/components/ui/Footer/Footer'
 import dynamic from 'next/dynamic'
@@ -47,6 +48,7 @@ export default function Page() {
         <Menu blur={7} />
         <Main mousePos={mousePos} />
         <Competences mousePos={mousePos} />
+        <ListCompetence />
         <Project />
         <Parcours />
         <Contact />
