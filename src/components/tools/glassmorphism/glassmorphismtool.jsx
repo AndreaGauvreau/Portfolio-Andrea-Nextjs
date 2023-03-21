@@ -18,8 +18,7 @@ import {
 } from '@chakra-ui/react'
 import {ChromePicker} from 'react-color'
 import {motion} from 'framer-motion'
-import {colorsDD} from '@/components/ui/colors/colors'
-import {CheckIcon, CopyIcon} from '@chakra-ui/icons'
+import {CodeBlock} from '@/components/ui/CodeBlock/CodeBlock'
 export default function GlassMorphismTool(props) {
   const {
     blurValue,
@@ -125,7 +124,7 @@ export default function GlassMorphismTool(props) {
         position={'absolute'}
         display={{base: 'none', lg: 'flex'}}
         alignItems="center"
-        bottom={'50px'}
+        bottom={'-120px'}
         right={'-150px'}
         fontSize={80}
         w={'clamp(6.25rem, -25rem + 50vw, 12.5rem)'}
@@ -161,34 +160,46 @@ export default function GlassMorphismTool(props) {
         gap={5}
         alignItems={{base: 'center', lg: 'flex-start'}}
       >
-        <HStack flexDirection={{base: 'column', lg: 'row'}}>
-          <Text fontSize={'md'}>Intensité sur Flou</Text>
-          <Slider
-            min={0}
-            w={200}
-            max={20}
-            step={1}
-            colorScheme="pink"
-            value={blurValue}
-            onChange={value => setBlurValue(value)}
-          >
-            <SliderMark value={5} mt="3" ml="-2.5" fontSize="xs">
-              5px
-            </SliderMark>
-            <SliderMark value={15} mt="3" ml="-2.5" fontSize="xs">
-              15px
-            </SliderMark>
-            <SliderTrack>
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb boxSize={5} />
-          </Slider>
-        </HStack>
+        <Flex
+          flexDirection={{base: 'column', lg: 'row'}}
+          justifyContent={'space-between'}
+          alignItems={'space-between'}
+          w={'full'}
+        >
+          <Text fontSize={'md'}>Flou</Text>
+          <Box>
+            <Slider
+              min={0}
+              w={150}
+              max={20}
+              step={1}
+              colorScheme="pink"
+              value={blurValue}
+              onChange={value => setBlurValue(value)}
+            >
+              <SliderMark value={5} mt="3" ml="-2.5" fontSize="xs">
+                5px
+              </SliderMark>
+              <SliderMark value={15} mt="3" ml="-2.5" fontSize="xs">
+                15px
+              </SliderMark>
+              <SliderTrack>
+                <SliderFilledTrack />
+              </SliderTrack>
+              <SliderThumb boxSize={5} />
+            </Slider>
+          </Box>
+        </Flex>
 
-        <HStack flexDirection={{base: 'column', lg: 'row'}}>
-          <Text fontSize={'md'}>Transparence</Text>
+        <Flex
+          flexDirection={{base: 'column', lg: 'row'}}
+          justifyContent={'space-between'}
+          alignItems={'space-between'}
+          w={'full'}
+        >
+          <Text fontSize={'md'}>Opacité</Text>
           <Slider
-            w={200}
+            w={150}
             min={0}
             max={1}
             step={0.05}
@@ -208,7 +219,7 @@ export default function GlassMorphismTool(props) {
             </SliderTrack>
             <SliderThumb boxSize={5} />
           </Slider>
-        </HStack>
+        </Flex>
 
         <HStack>
           <Button
@@ -244,7 +255,7 @@ export default function GlassMorphismTool(props) {
           <Checkbox
             size="md"
             color={'white'}
-            colorScheme={'whiteAlpha'}
+            colorScheme={'pink'}
             isChecked={checked}
             onChange={event => setChecked(event.target.checked)}
           >
@@ -253,7 +264,7 @@ export default function GlassMorphismTool(props) {
           <Checkbox
             size="md"
             color={'white'}
-            colorScheme={'whiteAlpha'}
+            colorScheme={'pink'}
             isChecked={checkedShadow}
             onChange={event => setCheckedShadow(event.target.checked)}
           >
@@ -261,53 +272,21 @@ export default function GlassMorphismTool(props) {
           </Checkbox>
         </HStack>
       </VStack>
-      <VStack
-        flex="1"
-        justifyContent={{base: 'center', lg: 'flex-start'}}
-        alignItems={{base: 'center', lg: 'flex-start'}}
-        pl={'20px'}
-        pt={'20px'}
-        bg={'#ffffff10'}
-        pb={'20px'}
-        borderRadius={10}
-      >
-        <Text fontSize={'15px'}>
-          {checkedShadow
-            ? `box-shadow: 0 8px 32px 0 rgba( 20, 20, 20, 0.25 );`
-            : ''}
-          <br></br>
-          background: rgba({color.r}, {color.g}, {color.b},
-          {transparency.toFixed(2)} );<br></br>
-          backdrop-filter: blur( {blurValue}px );<br></br>
-          -webkit-backdrop-filter: blur( {blurValue}px );<br></br>
-          border-radius: 10px;<br></br>
-          {checked ? `border: 1px solid rgba( 255,255,255, 0.18 );` : ''}
-        </Text>
-        <IconButton
-          colorScheme={'whiteAlpha'}
-          onClick={handleButtonClick}
-          marginTop="10px"
-          pl={2}
-          leftIcon={isCopied ? <CheckIcon /> : <CopyIcon />}
-          disabled={isCopied}
-        />
-        <textarea
-          ref={textRef}
-          value={`background: rgba( ${color.r}, ${color.g}, ${
-            color.b
-          }, ${transparency.toFixed(2)} );
-box-shadow: 0 8px 32px 0 rgba( 20, 20, 20, 0.25  );
-backdrop-filter: blur( ${blurValue}px );
--webkit-backdrop-filter: blur( ${blurValue}px );
-border-radius: 10px;
-${checked ? `border: 1px solid rgba( 255,255,255, 0.18 );` : ''}
-      `}
-          style={{
-            position: 'absolute',
-            left: '-9999px',
-          }}
-        />
-      </VStack>
+
+      <CodeBlock
+        lineNB={false}
+        language={'css'}
+        code={`.className{
+   background: rgba(${color.r},${color.g},${color.b},${transparency.toFixed(
+          2,
+        )});
+   box-shadow: 0 8px 32px 0 rgba(20,20,20,0.25);
+   backdrop-filter: blur(${blurValue}px);
+   -webkit-backdrop-filter: blur(${blurValue}px);
+   border-radius: 10px;
+   ${checked ? `border: 1px solid rgba(255,255,255,0.18);` : ''}
+}`}
+      />
     </Flex>
   )
 }

@@ -1,8 +1,8 @@
 'use client'
-import React, {Suspense, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Box, Flex, Heading, Text} from '@chakra-ui/react'
 import GradientTool from '@/components/tools/gradient/GradientTool'
-import {colorsDD} from '@/components/ui/colors/colors'
+import {CodeBlock} from '@/components/ui/CodeBlock/CodeBlock'
 import CodeSection from './CodeSection'
 export default function MainSection() {
   const [blurValue, setBlurValue] = useState(8)
@@ -94,7 +94,7 @@ export default function MainSection() {
             animate={animate}
           />
         </Flex>
-        <CodeSection copyValue={gradientColor}>{gradientColor}</CodeSection>
+        <CodeBlock lineNB={false} language={'css'} code={gradientColor} />
       </Flex>
     </>
   )

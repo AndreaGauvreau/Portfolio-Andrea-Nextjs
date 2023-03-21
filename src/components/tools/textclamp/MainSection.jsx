@@ -131,8 +131,8 @@ export default function MainSection() {
           p={10}
           gap={10}
           borderRadius={10}
-          maxW={{base: '90vw', md: 'auto'}}
-          overflow="scroll"
+          maxW={{base: '90vw', md: '100vw'}}
+          overflow={{base: 'scroll', md: 'visible'}}
         >
           <Box
             position="relative"
