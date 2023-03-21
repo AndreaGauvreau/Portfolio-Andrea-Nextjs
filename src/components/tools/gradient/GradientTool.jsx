@@ -15,15 +15,10 @@ import {
   SliderFilledTrack,
   SliderTrack,
   Button,
-  RangeSlider,
   Slider,
   Icon,
-  Badge,
   Tag,
   TagLabel,
-  Editable,
-  EditablePreview,
-  EditableInput,
   useToast,
   Popover,
   PopoverTrigger,
@@ -34,8 +29,6 @@ import {
   PopoverBody,
   InputGroup,
   Input,
-  InputRightElement,
-  IconButton,
 } from '@chakra-ui/react'
 import {HuePicker, AlphaPicker} from 'react-color'
 import {
@@ -45,22 +38,14 @@ import {
   CircularThumb,
   useCircularInputContext,
 } from 'react-circular-input'
-import {
-  hexToRgb,
-  rgbaToHex,
-  isColorTooDark,
-  isValidHexColor,
-} from '/src/helpers/function.js'
-import {CloseIcon, DeleteIcon, SpinnerIcon, StarIcon} from '@chakra-ui/icons'
+import {hexToRgb, rgbaToHex, isColorTooDark} from '/src/helpers/function.js'
+import {DeleteIcon, StarIcon} from '@chakra-ui/icons'
 import {colorsDD} from '/src/components/ui/colors/colors'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function GradientTool(props) {
   const {
-    blurValue,
-    transparency,
-    checked,
     angle,
     setAngle,
     alpha,
@@ -144,7 +129,6 @@ export default function GradientTool(props) {
     }
   }
   const [inputColor, setInputColor] = useState('')
-  const [error, setError] = useState('')
   const [state, dispatch] = useReducer(trackerReducer, initialState)
 
   const addTracker = (defaultColor, alpha) => {
@@ -189,29 +173,19 @@ export default function GradientTool(props) {
     a: alpha,
   }
 
-  const hexColor = rgbaToHex(rgbaColor)
-
-  const valueToCopy = `background: rgba( ${rgbaColor.r}, ${rgbaColor.g}, ${
-    rgbaColor.b
-  }, ${transparency.toFixed(2)} );
-  box-shadow: 0 8px 32px 0 rgba( 20, 20, 20, 0.25  );
-  backdrop-filter: blur( ${blurValue}px );
-  -webkit-backdrop-filter: blur( ${blurValue}px );
-  border-radius: 10px;
-  ${checked ? `border: 1px solid rgba( 255,255,255, 0.18 );` : ''}
-  `
   const updateGradientColor = () => {
     const sortedTrackers = [...state.trackers].sort((a, b) => a.value - b.value)
     const gradientColors = sortedTrackers
       .map(
         tracker =>
-          `rgba(${hexToRgb(tracker.color)},${tracker.alpha}) ${tracker.value}%`,
+          `
+      rgba(${hexToRgb(tracker.color)},${tracker.alpha}) ${tracker.value}%`,
       )
-      .join(', ')
+      .join(',')
 
     const newGradient = `linear-gradient(${Math.round(
       angle,
-    )}deg, ${gradientColors})`
+    )}deg,${gradientColors})`
     setGradientColor(newGradient)
   }
 
@@ -393,71 +367,82 @@ export default function GradientTool(props) {
             alignItems={'center'}
             mt={20}
           >
-            <Button
-              colorScheme={'whiteAlpha'}
-              onClick={() => addTracker('#ffffff', '0.5')}
+            <Flex
+              flexWrap={'wrap'}
+              gap={2}
+              w={'full'}
+              maxH={'82px'}
+              overflowX={'scroll'}
             >
-              +
-            </Button>
-            {state?.trackers?.map((tracker, index) => (
-              <Popover key={index}>
-                <PopoverTrigger>
-                  <Tag
-                    bg={tracker?.color + 20}
-                    transition={'0.5s'}
-                    borderRadius={5}
-                    justifyContent="center"
-                    alignItems={'center'}
-                    p={2}
-                    onClick={() => setLastTouchedTracker(tracker.id)}
-                    color={
-                      isColorTooDark(tracker?.color) ? 'white' : tracker?.color
-                    }
-                    border={
-                      lastTouchedTracker === tracker?.id
-                        ? `2px solid ${
+              <Button
+                colorScheme={'whiteAlpha'}
+                onClick={() => addTracker('#ffffff', '0.5')}
+                color={'white'}
+              >
+                +
+              </Button>
+              {state?.trackers?.map((tracker, index) => (
+                <Popover key={index}>
+                  <PopoverTrigger>
+                    <Tag
+                      bg={tracker?.color + 20}
+                      transition={'0.5s'}
+                      borderRadius={5}
+                      justifyContent="center"
+                      alignItems={'center'}
+                      p={2}
+                      onClick={() => setLastTouchedTracker(tracker.id)}
+                      color={
+                        isColorTooDark(tracker?.color)
+                          ? 'white'
+                          : tracker?.color
+                      }
+                      border={
+                        lastTouchedTracker === tracker?.id
+                          ? `2px solid ${
+                              isColorTooDark(tracker?.color)
+                                ? 'white'
+                                : tracker?.color
+                            }`
+                          : '2px solid #ffffff00'
+                      }
+                    >
+                      <TagLabel>{tracker?.color}</TagLabel>
+                      {state?.trackers?.length < 3 ? (
+                        ''
+                      ) : (
+                        <Icon
+                          as={DeleteIcon}
+                          color={
                             isColorTooDark(tracker?.color)
                               ? 'white'
                               : tracker?.color
-                          }`
-                        : '2px solid #ffffff00'
-                    }
-                  >
-                    <TagLabel>{tracker?.color}</TagLabel>
-                    {state?.trackers?.length < 3 ? (
-                      ''
-                    ) : (
-                      <Icon
-                        as={DeleteIcon}
-                        color={
-                          isColorTooDark(tracker?.color)
-                            ? 'white'
-                            : tracker?.color
-                        }
-                        onClick={() => deleteTracker(tracker.id)}
-                        cursor={'pointer'}
-                        ml={2}
-                      />
-                    )}{' '}
-                  </Tag>
-                </PopoverTrigger>
-                <PopoverContent bg={colorsDD.bgcolor}>
-                  <PopoverArrow />
-                  <PopoverCloseButton />
-                  <PopoverHeader>Modifier la couleur</PopoverHeader>
-                  <PopoverBody>
-                    <InputGroup size="md">
-                      <Input
-                        placeholder="Entrez la couleur hex"
-                        defaultValue={tracker?.color}
-                        onChange={e => setInputColor(e.target?.value ?? '')}
-                        onKeyDown={e => handleKeyDown(e, tracker.id)}
-                      />
-                    </InputGroup>
-                  </PopoverBody>
-                </PopoverContent>
-              </Popover>
-            ))}{' '}
+                          }
+                          onClick={() => deleteTracker(tracker.id)}
+                          cursor={'pointer'}
+                          ml={2}
+                        />
+                      )}
+                    </Tag>
+                  </PopoverTrigger>
+                  <PopoverContent bg={colorsDD.bgcolor}>
+                    <PopoverArrow />
+                    <PopoverCloseButton />
+                    <PopoverHeader>Modifier la couleur</PopoverHeader>
+                    <PopoverBody>
+                      <InputGroup size="md">
+                        <Input
+                          placeholder="Entrez la couleur hex"
+                          defaultValue={tracker?.color}
+                          onChange={e => setInputColor(e.target?.value ?? '')}
+                          onKeyDown={e => handleKeyDown(e, tracker.id)}
+                        />
+                      </InputGroup>
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
+              ))}
+            </Flex>
             <Link
               href={animate ? '/tools/gradient-animation' : '/tools/gradient'}
             >
@@ -477,16 +462,6 @@ export default function GradientTool(props) {
           </Flex>
         </Flex>
       </VStack>
-
-      {/*<CodeSection copyValue={valueToCopy}>
-        <GradientCode
-          checkedShadow={checkedShadow}
-          color={color}
-          transparency={transparency}
-          blurValue={blurValue}
-          checked={checked}
-        />
-          </CodeSection>*/}
     </Flex>
   )
 }

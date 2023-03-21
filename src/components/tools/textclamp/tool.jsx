@@ -95,7 +95,7 @@ export default function Tool(props) {
           </FormControl>
         ))}
       </Grid>
-      <Flex w={'full'} maxW={{base: '80vw', md: 'full'}}>
+      <Flex w={'full'} maxW={{base: '80vw', md: '100vw'}}>
         <CodeBlock lineNB={false} language={'css'} code={codeCopy} />
       </Flex>
     </Flex>
