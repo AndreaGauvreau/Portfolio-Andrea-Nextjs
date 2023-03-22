@@ -27,11 +27,12 @@ export default function Parcours() {
         w={{base: '100%', md: '100%', lg: '1024px'}}
         flexDirection={{base: 'column', md: 'column', lg: 'row'}}
         bgColor={{base: '#19191D', md: '#19191D', lg: '#ffffff00'}}
+        alignItems={'center'}
         borderRadius={20}
         p={{base: 5, md: 5, lg: 0}}
       >
         <Flex
-          w={{base: '100%', md: '100%', lg: '50%'}}
+          w={{base: '100%', md: '60%', lg: '50%'}}
           alignItems={'center'}
           justifyContent={'center'}
           h={{base: '100%', md: '100%', lg: '100vh'}}
@@ -47,10 +48,10 @@ export default function Parcours() {
           />
         </Flex>
         <Flex
-          w={{base: '100%', md: '100%', lg: '45%'}}
+          w={{base: '100%', md: '60%', lg: '45%'}}
           flexDirection={'column'}
           gap={5}
-          pb={{base: 5, md: 0}}
+          pb={{base: 5, md: 10}}
           justifyContent={'center'}
           alignItems={{base: 'center', md: 'center', lg: 'flex-start'}}
         >

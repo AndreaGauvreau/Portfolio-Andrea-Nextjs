@@ -68,6 +68,7 @@ export default function Main({mousePos}) {
         as="h1"
         zIndex={2}
         mb={10}
+        mt={{base: 0, md: 10, lg: 0}}
       >
         Votre développeur Front-end qui va propulser 🚀 votre projet
       </Heading>

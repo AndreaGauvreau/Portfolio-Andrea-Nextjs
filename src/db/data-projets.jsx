@@ -410,3 +410,128 @@ export const useGetDataProjet = slug => {
 
   return {data, loading, error}
 }
+
+export const competencesDatas = [
+  {
+    competences: 'TypeScript',
+    pays: 'France',
+    id: 'Paris',
+    description:
+      "Comme la langue française, élégante et structurée, TypeScript apporte de la clarté et de la rigueur à vos projets JavaScript. En ajoutant un typage statique, il permet d'écrire un code plus sûr et plus compréhensible, tout comme la beauté et la précision de la langue française captivent l'attention.",
+    projets: [1, 2, 3],
+    montravail:
+      "J'ai conçu plusieurs interfaces en utilisant la technologie TypeScript.",
+  },
+  {
+    competences: 'React',
+    pays: 'États-Unis',
+    id: 'United States',
+
+    description:
+      'Tout comme le "melting-pot" culturel américain fusionne des idées et des influences diverses, React combine des composants réutilisables et un état facile à gérer pour créer des applications Web harmonieuses et performantes.',
+    projets: [4, 5, 6],
+    montravail:
+      "J'ai développé de nombreuses applications Web en utilisant React pour créer des interfaces modernes et réactives.",
+  },
+  {
+    competences: 'Next.js',
+    pays: 'Japon',
+    id: 'Japan',
+    description:
+      "À l'image du Shinkansen, le train à grande vitesse japonais qui symbolise l'innovation et l'efficacité, Next.js propulse vos applications Web vers de nouveaux sommets en offrant des performances inégalées et un développement rapide.",
+    projets: [7, 8, 9],
+    montravail:
+      "J'ai utilisé Next.js pour construire des applications Web performantes et optimisées avec un routage dynamique et une génération de pages statiques.",
+  },
+  {
+    competences: 'Three.js',
+    pays: 'Inde',
+    id: 'India',
+    description:
+      "Les épices de l'Inde sont faites pour apporter du goût à vos plats, tout comme Three.js est là pour relever votre site avec ses saveurs graphiques et ses animations époustouflantes.",
+    projets: [10, 11, 12],
+    montravail:
+      "J'ai intégré Three.js dans plusieurs projets pour créer des visualisations 3D interactives et des expériences immersives.",
+  },
+  {
+    competences: 'GraphQL',
+    pays: 'Chine',
+    id: 'China',
+    description:
+      "Comme la Chine est un pays aux multiples facettes où tradition et modernité cohabitent, GraphQL s'adapte à vos besoins en offrant une interface unifiée et flexible pour interroger et manipuler les données de vos applications Web.",
+    projets: [13, 14, 15],
+    montravail:
+      "J'ai mis en place des API GraphQL pour faciliter l'accès aux données et améliorer la communication entre le client et le serveur.",
+  },
+  {
+    competences: 'Jest Test',
+    pays: 'Allemagne',
+    id: 'Germany',
+    description:
+      "Tout comme les voitures allemandes sont réputées pour leur fiabilité et leur ingénierie de précision, Jest Test s'assure que vos applications fonctionnent sans faille en fournissant des tests précis et fiables.",
+    projets: [16, 17, 18],
+    montravail:
+      "J'ai utilisé Jest Test pour garantir la qualité et la fiabilité des applications en créant et en maintenant des tests unitaires et d'intégration.",
+  },
+  {
+    competences: 'Chakra UI',
+    pays: 'Brésil',
+    id: 'Brazil',
+    description:
+      "À l'image du Brésil, terre de contrastes et de diversité, Chakra UI apporte de la vie à vos applications en fournissant une bibliothèque de composants accessibles et esthétiquement variés pour refléter les goûts de tous les utilisateurs.",
+    projets: [19, 20, 21],
+    montravail:
+      "J'ai utilisé Chakra UI pour créer des interfaces utilisateur accessibles et attrayantes, en mettant l'accent sur l'expérience utilisateur et la conformité aux normes d'accessibilité.",
+  },
+  {
+    competences: 'Formik',
+    pays: 'Italie',
+    id: 'Italy',
+    description:
+      'Comme une pizza italienne, savoureuse et adaptable à une infinité de garnitures, Formik est un outil polyvalent pour gérer les formulaires dans vos applications React, rendant leur création et leur validation aussi simple et délicieuse que votre pizza préférée.',
+    projets: [22, 23, 24],
+    montravail:
+      "J'ai utilisé Formik pour gérer la logique des formulaires et la validation dans plusieurs applications React, simplifiant ainsi le processus de création et de gestion des formulaires.",
+  },
+  {
+    competences: 'GitHub',
+    pays: 'Royaume-Uni',
+    id: 'United Kingdom',
+
+    description:
+      'À l\'image du système de métro londonien, le "Tube", qui connecte les différentes parties de la ville et permet un transport efficace et organisé, GitHub relie les développeurs du monde entier en leur offrant un espace de collaboration et de partage pour leurs projets.',
+    projets: [25, 26, 27],
+    montravail:
+      "J'ai utilisé GitHub pour collaborer avec des équipes de développeurs, gérer les versions de mes projets et contribuer à des projets open-source.",
+  },
+]
+
+export const useGetDataCompetences = pays => {
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    if (pays) {
+      try {
+        const project = competencesDatas.find(item => item.id === pays)
+
+        if (project) {
+          setData(project)
+          setLoading(false)
+        } else {
+          setError('Aucun projet trouvé avec ce slug.')
+          setLoading(false)
+        }
+      } catch (err) {
+        setError('Une erreur est survenue lors de la récupération des données.')
+        setLoading(false)
+      }
+    } else {
+      setError('Slug non fourni.')
+      setLoading(false)
+    }
+  }, [pays])
+
+  return {data, loading, error}
+}

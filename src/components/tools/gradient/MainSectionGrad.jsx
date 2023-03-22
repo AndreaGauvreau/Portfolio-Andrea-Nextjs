@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react'
 import {Box, Flex, Heading, Text} from '@chakra-ui/react'
 import GradientTool from '@/components/tools/gradient/GradientTool'
 import {CodeBlock} from '@/components/ui/CodeBlock/CodeBlock'
-import CodeSection from './CodeSection'
 export default function MainSection() {
   const [blurValue, setBlurValue] = useState(8)
   const [isLoading, setIsLoading] = useState(true)

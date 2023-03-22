@@ -21,10 +21,10 @@ export default function Contact() {
       position={'relative'}
     >
       <Flex
-        w={'1024px'}
+        w={{base: '100vw', lg: '1024px'}}
         h={'70%'}
         flexDirection={{base: 'column', md: 'column', lg: 'row'}}
-        p={{base: 5, md: 5, lg: 0}}
+        p={{base: 5, md: 3, lg: 0}}
         gap={10}
         position="relative"
       >
