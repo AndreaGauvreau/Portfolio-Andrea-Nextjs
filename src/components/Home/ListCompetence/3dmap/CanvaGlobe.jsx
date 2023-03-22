@@ -1,22 +1,21 @@
 import React, {forwardRef, useEffect, useRef, useState} from 'react'
 import {Canvas, useFrame} from '@react-three/fiber'
-import {
-  Sphere,
-  OrbitControls,
-  PresentationControls,
-  SpotLight,
-  Lightformer,
-  Environment,
-  Sky,
-} from '@react-three/drei'
+import {Sphere, PresentationControls} from '@react-three/drei'
 import * as THREE from 'three'
 import {useLoader} from '@react-three/fiber'
 import {cityDatas} from './mapDatas'
 import {colorsDD} from '@/components/ui/colors/colors'
 
-export default function CanvaGlobe({onClickCountry, selectedCountry, data}) {
-  const groupRef = useRef()
-
+export default function CanvaGlobe({
+  onClickCountry,
+  selectedCountry,
+  data,
+  loadingApi,
+  setLoadingApi,
+}) {
+  useEffect(() => {
+    setLoadingApi({list: true})
+  }, [])
   return (
     <Canvas>
       <ambientLight intensity={0.5} />
@@ -27,7 +26,7 @@ export default function CanvaGlobe({onClickCountry, selectedCountry, data}) {
         snap={false} // Snap-back to center (can also be a spring config)
         speed={1} // Speed factor
         zoom={1} // Zoom factor when half the polar-max is reached
-        rotation={[0, 0.3, 0]} // Default rotation
+        rotation={[0, 3, 0]} // Default rotation
         polar={[-Infinity, Infinity]} // Vertical limits
         azimuth={[-Infinity, Infinity]} // Horizontal limits
         config={{mass: 1, tension: 170, friction: 26}} // Spring config

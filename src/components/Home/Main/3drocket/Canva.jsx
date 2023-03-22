@@ -8,7 +8,7 @@ import Boite from './Boite'
 import Fusee from './Fusee'
 import {colorsDD} from '@/components/ui/colors/colors'
 
-export default function Canvas3d({mousePos}) {
+export default function Canvas3d({mousePos, setLoadingApi}) {
   const {progress} = useProgress()
   const [isMounted, setIsMounted] = useState(false)
 
@@ -41,7 +41,7 @@ export default function Canvas3d({mousePos}) {
                 azimuth={[-1, Math.PI / 4]} // Horizontal limits
                 config={{mass: 1, tension: 170, friction: 26}} // Spring config
               >
-                <Boite mousePos={mousePos} />
+                <Boite mousePos={mousePos} setLoadingApi={setLoadingApi} />
                 <Fusee mousePos={mousePos} />
               </PresentationControls>
             </Canvas>

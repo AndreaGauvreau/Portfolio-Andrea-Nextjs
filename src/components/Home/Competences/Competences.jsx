@@ -6,7 +6,7 @@ import Gradient from '@/components/ui/GradientBgElems/Gradient'
 import CanvasEgg from './3dEgg/Canva'
 import Image from 'next/image'
 
-export default function Competences({mousePos}) {
+export default function Competences({mousePos, setLoadingApi, loadingApi}) {
   const [isHovering, setIsHovering] = useState(false)
   const [cursorData, setCursorData] = useContext(CursorContext)
 
@@ -108,7 +108,15 @@ export default function Competences({mousePos}) {
               w={{base: '200px', md: '200px', lg: '250px'}}
               h={{base: '200px', md: '200px', lg: '250px'}}
             >
-              <CanvasEgg mousePos={mousePos} />
+              {loadingApi.main === false ? (
+                ''
+              ) : (
+                <CanvasEgg
+                  mousePos={mousePos}
+                  loadingApi={loadingApi}
+                  setLoadingApi={setLoadingApi}
+                />
+              )}
             </Box>
           </Box>
           <Flex gap={1} display={{base: 'none', md: 'none', lg: 'flex'}}>

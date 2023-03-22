@@ -5,7 +5,7 @@ import {Badge, Box, Flex, Heading, Text} from '@chakra-ui/react'
 import React, {useState} from 'react'
 import CanvaGlobe from './3dmap/CanvaGlobe'
 
-export default function ListCompetence() {
+export default function ListCompetence({loadingApi, setLoadingApi}) {
   const [selectedCountry, setSelectedCountry] = useState(null)
   const {data, loading, error} = useGetDataCompetences(selectedCountry)
 
@@ -22,11 +22,17 @@ export default function ListCompetence() {
         position="absolute"
         left={{base: '0%', lg: '-40%'}}
       >
-        <CanvaGlobe
-          onClickCountry={onClickCountry}
-          selectedCountry={selectedCountry}
-          data={data}
-        />
+        {loadingApi.egg === false ? (
+          ''
+        ) : (
+          <CanvaGlobe
+            onClickCountry={onClickCountry}
+            selectedCountry={selectedCountry}
+            data={data}
+            setLoadingApi={setLoadingApi}
+            loadingApi={loadingApi}
+          />
+        )}
       </Box>
       <Flex
         flexDirection={{base: 'column', lg: 'row'}}
