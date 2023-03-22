@@ -9,12 +9,18 @@ import Egg from './Egg'
 import TopLight from './TopLight'
 import Loader from '@/components/ui/3dLoader'
 
-export default function CanvasEgg({hoverEgg, mousePos}) {
+export default function CanvasEgg({
+  hoverEgg,
+  mousePos,
+  setLoadingApi,
+  loadingApi,
+}) {
   const {progress} = useProgress()
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
+    setLoadingApi({egg: true})
   }, [])
 
   return (

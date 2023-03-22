@@ -6,7 +6,7 @@ import AnimationDD from './animationDd'
 import ButtonDD from '@/components/ui/ButtonDD/ButtonDD'
 import Cursor from '@/components/ui/cursor/Cursor'
 
-export default function Main({mousePos}) {
+export default function Main({mousePos, setLoadingApi}) {
   return (
     <Flex
       h="100vh"
@@ -37,7 +37,7 @@ export default function Main({mousePos}) {
           position={'relative'}
           zIndex={2}
         >
-          <Canvas3d mousePos={mousePos} />
+          <Canvas3d mousePos={mousePos} setLoadingApi={setLoadingApi} />
           <AnimationDD />
         </Flex>
         <Flex

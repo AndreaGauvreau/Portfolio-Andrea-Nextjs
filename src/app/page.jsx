@@ -7,12 +7,17 @@ import Main from '@/components/Home/Main/Main'
 import Competences from '@/components/Home/Competences/Competences'
 import Project from '@/components/Home/Projects/Project'
 import Parcours from '@/components/Home/Parcours/Parcours'
-import ListCompetence from '@/components/Home/ListCompetence/ListCompetence'
+//import ListCompetence from '@/components/Home/ListCompetence/ListCompetence'
 import Contact from '@/components/Home/Contact/Contact'
 import Footer from '@/components/ui/Footer/Footer'
+import {lazy, Suspense, useEffect, useState} from 'react'
 import dynamic from 'next/dynamic'
-import {useEffect, useState} from 'react'
-import Script from 'next/script'
+import Loader from '@/components/ui/3dLoader'
+import Loading from './loading'
+
+const ListCompetence = dynamic(() =>
+  import('@/components/Home/ListCompetence/ListCompetence'),
+)
 
 export default function Page() {
   //const Project = dynamic(() => import('@/components/Home/Projects/Project'))
@@ -22,6 +27,13 @@ export default function Page() {
   //import('@/components/Home/Competences/Competences'),
   // )
   const [mousePos, setMousePos] = useState({x: 150, y: 250})
+  const [loadingApi, setLoadingApi] = useState({
+    map: false,
+    project: false,
+    main: false,
+    list: false,
+    egg: false,
+  })
 
   useEffect(() => {
     function handleMouseMove(event) {
@@ -41,19 +53,30 @@ export default function Page() {
       document.removeEventListener('touchmove', handleTouchMove)
     }
   }, [])
+
   return (
     <>
-      <Box bgColor="#0d0d12" padding={0} m={0} w={'100%'} overflow={'hidden'}>
-        <Cursor />
-        <Menu blur={7} />
-        <Main mousePos={mousePos} />
-        <Competences mousePos={mousePos} />
-        <ListCompetence />
-        <Project />
-        <Parcours />
-        <Contact />
-        <Footer blur={7} />
-      </Box>
+      {' '}
+      <Suspense fallback={<Loader />}>
+        <Box bgColor="#0d0d12" padding={0} m={0} w={'100%'} overflow={'hidden'}>
+          <Cursor />
+          <Menu blur={7} />
+          <Main mousePos={mousePos} setLoadingApi={setLoadingApi} />
+          <Competences
+            mousePos={mousePos}
+            setLoadingApi={setLoadingApi}
+            loadingApi={loadingApi}
+          />
+          <ListCompetence
+            setLoadingApi={setLoadingApi}
+            loadingApi={loadingApi}
+          />
+          <Project setLoadingApi={setLoadingApi} />
+          <Parcours />
+          <Contact setLoadingApi={setLoadingApi} loadingApi={loadingApi} />
+          <Footer blur={7} />
+        </Box>
+      </Suspense>
     </>
   )
 }

@@ -1,9 +1,9 @@
 'use client'
 import {useTexture, useGLTF, Float} from '@react-three/drei'
 import {useFrame} from '@react-three/fiber'
-import {useRef} from 'react'
+import {useEffect, useRef} from 'react'
 
-export default function Boite({mousePos}) {
+export default function Boite({mousePos, setLoadingApi}) {
   const {nodes} = useGLTF('./model/box.glb')
   const bakedTexture = useTexture('./model/box.jpg')
   bakedTexture.flipY = false
@@ -17,7 +17,9 @@ export default function Boite({mousePos}) {
     mesh2.current.rotation.y = -1.9 + (mouseX * 1.05) / 2
     mesh2.current.rotation.z = 0 + (mouseY * 1.05) / 10
   })
-
+  useEffect(() => {
+    setLoadingApi({main: true})
+  }, [])
   return (
     <>
       <Float>

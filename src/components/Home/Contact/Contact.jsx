@@ -11,7 +11,7 @@ const fontPoppins = Poppins({
   weight: ['600', '900'],
 })
 
-export default function Contact() {
+export default function Contact({setLoadingApi, loadingApi}) {
   return (
     <Flex
       h="100vh"
@@ -60,7 +60,7 @@ export default function Contact() {
               Et voyons ensemble comment pouvons-nous <br></br>faire évoluer
               votre projet !
             </Text>
-            <CanvaHand />
+            {loadingApi.list === false ? '' : <CanvaHand />}
           </Box>
         </Flex>
         <Flex
