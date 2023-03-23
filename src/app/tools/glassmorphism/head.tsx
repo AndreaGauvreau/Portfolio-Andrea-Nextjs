@@ -12,6 +12,10 @@ export default function Head() {
         rel="canonical"
         href="https://www.andrea-gauvreau.fr/tools/glassmorphism"
       />
+      <meta
+        property="og:image"
+        content="https://www.andrea-gauvreau.fr/images/thumbail/glassmorphism-generator.jpg"
+      />
     </>
   )
 }

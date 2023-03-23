@@ -7,7 +7,10 @@ export default function Head() {
         content="Développeur Front End freelance spécialisé en React, NextJS et ThreeJS. Création d'interfaces performantes et innovantes pour vos projets."
       />
       <link rel="canonical" href="https://www.andrea-gauvreau.fr/" />
-      
+      <meta
+        property="og:image"
+        content="https://www.andrea-gauvreau.fr/images/identite/background-andrea.png"
+      />
     </>
   )
 }

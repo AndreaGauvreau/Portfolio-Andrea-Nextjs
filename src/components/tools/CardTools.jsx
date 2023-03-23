@@ -23,7 +23,7 @@ export default function CardTools({data}) {
         rounded={'md'}
         overflow={'hidden'}
       >
-        <Image h={'200px'} w={'full'} src={data?.image} objectFit={'cover'} />
+        <Image h={'170px'} w={'full'} src={data?.image} objectFit={'cover'} />
         <Flex justify={'center'}></Flex>
 
         <Box p={4}>
