@@ -38,10 +38,7 @@ export default function RootLayout({children}) {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.andrea-gauvreau.fr" />
-        <meta
-          property="og:image"
-          content="https://www.andrea-gauvreau.fr/images/identite/background-andrea.png"
-        />
+
         <meta property="business:contact_data:locality" content="Lyon" />
         <meta property="business:contact_data:country_name" content="France" />
         <meta

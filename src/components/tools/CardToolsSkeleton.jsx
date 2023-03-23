@@ -21,7 +21,7 @@ export default function CardToolsSkeleton() {
         rounded={'md'}
         overflow={'hidden'}
       >
-        <Skeleton height="200px" width="full" />
+        <Skeleton height="170px" width="full" />
         <Box p={4}>
           <VStack spacing={4} p={4} align="center">
             <Skeleton h={'33px'} w={'full'} noOfLines={1} />

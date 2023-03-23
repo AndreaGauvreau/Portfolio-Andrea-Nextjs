@@ -11,6 +11,10 @@ export default function Head() {
         rel="canonical"
         href="https://www.andrea-gauvreau.fr/tools/boxshadow"
       />
+      <meta
+        property="og:image"
+        content="https://www.andrea-gauvreau.fr/images/thumbail/box-shadow-generator.jpg"
+      />
     </>
   )
 }
