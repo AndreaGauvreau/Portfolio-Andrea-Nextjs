@@ -5,7 +5,7 @@ export const listTools = [
     lien: '/tools/glassmorphism',
     description:
       'Générez en quelques clics le css parfait pour appliquer vos plus beaux effets de glassmorphism sur votre site',
-    image: '/images/thumbail/glassmorphism-generator.jpg',
+    image: '/images/thumbail/glassMorphism-generator.jpg',
   },
   {
     id: 2,
