@@ -410,11 +410,11 @@ export const useGetDataProjet = slug => {
 
   return {data, loading, error}
 }
-
 export const competencesDatas = [
   {
     competences: 'TypeScript',
     pays: 'France',
+    emoji: '🇫🇷',
     id: 'Paris',
     description:
       "Comme la langue française, élégante et structurée, TypeScript apporte de la clarté et de la rigueur à vos projets JavaScript. En ajoutant un typage statique, il permet d'écrire un code plus sûr et plus compréhensible, tout comme la beauté et la précision de la langue française captivent l'attention.",
@@ -425,8 +425,8 @@ export const competencesDatas = [
   {
     competences: 'React',
     pays: 'États-Unis',
+    emoji: '🇺🇸',
     id: 'United States',
-
     description:
       'Tout comme le "melting-pot" culturel américain fusionne des idées et des influences diverses, React combine des composants réutilisables et un état facile à gérer pour créer des applications Web harmonieuses et performantes.',
     projets: [4, 5, 6],
@@ -436,6 +436,7 @@ export const competencesDatas = [
   {
     competences: 'Next.js',
     pays: 'Japon',
+    emoji: '🇯🇵',
     id: 'Japan',
     description:
       "À l'image du Shinkansen, le train à grande vitesse japonais qui symbolise l'innovation et l'efficacité, Next.js propulse vos applications Web vers de nouveaux sommets en offrant des performances inégalées et un développement rapide.",
@@ -446,6 +447,7 @@ export const competencesDatas = [
   {
     competences: 'Three.js',
     pays: 'Inde',
+    emoji: '🇮🇳',
     id: 'India',
     description:
       "Les épices de l'Inde sont faites pour apporter du goût à vos plats, tout comme Three.js est là pour relever votre site avec ses saveurs graphiques et ses animations époustouflantes.",
@@ -456,6 +458,7 @@ export const competencesDatas = [
   {
     competences: 'GraphQL',
     pays: 'Chine',
+    emoji: '🇨🇳',
     id: 'China',
     description:
       "Comme la Chine est un pays aux multiples facettes où tradition et modernité cohabitent, GraphQL s'adapte à vos besoins en offrant une interface unifiée et flexible pour interroger et manipuler les données de vos applications Web.",
@@ -463,9 +466,11 @@ export const competencesDatas = [
     montravail:
       "J'ai mis en place des API GraphQL pour faciliter l'accès aux données et améliorer la communication entre le client et le serveur.",
   },
+
   {
     competences: 'Jest Test',
     pays: 'Allemagne',
+    emoji: '🇩🇪',
     id: 'Germany',
     description:
       "Tout comme les voitures allemandes sont réputées pour leur fiabilité et leur ingénierie de précision, Jest Test s'assure que vos applications fonctionnent sans faille en fournissant des tests précis et fiables.",
@@ -476,6 +481,7 @@ export const competencesDatas = [
   {
     competences: 'Chakra UI',
     pays: 'Brésil',
+    emoji: '🇧🇷',
     id: 'Brazil',
     description:
       "À l'image du Brésil, terre de contrastes et de diversité, Chakra UI apporte de la vie à vos applications en fournissant une bibliothèque de composants accessibles et esthétiquement variés pour refléter les goûts de tous les utilisateurs.",
@@ -486,6 +492,7 @@ export const competencesDatas = [
   {
     competences: 'Formik',
     pays: 'Italie',
+    emoji: '🇮🇹',
     id: 'Italy',
     description:
       'Comme une pizza italienne, savoureuse et adaptable à une infinité de garnitures, Formik est un outil polyvalent pour gérer les formulaires dans vos applications React, rendant leur création et leur validation aussi simple et délicieuse que votre pizza préférée.',
@@ -496,8 +503,8 @@ export const competencesDatas = [
   {
     competences: 'GitHub',
     pays: 'Royaume-Uni',
+    emoji: '🇬🇧',
     id: 'United Kingdom',
-
     description:
       'À l\'image du système de métro londonien, le "Tube", qui connecte les différentes parties de la ville et permet un transport efficace et organisé, GitHub relie les développeurs du monde entier en leur offrant un espace de collaboration et de partage pour leurs projets.',
     projets: [25, 26, 27],

@@ -57,7 +57,7 @@ export default function Parcours() {
         >
           <Heading
             color={'white'}
-            fontSize={{base: '27px', md: '30px', lg: '40px'}}
+            fontSize={'clamp(27.0px, 21.09px + 1.48vw, 40.00px)'}
             fontWeight={400}
           >
             Un Parcours Atypique

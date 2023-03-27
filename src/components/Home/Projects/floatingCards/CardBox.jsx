@@ -173,7 +173,12 @@ export default function Cards({datas, currentIndex, length}) {
                 </Box>
               </Link>
               <Stack mt="6" spacing="3">
-                <Heading size={{base: 'sm', md: 'md', lg: 'xl'}}>
+                <Heading
+                  fontSize={{
+                    base: '23px',
+                    lg: 'clamp(20.0px, 21.09px + 1.48vw, 40.00px)',
+                  }}
+                >
                   {datas?.title}
                 </Heading>
                 <Text fontSize={{base: 'xs', md: 'sm', lg: 'lg'}}>

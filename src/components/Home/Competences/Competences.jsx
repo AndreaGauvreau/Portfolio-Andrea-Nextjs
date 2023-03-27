@@ -39,7 +39,7 @@ export default function Competences({mousePos, setLoadingApi, loadingApi}) {
       position="relative"
     >
       <Flex
-        w={{base: '100%', md: '60%', lg: '1024px'}}
+        w={{base: '100%', md: '400px', lg: '1024px'}}
         flexDirection={{base: 'column', md: 'column', lg: 'row'}}
       >
         <Gradient colorG={colorsDD.green} versionG={3} />
@@ -47,13 +47,15 @@ export default function Competences({mousePos, setLoadingApi, loadingApi}) {
           w={{base: '100%', md: '100%', lg: '40%'}}
           flexDirection={'column'}
           gap={{base: 0, md: 0, lg: 10}}
+          maxW={{base: '400px', lg: '100%'}}
           position="relative"
-          justifyContent={{base: 'flex-start', md: 'flex-start', lg: 'center'}}
+          justifyContent={{base: 'center', md: 'flex-start', lg: 'center'}}
         >
           <Heading
             variant={'dew'}
             color={'white'}
-            fontSize={{base: '27px', md: '30px', lg: '40px'}}
+            fontSize={'clamp(27.0px, 21.09px + 1.48vw, 40.00px)'}
+            textAlign={{base: 'center', lg: 'left'}}
           >
             Des compétences pour faire{' '}
             <b
@@ -97,11 +99,12 @@ export default function Competences({mousePos, setLoadingApi, loadingApi}) {
               color={'white'}
               display={{base: 'flex', md: 'none', lg: 'none'}}
             >
-              Mes compétences de frontend <br></br>développeur vont transformer
-              <br></br> vos idées en réalisations <br></br>solides et concrètes
-              <br></br> pour propulser votre <br></br>projet au sommet !
+              Mes compétences de frontend développeur vont transformer vos idées
+              en réalisations solides et concrètes pour propulser votre projet
+              au sommet !
             </Text>
             <Box
+              display={{base: 'none', lg: 'inline'}}
               position={'absolute'}
               top={{base: '80px', md: '80px', lg: '80px'}}
               right={'-50px'}

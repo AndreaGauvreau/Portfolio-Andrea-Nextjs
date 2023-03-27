@@ -62,7 +62,7 @@ export default function Main({mousePos, setLoadingApi}) {
         </Flex>
       </Flex>
       <Heading
-        fontSize={{base: '17px', md: '20px', lg: '30px'}}
+        fontSize={'clamp(17.0px, 8.82px + 2.05vw, 35.00px)'}
         textAlign={'center'}
         color={'white'}
         as="h1"
