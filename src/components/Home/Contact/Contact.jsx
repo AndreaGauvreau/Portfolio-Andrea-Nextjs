@@ -41,7 +41,7 @@ export default function Contact({setLoadingApi, loadingApi}) {
             <Heading
               textAlign="center"
               color={colorsDD.bgcolor}
-              fontSize={{base: '27px', md: '30px', lg: '35px'}}
+              fontSize={'clamp(27.0px, 21.09px + 1.48vw, 40.00px)'}
               pt={10}
               pl={10}
               pr={10}

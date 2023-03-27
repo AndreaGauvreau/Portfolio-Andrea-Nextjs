@@ -35,11 +35,17 @@ export default function Prenom() {
             }}
           >
             <Text
-              fontSize={{base: '50px', md: '70px'}}
+              fontSize={{
+                base: '50px',
+                md: ' clamp(50.0px, 20.00px + 3.91vw, 70.00px)',
+              }}
               textAlign="center"
               color={colorsDD.green}
               fontWeight={'900'}
-              lineHeight={{base: '50px', md: '70px'}}
+              lineHeight={{
+                base: '50px',
+                md: ' clamp(50.0px, 20.00px + 3.91vw, 70.00px)',
+              }}
               className={fontPoppins.className}
             >
               andréa
@@ -72,8 +78,14 @@ export default function Prenom() {
               textAlign="center"
               color={'white'}
               fontWeight={'900'}
-              lineHeight={{base: '50px', md: '70px'}}
-              fontSize={{base: '50px', md: '70px'}}
+              lineHeight={{
+                base: '50px',
+                md: ' clamp(50.0px, 20.00px + 3.91vw, 70.00px)',
+              }}
+              fontSize={{
+                base: '50px',
+                md: ' clamp(50.0px, 20.00px + 3.91vw, 70.00px)',
+              }}
               className={fontPoppins.className}
             >
               Gauvreau

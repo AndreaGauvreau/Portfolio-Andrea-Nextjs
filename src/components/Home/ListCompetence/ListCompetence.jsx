@@ -1,7 +1,7 @@
 import {colorsDD} from '@/components/ui/colors/colors'
 import Gradient from '@/components/ui/GradientBgElems/Gradient'
-import {useGetDataCompetences} from '@/db/data-projets'
-import {Badge, Box, Flex, Heading, Text} from '@chakra-ui/react'
+import {competencesDatas, useGetDataCompetences} from '@/db/data-projets'
+import {Badge, Box, Button, Flex, Heading, Text} from '@chakra-ui/react'
 import React, {useState} from 'react'
 import CanvaGlobe from './3dmap/CanvaGlobe'
 
@@ -17,6 +17,7 @@ export default function ListCompetence({loadingApi, setLoadingApi}) {
     <Flex h={{base: '100vh', lg: '120vh'}} position="relative" bg={'#00000090'}>
       <Gradient versionG={4} />
       <Box
+        display={{base: 'none', lg: 'inline'}}
         h={{base: '80vw', md: '50vh', lg: '120vh'}}
         w="100vw"
         position="absolute"
@@ -37,7 +38,7 @@ export default function ListCompetence({loadingApi, setLoadingApi}) {
       <Flex
         flexDirection={{base: 'column', lg: 'row'}}
         w={'100vw'}
-        mt={{base: '30vh', lg: 0}}
+        mt={{base: 0, lg: 0}}
       >
         <Flex w={'40%'}></Flex>
         <Flex
@@ -45,7 +46,7 @@ export default function ListCompetence({loadingApi, setLoadingApi}) {
           px={10}
           ml={{base: 'auto', lg: 0}}
           mr={{base: 'auto', lg: 0}}
-          h={{base: '100vh', lg: '120vh'}}
+          h={{base: '100vh', lg: 'auto'}}
           maxW={'600px'}
           justifyContent={'center'}
           alignItems={'flex-start'}
@@ -53,13 +54,35 @@ export default function ListCompetence({loadingApi, setLoadingApi}) {
           color={'white'}
           gap={5}
         >
-          <Heading>Le tour du monde de mes compétences</Heading>
-          {loading && <div>Chargement...</div>}
-          {!data && (
-            <>
-              <Text>Clique sur l'un des nombreux pays </Text>
-            </>
-          )}
+          <Heading fontSize={'clamp(27.0px, 21.09px + 1.48vw, 40.00px)'}>
+            Le tour du monde de mes compétences
+          </Heading>
+          <Box display={{base: 'none', lg: 'inline'}}>
+            {loading && <div>Chargement...</div>}
+            {!data && (
+              <>
+                <Text>Clique sur l'un des nombreux pays </Text>
+              </>
+            )}
+          </Box>
+          <Flex
+            gap={2}
+            flexWrap={'nowrap'}
+            overflowX={'scroll'}
+            maxW={'80vw'}
+            alignItems="center"
+          >
+            {competencesDatas?.map(e => (
+              <Button
+                onClick={() => setSelectedCountry(e?.id)}
+                bg={selectedCountry === e.id ? '#ffffff' : '#ffffff20'}
+                size="lg"
+                fontSize={{base: '12px', lg: '20px'}}
+              >
+                {e?.emoji}
+              </Button>
+            ))}
+          </Flex>
           {data && (
             <>
               <Flex flexDirection={'row'} justifyContent="center" gap={5}>

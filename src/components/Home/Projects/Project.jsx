@@ -41,7 +41,7 @@ export default function Project() {
           zIndex={10}
           color={'white'}
           textAlign="center"
-          fontSize={{base: '27px', md: '30px', lg: '40px'}}
+          fontSize={'clamp(27.0px, 21.09px + 1.48vw, 40.00px)'}
         >
           Projets après Projets
         </Heading>
