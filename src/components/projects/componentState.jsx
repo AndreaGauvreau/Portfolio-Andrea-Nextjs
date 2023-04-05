@@ -1,7 +1,15 @@
-import {Badge, Box, Button, Flex, Heading, Text} from '@chakra-ui/react'
+import {
+  Badge,
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Skeleton,
+  Text,
+} from '@chakra-ui/react'
 import {ArrowBackIcon, ArrowDownIcon} from '@chakra-ui/icons'
 import Link from 'next/link'
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {CursorContext} from '@/components/ui/cursor/CursorProvider'
 import Cursor from '@/components/ui/cursor/Cursor.jsx'
 import Menu from '@/components/ui/Menu/Menu'
@@ -40,6 +48,7 @@ export function ButtonPageElement({projetDatas}) {
       mouseText: '',
     }))
   }
+
   return (
     <Flex gap={2}>
       <Link
@@ -88,6 +97,11 @@ export function ContentPage({datas, loading, error}) {
   const color1 = coopacityColor(datas?.color1)
   if (loading) {
     return <SkeletonProjetPage datas={datas} />
+  }
+  const [loadingVideo, setLoadingVideo] = useState(true)
+
+  const handleVideoLoad = () => {
+    setLoadingVideo(false)
   }
   return (
     <>
@@ -196,6 +210,48 @@ export function ContentPage({datas, loading, error}) {
                 })}
               </Flex>
             </Flex>
+
+            {datas?.retourVideo ? (
+              <Flex
+                id={'retourclient'}
+                flexDirection={'column'}
+                gap={3}
+                alignItems="center"
+              >
+                <Heading p={2} color={'white'}>
+                  Retour Client
+                </Heading>
+                <Box
+                  width={{base: '350px', md: '480px'}}
+                  height={{base: '100%', md: '270x'}}
+                  m={0}
+                  p={0}
+                  overflow="hidden"
+                  borderRadius={10}
+                  boxShadow={`0px 15px 50px 0px ${datas?.color1}10`}
+                >
+                  {loadingVideo ? (
+                    <Skeleton
+                      width="100%"
+                      height="100%"
+                      startColor={datas?.color1}
+                      endColor={datas?.color2}
+                    />
+                  ) : (
+                    ''
+                  )}
+                  <ReactPlayer
+                    url={datas?.retourVideo}
+                    width="100%"
+                    height="100%"
+                    onReady={handleVideoLoad}
+                    controls
+                  />
+                </Box>
+              </Flex>
+            ) : (
+              ''
+            )}
             <Flex
               id={'details'}
               flexWrap={'wrap'}
@@ -279,35 +335,7 @@ export function ContentPage({datas, loading, error}) {
                 )
               })}
             </Flex>
-            {/* 
-            {datas?.retourVideo ? (
-              <Flex
-                id={'retourclient'}
-                flexDirection={'column'}
-                gap={3}
-                alignItems="center"
-              >
-                <Heading p={2} color={'white'}>
-                  Retour Client
-                </Heading>
-                <Box
-                  width="270px"
-                  height="480px"
-                  m={0}
-                  p={0}
-                  overflow="hidden"
-                  borderRadius={20}
-                >
-                  <ReactPlayer
-                    url={datas?.retourVideo}
-                    width="100%"
-                    height="100%"
-                  />
-                </Box>
-              </Flex>
-            ) : (
-              ''
-            )}*/}
+
             <Box mt={20} mb={20}>
               <ButtonDD
                 text={'Contactez-moi 🚀'}

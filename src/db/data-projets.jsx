@@ -40,8 +40,7 @@ const projetsdata = [
       '🤌 Affichage des tous les cours disponible sur une page dédiée',
       "🛟 Mise en place d'un service support client",
     ],
-    retourVideo:
-      'https://www.youtube.com/watch?v=y6oMutwJQCw&ab_channel=4KRelaxationChannel',
+    retourVideo: '',
   },
   {
     id: 2,
@@ -59,7 +58,7 @@ const projetsdata = [
     hash: 'LkFslT%gE0Io%%ohRkWEE4M|xu%2',
     projectOwner: 'Mike Codeur',
     comment: 'Merci à andréa pour son aide apporté au projet',
-    logo: '/images/logo-teachizi-blanc-450x102.png',
+    logo: '/images/logo-schoolbooster.svg',
     stack: [
       'React',
       'Jest',
@@ -82,8 +81,7 @@ const projetsdata = [
       "🤌 Travail d'équipe au quotidien sur Github",
       '🛟 Mise en place des tests avec JEST',
     ],
-    retourVideo:
-      'https://www.youtube.com/watch?v=y6oMutwJQCw&ab_channel=4KRelaxationChannel',
+    retourVideo: `https://drive.google.com/uc?export=download&id=1Pp7Werjg3S7woTq-nZfDCgtI1PNt7zjZ`,
   },
   {
     id: 3,
@@ -124,8 +122,7 @@ const projetsdata = [
       '🤌 Création des formations',
       "🛟 Mise en place d'un service support client",
     ],
-    retourVideo:
-      'https://www.youtube.com/watch?v=y6oMutwJQCw&ab_channel=4KRelaxationChannel',
+    retourVideo: '',
   },
   {
     id: 4,
@@ -165,8 +162,7 @@ const projetsdata = [
       '🤌 Affichage des tous les cours disponible sur une page dédiée',
       "🛟 Mise en place d'un service support client",
     ],
-    retourVideo:
-      'https://www.youtube.com/watch?v=y6oMutwJQCw&ab_channel=4KRelaxationChannel',
+    retourVideo: '',
   },
   {
     id: 5,
@@ -184,7 +180,7 @@ const projetsdata = [
     hash: 'LkFslT%gE0Io%%ohRkWEE4M|xu%2',
     projectOwner: 'Mike Codeur',
     comment: 'Merci à andréa pour son aide apporté au projet',
-    logo: '/images/logo-teachizi-blanc-450x102.png',
+    logo: '/images/logo-schoolbooster.svg',
     stack: [
       'React',
       'Jest',
@@ -207,8 +203,7 @@ const projetsdata = [
       "🤌 Travail d'équipe au quotidien sur Github",
       '🛟 Mise en place des tests avec JEST',
     ],
-    retourVideo:
-      'https://www.youtube.com/watch?v=y6oMutwJQCw&ab_channel=4KRelaxationChannel',
+    retourVideo: `https://drive.google.com/uc?export=download&id=1Pp7Werjg3S7woTq-nZfDCgtI1PNt7zjZ`,
   },
   {
     id: 6,
@@ -249,8 +244,7 @@ const projetsdata = [
       '🤌 Création des formations',
       "🛟 Mise en place d'un service support client",
     ],
-    retourVideo:
-      'https://www.youtube.com/watch?v=y6oMutwJQCw&ab_channel=4KRelaxationChannel',
+    retourVideo: '',
   },
   {
     id: 7,
@@ -290,8 +284,7 @@ const projetsdata = [
       '🤌 Affichage des tous les cours disponible sur une page dédiée',
       "🛟 Mise en place d'un service support client",
     ],
-    retourVideo:
-      'https://www.youtube.com/watch?v=y6oMutwJQCw&ab_channel=4KRelaxationChannel',
+    retourVideo: '',
   },
   {
     id: 8,
@@ -309,7 +302,7 @@ const projetsdata = [
     hash: 'LkFslT%gE0Io%%ohRkWEE4M|xu%2',
     projectOwner: 'Mike Codeur',
     comment: 'Merci à andréa pour son aide apporté au projet',
-    logo: '/images/logo-teachizi-blanc-450x102.png',
+    logo: '/images/logo-schoolbooster.svg',
     stack: [
       'React',
       'Jest',
@@ -332,8 +325,7 @@ const projetsdata = [
       "🤌 Travail d'équipe au quotidien sur Github",
       '🛟 Mise en place des tests avec JEST',
     ],
-    retourVideo:
-      'https://www.youtube.com/watch?v=y6oMutwJQCw&ab_channel=4KRelaxationChannel',
+    retourVideo: `https://drive.google.com/uc?export=download&id=1Pp7Werjg3S7woTq-nZfDCgtI1PNt7zjZ`,
   },
   {
     id: 9,
@@ -374,8 +366,7 @@ const projetsdata = [
       '🤌 Création des formations',
       "🛟 Mise en place d'un service support client",
     ],
-    retourVideo:
-      'https://www.youtube.com/watch?v=y6oMutwJQCw&ab_channel=4KRelaxationChannel',
+    retourVideo: '',
   },
 ]
 
