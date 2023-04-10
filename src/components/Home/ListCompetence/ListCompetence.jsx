@@ -6,7 +6,7 @@ import React, {useState} from 'react'
 import CanvaGlobe from './3dmap/CanvaGlobe'
 
 export default function ListCompetence({loadingApi, setLoadingApi}) {
-  const [selectedCountry, setSelectedCountry] = useState(null)
+  const [selectedCountry, setSelectedCountry] = useState('Paris')
   const {data, loading, error} = useGetDataCompetences(selectedCountry)
 
   const onClickCountry = country => {
