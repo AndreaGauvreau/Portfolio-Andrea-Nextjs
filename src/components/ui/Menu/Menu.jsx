@@ -3,7 +3,7 @@ import {Box, Flex, IconButton} from '@chakra-ui/react'
 import Link from 'next/link'
 import React, {useState} from 'react'
 import {colorsDD} from '../colors/colors'
-import {MaltIcon} from '../icones/malt/malt'
+import {YoutubeIcon} from '../icones/youtubeIcon/YoutubeIcon'
 import {GithIcon} from '../icones/githubicon/githubIcon'
 import {IconeAndrea} from '../icones/iconeandrea/iconeandrea'
 import {LinkdinIcon} from '../icones/linkedin/linkedinIcon'
@@ -91,7 +91,9 @@ export default function Menu({color1, color2, blur, isMain, linkList}) {
           />
         </Link>
         <Link
-          href={'https://www.malt.fr/profile/andreagauvreau'}
+          href={
+            'https://www.youtube.com/watch?v=Zh06rzhTWeA&t=569s&ab_channel=Andreagv'
+          }
           target="_blank"
         >
           <IconButton
@@ -104,7 +106,7 @@ export default function Menu({color1, color2, blur, isMain, linkList}) {
             onMouseEnter={() => setDribbleColor('white')}
             onMouseLeave={() => setDribbleColor('#ffffff50')}
             icon={
-              <MaltIcon
+              <YoutubeIcon
                 color={dribbleColor}
                 color1={color1 ? color1 : colorsDD.pink}
                 color2={color2 ? color2 : colorsDD.green}
