@@ -2,6 +2,7 @@ import {CursorProvider} from '@/components/ui/cursor/CursorProvider'
 import Chakra from '@/chakra'
 import '@/global.css'
 import Script from 'next/script'
+import QueryClientFirebase from '@/QueryClientFirebase'
 
 export default function RootLayout({children}) {
   return (
@@ -57,9 +58,11 @@ export default function RootLayout({children}) {
         </Script>
       </head>
       <body>
-        <Chakra>
-          <CursorProvider>{children}</CursorProvider>
-        </Chakra>
+        <QueryClientFirebase>
+          <Chakra>
+            <CursorProvider>{children}</CursorProvider>
+          </Chakra>
+        </QueryClientFirebase>
       </body>
     </html>
   )
