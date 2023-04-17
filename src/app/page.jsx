@@ -14,7 +14,6 @@ import {lazy, Suspense, useEffect, useState} from 'react'
 import dynamic from 'next/dynamic'
 import Loader from '@/components/ui/3dLoader'
 import Loading from './loading'
-
 const ListCompetence = dynamic(() =>
   import('@/components/Home/ListCompetence/ListCompetence'),
 )
@@ -56,7 +55,6 @@ export default function Page() {
 
   return (
     <>
-      {' '}
       <Suspense fallback={<Loader />}>
         <Box bgColor="#0d0d12" padding={0} m={0} w={'100%'} overflow={'hidden'}>
           <Cursor />

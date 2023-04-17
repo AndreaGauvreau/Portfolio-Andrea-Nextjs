@@ -1,18 +1,16 @@
 import React from 'react'
 import {
   Heading,
-  Avatar,
   Box,
   Center,
   Image,
   Flex,
-  Text,
   Stack,
   Button,
 } from '@chakra-ui/react'
-import {colorsDD} from '../ui/colors/colors'
+import {colorsDD} from '../colors/colors'
 import Link from 'next/link'
-export default function CardTools({data}) {
+export default function Card({image, lien = '/', titre}) {
   return (
     <Center py={6} zIndex={2}>
       <Box
@@ -23,14 +21,14 @@ export default function CardTools({data}) {
         rounded={'md'}
         overflow={'hidden'}
       >
-        <Image h={'170px'} w={'full'} src={data?.image} objectFit={'cover'} />
+        <Image h={'170px'} w={'full'} src={image} objectFit={'cover'} />
         <Flex justify={'center'}></Flex>
 
         <Box p={4}>
           <Stack spacing={'20px'} align={'center'}>
-            <Heading fontSize={'xl'}>{data?.name}</Heading>
+            <Heading fontSize={'xl'}>{titre}</Heading>
           </Stack>
-          <Link href={data.lien}>
+          <Link href={lien}>
             <Button
               w={'full'}
               mt={4}
