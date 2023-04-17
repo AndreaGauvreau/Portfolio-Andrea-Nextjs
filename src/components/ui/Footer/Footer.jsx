@@ -51,6 +51,11 @@ export default function Footer({color1, color2, blur}) {
             • Tools dev 🏅
           </Text>
         </Link>
+        <Link href="/articles">
+          <Text color={'#ffffff'} _hover={{color: '#ffffff90'}}>
+            • Blog
+          </Text>
+        </Link>
       </Box>
       <Flex gap={{base: 2, md: 5, lg: 10}} alignItems={'center'}>
         <Box fontSize={'sm'} color={'white'}>
