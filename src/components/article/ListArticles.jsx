@@ -63,7 +63,7 @@ export default function ListArticles() {
                     key={index}
                     image={e?.imagePath}
                     titre={e?.titre}
-                    lien={`/articles/${e?.titre}`}
+                    lien={`/articles/${e?.link}`}
                   />
                 ))}
               </Suspense>

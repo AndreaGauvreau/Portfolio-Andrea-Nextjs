@@ -63,3 +63,17 @@ export async function getAllDocuments(collectionName) {
   const querySnapshot = await getDocs(collection(db, collectionName))
   return querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}))
 }
+
+export async function getDocumentsBylink(collectionName, link) {
+  const articlesQuery = query(
+    collection(db, collectionName),
+    where('link', '==', link),
+  )
+  const snapshot = await getDocs(articlesQuery)
+  if (snapshot.empty) {
+    console.log('No matching documents.')
+    return null
+  }
+  const docs = snapshot.docs.map(doc => ({id: doc.id, ...doc.data()}))
+  return docs
+}
