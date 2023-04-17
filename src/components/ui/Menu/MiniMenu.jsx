@@ -42,23 +42,9 @@ export default function MiniMenu() {
         <Link href="/tools">
           <MenuItem>Tools CSS</MenuItem>
         </Link>
-        <Collapse in={showCssTools}>
-          <Link href="/tools/glassmorphism">
-            <MenuItem pl={10}>Glassmorphism</MenuItem>
-          </Link>
-          <Link href="/tools/gradient">
-            <MenuItem pl={10}>Gradient</MenuItem>
-          </Link>
-          <Link href="/tools/gradient-animation">
-            <MenuItem pl={10}>Gradient Animation</MenuItem>
-          </Link>
-          <Link href="/tools/boxshadow">
-            <MenuItem pl={10}>BoxShadow</MenuItem>
-          </Link>
-          <Link href="/tools/textclamp">
-            <MenuItem pl={10}>TextClamp</MenuItem>
-          </Link>
-        </Collapse>
+        <Link href="/articles">
+          <MenuItem>Blog</MenuItem>
+        </Link>
       </MenuList>
     </Menu>
   )

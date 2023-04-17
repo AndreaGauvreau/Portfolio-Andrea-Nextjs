@@ -2,10 +2,9 @@ import {Box, Heading, Text, Stack, Flex} from '@chakra-ui/react'
 import {colorsDD} from '../ui/colors/colors'
 
 import Card from '@/components/ui/Card/Card.jsx'
-import CardSkeleton from '@/components/ui/Card/Card.jsx'
+import CardSkeleton from '@/components/ui/skeletons/CardSkeleton'
 import React, {useState, useEffect, Suspense} from 'react'
 import {useAllDocuments} from '@/commons/hook/post'
-import {getAllDocuments} from '@/commons/api/post'
 
 export default function ListArticles() {
   const {isLoading, error, data: articles} = useAllDocuments('article')
@@ -23,6 +22,7 @@ export default function ListArticles() {
         bgSize="cover"
         boxSizing="border-box"
         position="relative"
+        minH={'100vh'}
       >
         <Stack
           id={'maincover'}
@@ -56,8 +56,8 @@ export default function ListArticles() {
             paddingLeft={{base: '70px', lg: '0px'}}
             justifyContent={{base: 'flex-start', lg: 'center'}}
           >
-            {articles ? (
-              <Suspense fallback={<LoadingListTools />}>
+            {!isLoading ? (
+              <Suspense fallback={<CardSkeleton />}>
                 {articles.map((e, index) => (
                   <Card
                     key={index}
@@ -68,20 +68,11 @@ export default function ListArticles() {
                 ))}
               </Suspense>
             ) : (
-              <LoadingListTools />
+              <CardSkeleton />
             )}
           </Flex>
-          <Text>ok</Text>
         </Stack>
       </Flex>
     </>
   )
 }
-
-const LoadingListTools = () => (
-  <>
-    {[1, 2].map((e, index) => (
-      <CardSkeleton key={index} />
-    ))}
-  </>
-)

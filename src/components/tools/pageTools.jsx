@@ -80,7 +80,6 @@ export default function PageTools() {
               <LoadingListTools />
             )}
           </Flex>
-          <Text>ok</Text>
         </Stack>
       </Flex>
     </>

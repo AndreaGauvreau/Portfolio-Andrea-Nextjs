@@ -10,11 +10,7 @@ import {
 } from '@chakra-ui/react'
 import {colorsDD} from '../colors/colors'
 import Link from 'next/link'
-export default function Card({
-  image = 'https://clone-tesla-delta.vercel.app/images/thumb-tesla-project.jpg',
-  lien = '/',
-  titre = 'titre juste ici',
-}) {
+export default function Card({image, lien = '/', titre}) {
   return (
     <Center py={6} zIndex={2}>
       <Box
