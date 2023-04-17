@@ -1,11 +1,11 @@
 'use client'
 import {Box, Heading, Text} from '@chakra-ui/react'
-import {usePostByTitle} from '@/commons/hook/post.jsx'
+import {usePostByLink} from '@/commons/hook/post.jsx'
 
 export default function Page({params}) {
-  const titre = params?.titre
+  const link = params?.link
 
-  const {isLoading, error, data: post} = usePostByTitle(titre)
+  const {isLoading, error, data: post} = usePostByLink(link)
 
   if (isLoading) return 'Loading...'
 

@@ -1,5 +1,9 @@
 import {useQuery} from 'react-query'
-import {getAllDocuments, getDocumentsByTitle} from '@/commons/api/post'
+import {
+  getAllDocuments,
+  getDocumentsByTitle,
+  getDocumentsBylink,
+} from '@/commons/api/post'
 
 export function usePostByTitle(title) {
   return useQuery(
@@ -20,4 +24,16 @@ export function useAllDocuments(collectionName) {
     },
     select: data => data ?? null,
   })
+}
+export function usePostByLink(link) {
+  return useQuery(
+    ['article', link],
+    () => getDocumentsBylink('article', link),
+    {
+      onError: error => {
+        console.error(error)
+      },
+      select: data => data?.[0] ?? null,
+    },
+  )
 }
