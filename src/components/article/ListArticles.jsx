@@ -4,21 +4,12 @@ import {colorsDD} from '../ui/colors/colors'
 import Card from '@/components/ui/Card/Card.jsx'
 import CardSkeleton from '@/components/ui/Card/Card.jsx'
 import React, {useState, useEffect, Suspense} from 'react'
+import {useAllDocuments} from '@/commons/hook/post'
+import {getAllDocuments} from '@/commons/api/post'
 
-export default function PageTools() {
-  const [listTools, setListTools] = useState(null)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const module = await import('./listTools.js')
-        setListTools(module.listTools)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    fetchData()
-  }, [])
+export default function ListArticles() {
+  const {isLoading, error, data: articles} = useAllDocuments('article')
+  console.log('data', articles)
   return (
     <>
       <Flex
@@ -47,10 +38,10 @@ export default function PageTools() {
             as={'h1'}
             zIndex={1}
           >
-            Outils Css
+            Boostez vos compétences de développeur
             <br />
-            <Text as={'span'} color={colorsDD.green}>
-              Pour les développeurs
+            <Text as={'span'} color={colorsDD.green} fontSize={'xl'}>
+              blog fait par un développeur pour les développeurs
             </Text>
           </Heading>
 
@@ -65,14 +56,14 @@ export default function PageTools() {
             paddingLeft={{base: '70px', lg: '0px'}}
             justifyContent={{base: 'flex-start', lg: 'center'}}
           >
-            {listTools ? (
+            {articles ? (
               <Suspense fallback={<LoadingListTools />}>
-                {listTools.map((e, index) => (
+                {articles.map((e, index) => (
                   <Card
                     key={index}
-                    image={e?.image}
-                    titre={e?.name}
-                    lien={e?.lien}
+                    image={e?.imagePath}
+                    titre={e?.titre}
+                    lien={`/articles/${e?.titre}`}
                   />
                 ))}
               </Suspense>
@@ -89,7 +80,7 @@ export default function PageTools() {
 
 const LoadingListTools = () => (
   <>
-    {[1, 2, 3].map((e, index) => (
+    {[1, 2].map((e, index) => (
       <CardSkeleton key={index} />
     ))}
   </>

@@ -38,7 +38,11 @@ import {
   CircularThumb,
   useCircularInputContext,
 } from 'react-circular-input'
-import {hexToRgb, rgbaToHex, isColorTooDark} from '/src/helpers/function.js'
+import {
+  hexToRgb,
+  rgbaToHex,
+  isColorTooDark,
+} from '@/commons/helpers/function.js'
 import {DeleteIcon, StarIcon} from '@chakra-ui/icons'
 import {colorsDD} from '/src/components/ui/colors/colors'
 import Image from 'next/image'

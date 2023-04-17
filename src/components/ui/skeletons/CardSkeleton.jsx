@@ -3,14 +3,13 @@ import {
   Skeleton,
   Box,
   Center,
-  SkeletonCircle,
   SkeletonText,
   VStack,
   Button,
 } from '@chakra-ui/react'
-import {colorsDD} from '../ui/colors/colors'
+import {colorsDD} from '../colors/colors'
 
-export default function CardToolsSkeleton() {
+export default function CardSkeleton() {
   return (
     <Center py={6} zIndex={2}>
       <Box
