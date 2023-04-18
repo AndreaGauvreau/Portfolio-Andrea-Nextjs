@@ -4,6 +4,7 @@ import {
   getDocumentsByTitle,
   getDocumentsBylink,
 } from '@/commons/api/post'
+import {useEffect, useState} from 'react'
 
 export function usePostByTitle(title) {
   return useQuery(
@@ -36,4 +37,27 @@ export function usePostByLink(link) {
       select: data => data?.[0] ?? null,
     },
   )
+}
+export const useStorage = path => {
+  const [url, setUrl] = useState(null)
+  const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  const firebaseApp = useFirebaseApp()
+  const storage = getStorage(firebaseApp)
+
+  useEffect(() => {
+    const storageRef = ref(storage, path)
+    getDownloadURL(storageRef)
+      .then(url => {
+        setUrl(url)
+        setIsLoading(false)
+      })
+      .catch(error => {
+        setError(error)
+        setIsLoading(false)
+      })
+  }, [path, storage])
+
+  return {url, error, isLoading}
 }
