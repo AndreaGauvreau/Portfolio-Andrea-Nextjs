@@ -1,0 +1,27 @@
+@property --a {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+#boxconicanim {
+  background: conic-gradient(
+    from var(--a) at center,
+    #ffffff90 0%,
+    #ffffff30 20%,
+    #ffffff00 30%,
+    #ffffff00 50%,
+    #ffffff30 70%,
+    #ffffff90 100%
+  );
+  animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    --a: 0deg;
+  }
+  to {
+    --a: 360deg;
+  }
+}
