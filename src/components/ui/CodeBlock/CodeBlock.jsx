@@ -4,6 +4,8 @@ import Highlight, {defaultProps} from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/dracula'
 import {Box, Flex, Icon, useClipboard} from '@chakra-ui/react'
 import {CheckIcon, CopyIcon} from '@chakra-ui/icons'
+import {format} from 'prettier/standalone'
+import parserCss from 'prettier/parser-postcss'
 
 const Pre = styled.pre`
   text-align: left;
@@ -39,13 +41,33 @@ export const CodeBlock = ({code, language = 'css', lineNB = true}) => {
     setTimeout(() => {}, 2000)
   }
 
+  const formattedCode = format(code, {
+    parser: language,
+    plugins: [parserCss],
+    printWidth: 80,
+    tabWidth: 2,
+    useTabs: false,
+    semi: true,
+    singleQuote: false,
+    trailingComma: 'es5',
+    bracketSpacing: true,
+    jsxBracketSameLine: false,
+    arrowParens: 'always',
+  })
+
   return (
     <>
-      <Flex position="relative" alignItems="center" flexDirection="row">
+      <Flex
+        position="relative"
+        alignItems="center"
+        flexDirection="row"
+        w={'auto'}
+        maxW={'90vw'}
+      >
         <Highlight
           {...defaultProps}
           theme={theme}
-          code={code}
+          code={formattedCode}
           language={language}
         >
           {({className, style, tokens, getLineProps, getTokenProps}) => (
