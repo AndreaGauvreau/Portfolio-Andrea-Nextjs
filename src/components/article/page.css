@@ -14,10 +14,10 @@
     #ffffff30 70%,
     #ffffff90 100%
   );
-  animation: rotate 5s linear infinite;
+  animation: rotateConic 5s linear infinite;
 }
 
-@keyframes rotate {
+@keyframes rotateConic {
   from {
     --a: 0deg;
   }
