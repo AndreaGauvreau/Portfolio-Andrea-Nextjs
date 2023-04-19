@@ -61,7 +61,7 @@ export const CodeBlock = ({code, language = 'css', lineNB = true}) => {
         position="relative"
         alignItems="center"
         flexDirection="row"
-        w={'auto'}
+        w={'100%'}
         maxW={'90vw'}
       >
         <Highlight
