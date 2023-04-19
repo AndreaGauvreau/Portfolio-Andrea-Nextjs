@@ -77,3 +77,19 @@ export async function getDocumentsBylink(collectionName, link) {
   const docs = snapshot.docs.map(doc => ({id: doc.id, ...doc.data()}))
   return docs
 }
+
+export async function fetchPostByLink(link) {
+  const docs = await getDocumentsBylink('article', link)
+  if (docs === null) {
+    throw new Error(`No matching documents found for link ${link}`)
+  }
+  return docs[0]
+}
+export async function getArticle({params}) {
+  const post = await fetchPostByLink(params.link)
+  return {
+    props: {
+      post,
+    },
+  }
+}
