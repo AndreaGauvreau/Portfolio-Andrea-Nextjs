@@ -19,6 +19,7 @@ import './page.css'
 import {CodeBlock} from '@/components/ui/CodeBlock/CodeBlock.jsx'
 import {FadeInTop} from '@/helpers/FaedinTop.jsx'
 import {colorsDD} from '../ui/colors/colors'
+import ContenuArticle from './ContenuArticle'
 export default function ArticlePage({params}) {
   const link = params?.link
 
@@ -49,7 +50,8 @@ export default function ArticlePage({params}) {
         <Stack
           align={'center'}
           spacing={{base: 8, md: 10}}
-          py={{base: 20, md: 28}}
+          pb={10}
+          pt={'120px'}
           direction={{base: 'column', md: 'row'}}
         >
           <Flex
@@ -61,22 +63,6 @@ export default function ArticlePage({params}) {
             flexDirection="column"
             gap={10}
           >
-            <Flex align="center" maxW={'1000px'} w={'100%'}>
-              <Link href={'/articles'}>
-                <Icon
-                  as={ChevronLeftIcon}
-                  mr={4}
-                  cursor="pointer"
-                  boxSize={10}
-                  transition={'0.3s ease'}
-                  _hover={{transform: 'translateX(-5px)'}}
-                />
-              </Link>
-              <Heading as={'h1'} fontSize={{base: 'xl', sm: '2xl', lg: '3xl'}}>
-                {post?.titre}
-              </Heading>
-            </Flex>
-
             <Box
               position={'relative'}
               height={{base: '30vh', md: '60vh'}}
@@ -85,7 +71,7 @@ export default function ArticlePage({params}) {
               maxW={'1000px'}
               w={'100%'}
               id={'boxconicanim'}
-              p={1}
+              p={'2px'}
             >
               <Box
                 position={'relative'}
@@ -113,7 +99,7 @@ export default function ArticlePage({params}) {
                 left={'-10px'}
                 zIndex={0}
                 filter={'blur(50px)'}
-                opacity={0.2}
+                opacity={0.1}
               />
               <Box
                 position={'absolute'}
@@ -126,6 +112,7 @@ export default function ArticlePage({params}) {
                 zIndex={3}
                 filter={'blur(50px)'}
                 mixBlendMode={'soft-light'}
+                opacity={0.1}
               />
               <Box
                 position={'absolute'}
@@ -192,37 +179,7 @@ export default function ArticlePage({params}) {
           gap={10}
         >
           <Box maxW={'700px'}>
-            <Flex direction="column" gap={10}>
-              {elements.map((e, i) => (
-                <Flex key={i} order={i} justifyContent={'center'}>
-                  {e.type === 'soustitres' && e.element !== 'null' && (
-                    <Heading>{e.element}</Heading>
-                  )}
-                  {e.type === 'paragraphe' && (
-                    <>
-                      <Text fontSize={'lg'}>{e.element}</Text>
-                      <br />
-                    </>
-                  )}
-                  {e.type === 'code' && e.element !== 'null' && (
-                    <CodeBlock code={e.element} />
-                  )}
-                  {e.type === 'image' && e.element !== 'null' && (
-                    <FadeInTop>
-                      <Box
-                        w={{base: '100%', md: '500px', lg: '700px'}}
-                        h={{base: '350px', md: '350px', lg: '400px'}}
-                        position={'relative'}
-                        borderRadius={'10px'}
-                        overflow={'hidden'}
-                      >
-                        <Image src={e.element} fill objectFit="cover" />
-                      </Box>
-                    </FadeInTop>
-                  )}
-                </Flex>
-              ))}
-            </Flex>
+            <ContenuArticle elements={elements} post={post} />
           </Box>
         </Flex>
       </Container>
