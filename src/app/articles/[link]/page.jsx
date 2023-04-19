@@ -17,8 +17,17 @@ import {ChevronLeftIcon} from '@chakra-ui/icons'
 import Link from 'next/link'
 import './page.css'
 import {CodeBlock} from '@/components/ui/CodeBlock/CodeBlock.jsx'
+import Head from 'next/head'
+import {FadeInTop} from '@/helpers/FaedinTop.jsx'
 
-export default function Page({params}) {
+//export async function generateMetadata({params}) {
+// const {isLoading, error, data: post} = usePostByLink(link)
+// return {title: post?.titre}
+//}
+export const metadata = {
+  title: 'product',
+}
+export default async function Page({params}) {
   const link = params?.link
 
   const {isLoading, error, data: post} = usePostByLink(link)
@@ -28,6 +37,9 @@ export default function Page({params}) {
   if (error) return `An error has occurred: ${error.message}`
   const elements = []
 
+  post?.soustitres?.forEach((d, i) =>
+    elements.push({type: 'soustitres', element: d, index: i}),
+  )
   post?.paragraphe?.forEach((p, i) =>
     elements.push({type: 'paragraphe', element: p, index: i}),
   )
@@ -40,13 +52,143 @@ export default function Page({params}) {
 
   elements.sort((a, b) => a.index - b.index)
   return (
-    <Container maxW={'7xl'}>
-      <Stack
-        align={'center'}
-        spacing={{base: 8, md: 10}}
-        py={{base: 20, md: 28}}
-        direction={{base: 'column', md: 'row'}}
-      >
+    <>
+      <Container maxW={'7xl'}>
+        <Stack
+          align={'center'}
+          spacing={{base: 8, md: 10}}
+          py={{base: 20, md: 28}}
+          direction={{base: 'column', md: 'row'}}
+        >
+          <Flex
+            flex={1}
+            justify={'center'}
+            align={'center'}
+            position={'relative'}
+            w={'full'}
+            flexDirection="column"
+            gap={10}
+          >
+            <Flex align="center" maxW={'1000px'} w={'100%'}>
+              <Link href={'/articles'}>
+                <Icon
+                  as={ChevronLeftIcon}
+                  mr={4}
+                  cursor="pointer"
+                  boxSize={10}
+                  transition={'0.3s ease'}
+                  _hover={{transform: 'translateX(-5px)'}}
+                />
+              </Link>
+              <Heading as={'h1'} fontSize={{base: 'xl', sm: '2xl', lg: '3xl'}}>
+                {post?.titre}
+              </Heading>
+            </Flex>
+
+            <Box
+              position={'relative'}
+              height={{base: '30vh', md: '60vh'}}
+              rounded={'2xl'}
+              boxShadow={'2xl'}
+              maxW={'1000px'}
+              w={'100%'}
+              id={'boxconicanim'}
+              p={1}
+            >
+              <Box
+                position={'relative'}
+                w={'100%'}
+                h={'100%'}
+                rounded={'2xl'}
+                overflow={'hidden'}
+                zIndex={2}
+              >
+                <Image
+                  alt={'Hero Image'}
+                  fill
+                  src={post?.imagePath}
+                  objectFit="cover"
+                  priority
+                />
+              </Box>
+              <Box
+                position={'absolute'}
+                w={'calc(100% + 20px)'}
+                h={'calc(100% + 20px)'}
+                rounded={'2xl'}
+                id={'boxconicanim'}
+                top={'-10px'}
+                left={'-10px'}
+                zIndex={0}
+                filter={'blur(50px)'}
+                opacity={0.2}
+              />
+              <Box
+                position={'absolute'}
+                w={'calc(100% + 20px)'}
+                h={'calc(100% + 20px)'}
+                rounded={'2xl'}
+                id={'boxconicanim'}
+                top={'-10px'}
+                left={'-10px'}
+                zIndex={3}
+                filter={'blur(50px)'}
+                mixBlendMode={'soft-light'}
+              />
+              <Box
+                position={'absolute'}
+                w={'calc(100% + 20px)'}
+                h={'calc(100% + 20px)'}
+                rounded={'2xl'}
+                id={'boxconicanim'}
+                top={'-10px'}
+                left={'-10px'}
+                zIndex={0}
+                filter={'blur(10px)'}
+                opacity={0.1}
+              />
+            </Box>
+            <Stack
+              spacing={{base: 4, sm: 6}}
+              direction={{base: 'column', md: 'row'}}
+            >
+              {post?.audio ? (
+                <Button
+                  rounded={'full'}
+                  size={'lg'}
+                  fontWeight={'normal'}
+                  px={6}
+                  leftIcon={<PlayIcon h={4} w={4} color={'gray.300'} />}
+                >
+                  lecture audio de l'article
+                </Button>
+              ) : (
+                ''
+              )}
+              <Flex gap={2} flexWrap="wrap">
+                {post?.tags?.map((e, index) => {
+                  return (
+                    <FadeInTop delay={0 + index / 6}>
+                      <Tag
+                        variant="subtle"
+                        colorScheme="cyan"
+                        borderRadius={'full'}
+                        size={'md'}
+                        px={5}
+                        minH={10}
+                        transition={'0.3s'}
+                        _hover={{opacity: 0.7}}
+                      >
+                        {e}
+                      </Tag>
+                    </FadeInTop>
+                  )
+                })}
+              </Flex>
+            </Stack>
+          </Flex>
+        </Stack>
+
         <Flex
           flex={1}
           justify={'center'}
@@ -56,158 +198,42 @@ export default function Page({params}) {
           flexDirection="column"
           gap={10}
         >
-          <Flex align="center" maxW={'1000px'} w={'100%'}>
-            <Link href={'/articles'}>
-              <Icon
-                as={ChevronLeftIcon}
-                mr={4}
-                cursor="pointer"
-                boxSize={10}
-                transition={'0.3s ease'}
-                _hover={{transform: 'translateX(-5px)'}}
-              />
-            </Link>
-            <Heading fontSize={{base: 'xl', sm: '3xl', lg: '4xl'}}>
-              {post?.titre}
-            </Heading>
-          </Flex>
-
-          <Box
-            position={'relative'}
-            height={{base: '30vh', md: '50vh'}}
-            rounded={'2xl'}
-            boxShadow={'2xl'}
-            maxW={'1000px'}
-            w={'100%'}
-            id={'boxconicanim'}
-            p={0.5}
-          >
-            <Box
-              position={'relative'}
-              w={'100%'}
-              h={'100%'}
-              rounded={'2xl'}
-              overflow={'hidden'}
-              zIndex={2}
-            >
-              <Image
-                alt={'Hero Image'}
-                fill
-                src={'/images/tesla-thumb-yt.jpg'}
-                objectFit="cover"
-              />
-            </Box>
-            <Box
-              position={'absolute'}
-              w={'calc(100% + 20px)'}
-              h={'calc(100% + 20px)'}
-              rounded={'2xl'}
-              id={'boxconicanim'}
-              top={'-10px'}
-              left={'-10px'}
-              zIndex={0}
-              filter={'blur(50px)'}
-              opacity={0.2}
-            />
-            <Box
-              position={'absolute'}
-              w={'calc(100% + 20px)'}
-              h={'calc(100% + 20px)'}
-              rounded={'2xl'}
-              id={'boxconicanim'}
-              top={'-10px'}
-              left={'-10px'}
-              zIndex={3}
-              filter={'blur(50px)'}
-              mixBlendMode={'soft-light'}
-            />
-            <Box
-              position={'absolute'}
-              w={'calc(100% + 20px)'}
-              h={'calc(100% + 20px)'}
-              rounded={'2xl'}
-              id={'boxconicanim'}
-              top={'-10px'}
-              left={'-10px'}
-              zIndex={0}
-              filter={'blur(10px)'}
-              opacity={0.1}
-            />
-          </Box>
-          <Stack
-            spacing={{base: 4, sm: 6}}
-            direction={{base: 'column', md: 'row'}}
-          >
-            <Button
-              rounded={'full'}
-              size={'lg'}
-              fontWeight={'normal'}
-              px={6}
-              leftIcon={<PlayIcon h={4} w={4} color={'gray.300'} />}
-            >
-              lecture audio de l'article
-            </Button>
-            <Flex gap={2} flexWrap="wrap">
-              {post?.tags?.map((e, index) => {
-                return (
-                  <Tag
-                    variant="subtle"
-                    colorScheme="cyan"
-                    borderRadius={'full'}
-                    size={'md'}
-                    px={5}
-                    minH={10}
-                    transition={'0.3s'}
-                    _hover={{opacity: 0.7}}
-                  >
-                    {e}
-                  </Tag>
-                )
-              })}
+          <Box maxW={'700px'}>
+            <Flex direction="column" gap={10}>
+              {elements.map((e, i) => (
+                <Flex key={i} order={i} justifyContent={'center'}>
+                  {e.type === 'soustitres' && e.element !== 'null' && (
+                    <Heading>{e.element}</Heading>
+                  )}
+                  {e.type === 'paragraphe' && (
+                    <>
+                      <Text fontSize={'lg'}>{e.element}</Text>
+                      <br />
+                    </>
+                  )}
+                  {e.type === 'code' && e.element !== 'null' && (
+                    <CodeBlock code={e.element} />
+                  )}
+                  {e.type === 'image' && e.element !== 'null' && (
+                    <FadeInTop>
+                      <Box
+                        w={{base: '100%', md: '500px', lg: '700px'}}
+                        h={{base: '350px', md: '350px', lg: '400px'}}
+                        position={'relative'}
+                        borderRadius={'10px'}
+                        overflow={'hidden'}
+                      >
+                        <Image src={e.element} fill objectFit="cover" />
+                      </Box>
+                    </FadeInTop>
+                  )}
+                </Flex>
+              ))}
             </Flex>
-          </Stack>
+          </Box>
         </Flex>
-      </Stack>
-
-      <Flex
-        flex={1}
-        justify={'center'}
-        align={'center'}
-        position={'relative'}
-        w={'full'}
-        flexDirection="column"
-        gap={10}
-      >
-        <Box maxW={'1000px'}>
-          <Flex direction="column">
-            {elements.map((e, i) => (
-              <Flex key={i} order={i} justifyContent={'center'}>
-                {e.type === 'paragraphe' && (
-                  <>
-                    <Text>{e.element}</Text>
-                    <br />
-                  </>
-                )}
-                {e.type === 'code' && e.element !== 'null' && (
-                  <CodeBlock code={e.element} />
-                )}
-                {e.type === 'image' && e.element !== 'null' && (
-                  <Box
-                    w={{base: '100%', md: '500px', lg: '700px'}}
-                    h={{base: '350px', md: '350px', lg: '400px'}}
-                    position={'relative'}
-                    borderRadius={'10px'}
-                    overflow={'hidden'}
-                  >
-                    <Image src={e.element} fill objectFit="cover" />
-                  </Box>
-                )}
-              </Flex>
-            ))}
-          </Flex>
-        </Box>
-      </Flex>
-    </Container>
+      </Container>
+    </>
   )
 }
 
