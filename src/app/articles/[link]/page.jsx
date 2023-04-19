@@ -21,5 +21,9 @@ export async function generateMetadata({params}) {
     alternates: {
       canonical: `/${post?.link}`,
     },
+    openGraph: {
+      images: post?.imagePath,
+      url: `https://www.andrea-gauvreau.fr/${post?.link}`,
+    },
   }
 }
