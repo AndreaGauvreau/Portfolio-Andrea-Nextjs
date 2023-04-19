@@ -1,5 +1,4 @@
 'use client'
-
 import {Box} from '@chakra-ui/react'
 import Cursor from '@/components/ui/cursor/Cursor'
 import Menu from '@/components/ui/Menu/Menu'
@@ -7,24 +6,16 @@ import Main from '@/components/Home/Main/Main'
 import Competences from '@/components/Home/Competences/Competences'
 import Project from '@/components/Home/Projects/Project'
 import Parcours from '@/components/Home/Parcours/Parcours'
-//import ListCompetence from '@/components/Home/ListCompetence/ListCompetence'
 import Contact from '@/components/Home/Contact/Contact'
 import Footer from '@/components/ui/Footer/Footer'
-import {lazy, Suspense, useEffect, useState} from 'react'
+import {Suspense, useEffect, useState} from 'react'
 import dynamic from 'next/dynamic'
 import Loader from '@/components/ui/3dLoader'
-import Loading from './loading'
+
 const ListCompetence = dynamic(() =>
   import('@/components/Home/ListCompetence/ListCompetence'),
 )
-
 export default function Page() {
-  //const Project = dynamic(() => import('@/components/Home/Projects/Project'))
-  //const Parcours = dynamic(() => import('@/components/Home/Parcours/Parcours'))
-  //const Contact = dynamic(() => import('@/components/Home/Contact/Contact'))
-  //const Competences = dynamic(() =>
-  //import('@/components/Home/Competences/Competences'),
-  // )
   const [mousePos, setMousePos] = useState({x: 150, y: 250})
   const [loadingApi, setLoadingApi] = useState({
     map: false,
