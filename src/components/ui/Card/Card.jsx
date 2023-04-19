@@ -10,6 +10,8 @@ import {
 } from '@chakra-ui/react'
 import {colorsDD} from '../colors/colors'
 import Link from 'next/link'
+import '@/components/article/page.css'
+
 export default function Card({image, lien = '/', titre}) {
   return (
     <Center py={6} zIndex={2}>
@@ -19,30 +21,54 @@ export default function Card({image, lien = '/', titre}) {
         bg={colorsDD.bgcolor}
         boxShadow={'2xl'}
         rounded={'md'}
-        overflow={'hidden'}
+        id={'boxconicanim'}
+        p={'1px'}
+        position={'relative'}
       >
-        <Image h={'170px'} w={'full'} src={image} objectFit={'cover'} />
-        <Flex justify={'center'}></Flex>
+        <Box
+          position={'absolute'}
+          w={'100%'}
+          h={'100%'}
+          rounded={'md'}
+          id={'boxconicanim'}
+          filter={'blur(10px)'}
+          opacity={0.5}
+          zIndex={0}
+        />
+        <Box
+          position={'relative'}
+          w={'100%'}
+          h={'100%'}
+          rounded={'md'}
+          bg={'black'}
+          overflow={'hidden'}
+          zIndex={2}
+        >
+          <Image h={'170px'} w={'full'} src={image} objectFit={'cover'} />
+          <Flex justify={'center'}></Flex>
 
-        <Box p={4}>
-          <Stack spacing={'20px'} align={'center'}>
-            <Heading fontSize={'xl'}>{titre}</Heading>
-          </Stack>
-          <Link href={lien}>
-            <Button
-              w={'full'}
-              mt={4}
-              bg={colorsDD.green20}
-              color={colorsDD.green}
-              rounded={'md'}
-              _hover={{
-                transform: 'translateY(-2px)',
-                boxShadow: 'lg',
-              }}
-            >
-              Accéder
-            </Button>
-          </Link>
+          <Box p={4}>
+            <Stack spacing={'20px'} align={'center'}>
+              <Heading fontSize={'sm'} fontFamily={'Poppins'}>
+                {titre}
+              </Heading>
+            </Stack>
+            <Link href={lien}>
+              <Button
+                w={'full'}
+                mt={4}
+                bg={colorsDD.green20}
+                color={colorsDD.green}
+                rounded={'md'}
+                _hover={{
+                  transform: 'translateY(-2px)',
+                  boxShadow: 'lg',
+                }}
+              >
+                Accéder
+              </Button>
+            </Link>
+          </Box>
         </Box>
       </Box>
     </Center>

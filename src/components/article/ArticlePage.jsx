@@ -18,6 +18,7 @@ import Link from 'next/link'
 import './page.css'
 import {CodeBlock} from '@/components/ui/CodeBlock/CodeBlock.jsx'
 import {FadeInTop} from '@/helpers/FaedinTop.jsx'
+import {colorsDD} from '../ui/colors/colors'
 export default function ArticlePage({params}) {
   const link = params?.link
 
@@ -162,7 +163,8 @@ export default function ArticlePage({params}) {
                     <FadeInTop delay={0 + index / 6}>
                       <Tag
                         variant="subtle"
-                        colorScheme="cyan"
+                        bg={colorsDD.green20}
+                        color={colorsDD.green}
                         borderRadius={'full'}
                         size={'md'}
                         px={5}
