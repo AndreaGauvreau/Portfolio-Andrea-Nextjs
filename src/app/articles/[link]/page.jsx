@@ -2,7 +2,11 @@ import ArticlePage from '@/components/article/ArticlePage.jsx'
 import {fetchPostByLink} from '@/commons/api/post.jsx'
 
 export default async function Page({params}) {
-  return <ArticlePage params={params} />
+  return (
+    <>
+      <ArticlePage params={params} />
+    </>
+  )
 }
 
 export async function generateMetadata({params}) {

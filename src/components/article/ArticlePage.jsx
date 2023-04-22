@@ -5,21 +5,16 @@ import {
   Container,
   createIcon,
   Flex,
-  Heading,
-  Icon,
   Stack,
   Tag,
-  Text,
 } from '@chakra-ui/react'
 import {usePostByLink} from '@/commons/hook/post.jsx'
 import Image from 'next/image'
-import {ChevronLeftIcon} from '@chakra-ui/icons'
-import Link from 'next/link'
 import './page.css'
-import {CodeBlock} from '@/components/ui/CodeBlock/CodeBlock.jsx'
 import {FadeInTop} from '@/helpers/FaedinTop.jsx'
 import {colorsDD} from '../ui/colors/colors'
-import ContenuArticle from './ContenuArticle'
+import './markdown.css'
+import MarkdownArticle from './MarkdownArticle'
 export default function ArticlePage({params}) {
   const link = params?.link
 
@@ -30,20 +25,6 @@ export default function ArticlePage({params}) {
   if (error) return `An error has occurred: ${error.message}`
   const elements = []
 
-  post?.soustitres?.forEach((d, i) =>
-    elements.push({type: 'soustitres', element: d, index: i}),
-  )
-  post?.paragraphe?.forEach((p, i) =>
-    elements.push({type: 'paragraphe', element: p, index: i}),
-  )
-  post?.code?.forEach((c, i) =>
-    elements.push({type: 'code', element: c, index: i}),
-  )
-  post?.images?.forEach((i, index) =>
-    elements.push({type: 'image', element: i, index: index}),
-  )
-
-  elements.sort((a, b) => a.index - b.index)
   return (
     <>
       <Container maxW={'7xl'}>
@@ -179,7 +160,7 @@ export default function ArticlePage({params}) {
           gap={10}
         >
           <Box maxW={'700px'}>
-            <ContenuArticle elements={elements} post={post} />
+            <MarkdownArticle post={post} />
           </Box>
         </Flex>
       </Container>
