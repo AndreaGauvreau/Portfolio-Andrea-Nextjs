@@ -6,7 +6,7 @@ export default function Page({params}) {
   return (
     <div>
       <ArticlePage post={post} />
-      <MarkdownArticle post={post} />
+      <MarkdownArticle params={params} />
     </div>
   )
 }
