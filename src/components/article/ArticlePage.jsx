@@ -8,23 +8,14 @@ import {
   Stack,
   Tag,
 } from '@chakra-ui/react'
-import {usePostByLink} from '@/commons/hook/post.jsx'
 import Image from 'next/image'
 import './page.css'
 import {FadeInTop} from '@/helpers/FaedinTop.jsx'
 import {colorsDD} from '../ui/colors/colors'
 import './markdown.css'
-import MarkdownArticle from './MarkdownArticle'
-export default function ArticlePage({params}) {
-  const link = params?.link
 
-  const {isLoading, error, data: post} = usePostByLink(link)
-
-  if (isLoading) return 'Loading...'
-
-  if (error) return `An error has occurred: ${error.message}`
-  const elements = []
-
+export default function ArticlePage({post}) {
+  console.log(post, 'post')
   return (
     <>
       <Container maxW={'7xl'}>
@@ -158,11 +149,7 @@ export default function ArticlePage({params}) {
           w={'full'}
           flexDirection="column"
           gap={10}
-        >
-          <Box maxW={'700px'}>
-            <MarkdownArticle post={post} />
-          </Box>
-        </Flex>
+        ></Flex>
       </Container>
     </>
   )

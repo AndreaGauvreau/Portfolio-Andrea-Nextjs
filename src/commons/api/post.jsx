@@ -93,3 +93,12 @@ export async function getArticle({params}) {
     },
   }
 }
+export async function fetchPostByLink2(link) {
+  try {
+    const docs = await getDocumentsBylink('article', link)
+    return {data: docs?.[0] ?? null, error: null}
+  } catch (error) {
+    console.error(error)
+    return {data: null, error}
+  }
+}
