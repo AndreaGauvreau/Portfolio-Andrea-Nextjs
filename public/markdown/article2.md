@@ -19,6 +19,8 @@ Co-fondateur de Teachizi et développeur FrontEnd.
 
 ### Portfolio
 
+![teachizi](/images/teachizi.fr-portfolio-andrea-gauvreau.jpg)
+
 Voici mes dernières réalisations :
 
 - teachizi.hu
