@@ -1,6 +1,6 @@
 import {CursorProvider} from '@/components/ui/cursor/CursorProvider'
 import Chakra from '@/chakra'
-import '@/global.css'
+import '@/app/global.css'
 import Script from 'next/script'
 import QueryClientFirebase from '@/QueryClientFirebase'
 export async function metadata() {

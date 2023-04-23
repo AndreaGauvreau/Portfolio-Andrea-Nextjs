@@ -4,51 +4,6 @@
   initial-value: 0deg;
 }
 
-h1 {
-  font-size: 3em;
-  margin: 1em 0;
-  font-weight: 900;
-  font-family: Poppins;
-}
-
-h2 {
-  font-size: 2em;
-  margin: 1em 0;
-  font-weight: 800;
-  font-family: Poppins;
-}
-
-h3 {
-  font-size: 1.5em;
-  margin: 1em 0;
-  font-weight: 800;
-  font-family: Poppins;
-}
-
-p {
-  margin: 1em 0;
-}
-
-a {
-  color: #fc3ffb;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-ul {
-  padding-left: 1em;
-}
-
-li {
-  margin-bottom: 0.5em;
-}
-img {
-  border-radius: 20px;
-}
-
 #boxconicanim {
   background: conic-gradient(
     from var(--a) at center,
