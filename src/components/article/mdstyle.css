@@ -15,8 +15,9 @@
 .markdown h3 {
   font-size: 1.5em;
   margin: 1em 0;
-  font-weight: 800;
+  font-weight: 700;
   font-family: Poppins;
+  text-decoration: underline;
 }
 
 .markdown p {
