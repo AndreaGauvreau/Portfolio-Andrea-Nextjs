@@ -24,7 +24,7 @@ export async function generateMetadata({params}) {
     creator: post?.auteur,
     authors: [
       {name: 'Gauvreau'},
-      {name: 'andréa', url: 'https://andrea-gauvreau.fr'},
+      {name: 'andréa', url: 'https://www.andrea-gauvreau.fr'},
     ],
     metadataBase: new URL('https://www.andrea-gauvreau.fr/'),
     alternates: {
@@ -32,7 +32,7 @@ export async function generateMetadata({params}) {
     },
     openGraph: {
       images: post?.imagePath,
-      url: `https://www.andrea-gauvreau.fr/${post?.link}`,
+      url: `https://www.andrea-gauvreau.fr/articles/${post?.link}`,
     },
   }
 }
