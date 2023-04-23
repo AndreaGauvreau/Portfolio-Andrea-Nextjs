@@ -33,14 +33,30 @@ const articles = [
       '\n' +
       '## Step 1 : Analyse du site' +
       '\n' +
-      '## Step 2 : Coder la home page' +
+      '## Step 2 : Installer le projet' +
       '\n' +
-      '###  1 - Coder la home page' +
+      '## Step 3 : Coder la home page' +
       '\n' +
-      '## Step 3 : Coder le configurateur ' +
+      '### 1 - Animation des slides au scroll' +
       '\n' +
-      '## Step 4 : Coder les pages vehicules' +
+      '### 2 - Animation du menu principal' +
       '\n' +
-      '## Conclusion et résultat',
+      '## Step 4 : Coder le configurateur ' +
+      '\n' +
+      '### 1 - Options/selections du vehicule' +
+      '\n' +
+      '### 2 - Créer mon propre slider' +
+      '\n' +
+      '### 3 - Configurateur 3D' +
+      '\n' +
+      '## Step 5 : Coder les pages vehicules' +
+      '\n' +
+      '### 1 - Hero banner principal' +
+      '\n' +
+      '### 2 - Autres composants' +
+      '\n' +
+      '## Conclusion et résultat' +
+      '\n' +
+      "Nous voici enfin arrivé au bout ! Comme tu peux le voir c'est un sacré défis qui m'attendais. Mais en décomposant chaque partie du site on a réussi au final à produire quelque chose de vraiement intéressant !",
   },
 ]

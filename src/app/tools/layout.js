@@ -1,5 +1,4 @@
 'use client'
-import '@/global.css'
 import Menu from '@/components/ui/Menu/Menu'
 import Footer from '@/components/ui/Footer/Footer'
 import {Box} from '@chakra-ui/react'
