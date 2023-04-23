@@ -9,7 +9,6 @@ import {
   Tag,
 } from '@chakra-ui/react'
 import Image from 'next/image'
-
 import {FadeInTop} from '@/helpers/FaedinTop.jsx'
 import {colorsDD} from '../ui/colors/colors'
 

@@ -29,10 +29,10 @@ export default function VideoArticle({post}) {
           overflow="hidden"
           borderRadius={10}
           boxShadow={`0px 15px 50px 0px ${colorsDD?.pink}10`}
-          position={{base: 'static', md: 'fixed'}}
-          bottom={{base: 0, md: 10}}
-          left={{base: 0, md: 10}}
-          zIndex={9}
+          position={'fixed'}
+          bottom={10}
+          left={10}
+          zIndex={21}
         >
           {loadingVideo ? (
             <Skeleton
@@ -54,14 +54,17 @@ export default function VideoArticle({post}) {
           <IconButton
             icon={<CloseIcon />}
             aria-label="Show Video"
-            position={{base: 'absolute', lg: 'absolute'}}
+            position={'absolute'}
             top={2}
             right={2}
-            zIndex={9}
+            bg={colorsDD.pink}
+            _hover={{bg: colorsDD.green}}
+            color={'white'}
+            zIndex={22}
             rounded={'full'}
-            fontSize={'15px'}
+            fontSize={'12px'}
             w={'20px'}
-            h={'30px'}
+            h={'40px'}
             onClick={handleIconClick}
           />
         </Box>
@@ -72,7 +75,10 @@ export default function VideoArticle({post}) {
           position={{base: 'fixed', lg: 'inline'}}
           bottom={10}
           left={10}
-          zIndex={9}
+          zIndex={21}
+          bg={colorsDD.pink20}
+          _hover={{bg: colorsDD.green20}}
+          color={colorsDD.pink}
           rounded={'full'}
           fontSize={'50px'}
           w={'70px'}

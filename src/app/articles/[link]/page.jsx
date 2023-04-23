@@ -3,7 +3,7 @@ import MarkdownArticle from '@/components/article/MarkdownArticle'
 import VideoArticle from '@/components/article/Video'
 
 import {fetchPostByLink} from '@/commons/api/post.jsx'
-import './page.css'
+
 export default async function Page({params}) {
   const post = await fetchPostByLink(params?.link)
   return (
