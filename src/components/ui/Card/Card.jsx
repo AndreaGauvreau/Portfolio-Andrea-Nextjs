@@ -10,7 +10,6 @@ import {
 } from '@chakra-ui/react'
 import {colorsDD} from '../colors/colors'
 import Link from 'next/link'
-import '@/components/article/page.css'
 
 export default function Card({image, lien = '/', titre}) {
   return (

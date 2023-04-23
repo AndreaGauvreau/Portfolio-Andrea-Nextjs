@@ -1,13 +1,16 @@
 import ArticlePage from '@/components/article/ArticlePage.jsx'
 import MarkdownArticle from '@/components/article/MarkdownArticle'
-import {fetchPostByLink} from '@/commons/api/post.jsx'
+import VideoArticle from '@/components/article/Video'
 
+import {fetchPostByLink} from '@/commons/api/post.jsx'
+import './page.css'
 export default async function Page({params}) {
-  const post = {imagePath: '/2k_earth_nightmap.jpg'}
+  const post = await fetchPostByLink(params?.link)
   return (
     <div>
       <ArticlePage post={post} />
-      <MarkdownArticle params={params} />
+      <MarkdownArticle params={params} post={post} />
+      <VideoArticle post={post} />
     </div>
   )
 }

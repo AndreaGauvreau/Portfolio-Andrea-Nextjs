@@ -9,10 +9,9 @@ import {
   Tag,
 } from '@chakra-ui/react'
 import Image from 'next/image'
-import './page.css'
+
 import {FadeInTop} from '@/helpers/FaedinTop.jsx'
 import {colorsDD} from '../ui/colors/colors'
-import './markdown.css'
 
 export default function ArticlePage({post}) {
   console.log(post, 'post')
@@ -83,8 +82,8 @@ export default function ArticlePage({post}) {
                 left={'-10px'}
                 zIndex={3}
                 filter={'blur(50px)'}
-                mixBlendMode={'soft-light'}
-                opacity={0.1}
+                mixBlendMode={'plus-lighter'}
+                opacity={0.3}
               />
               <Box
                 position={'absolute'}
