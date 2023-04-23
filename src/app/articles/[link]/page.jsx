@@ -28,7 +28,7 @@ export async function generateMetadata({params}) {
     ],
     metadataBase: new URL('https://www.andrea-gauvreau.fr/'),
     alternates: {
-      canonical: `/${post?.link}`,
+      canonical: `/articles/${post?.link}`,
     },
     openGraph: {
       images: post?.imagePath,
