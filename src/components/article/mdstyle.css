@@ -22,6 +22,15 @@
 
 .markdown p {
   margin: 1em 0;
+  color: #ffffffbe;
+}
+.markdown * {
+  font-family: Poppins;
+  font-weight: 300;
+}
+.markdown strong {
+  font-weight: 900;
+  color: #ffffff;
 }
 
 .markdown a {
@@ -34,12 +43,42 @@
 }
 
 .markdown ul {
+  color: #ffffffbe;
   padding-left: 1em;
 }
 
 .markdown li {
+  color: #ffffffbe;
   margin-bottom: 0.5em;
 }
 .markdown img {
   border-radius: 20px;
+}
+
+.markdown code {
+  background-color: #f9f9f920;
+  border-radius: 4px;
+  font-size: 1em;
+  padding: 0.2em 0.4em;
+}
+
+.markdown blockquote {
+  background-color: #f2f2f220;
+  border-left: 4px solid #cccccc;
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  quotes: '\201C''\201D''\2018''\2019';
+}
+
+.markdown blockquote:before {
+  color: #cccccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+.markdown blockquote p {
+  display: inline;
 }
