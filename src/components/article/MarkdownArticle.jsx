@@ -55,7 +55,8 @@ const articles = [
       "Nous voici enfin arrivé au bout ! Comme tu peux le voir c'est un sacré défis qui m'attendais. Mais en décomposant chaque partie du site on a réussi au final à produire quelque chose de vraiement intéressant !",
   },
   {
-    content: `# Je refais de le site de tesla en mieux !
+    content:
+      `# Je refais de le site de tesla en mieux !
 
 Salut à toi, cher lecteur ! 
       
@@ -148,12 +149,36 @@ Pour installer le projet je passe par différents outils et services :
 
 Par ailleur vous pouvez librement et gratuitement [accéder au code du projet.](https://github.com/AndreaGauvreau/clone-tesla)
 
-
      
 ## Step 3 : Coder la home page
      
 ### 1 - Animation des slides au scroll
-     
+
+Pour cette étape, nous avons besoin de :
+
+- Faire en sorte que les informations sur le véhicule restent en position fixe lorsque je défile.
+- Faire disparaître ou apparaître ces mêmes infos en fonction de si je suis à l'intérieur ou à l'extérieur de la zone du véhicule.
+
+Ainsi, nous devons être capables de suivre la position de chaque diapositive et indiquer qu'au-delà d'une certaine limite de position, nous devons progressivement faire disparaître les informations.
+
+Pour suivre la position de la diapositive actuelle, j'utilise **useScroll** de Framer Motion. Voici comment l'utiliser :
+
+` +
+      `
+const boxref = useRef()   
+const { scrollYProgress } = useScroll({   
+target: boxref,   
+offset: ['-50vh', '50vh'],    
+});
+` +
+      `
+
+On définis la référence de la position qu'on souhaite suivre grâce à useRef, on définis à partir de quelle position on veux suivre le scroll pour passer de 0 à 1.
+
+et le tour est joué ! 
+
+fastoche ;) 
+
 ### 2 - Animation du menu principal
      
 ## Step 4 : Coder le configurateur 
