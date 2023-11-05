@@ -42,9 +42,26 @@ export default function Competences({mousePos, setLoadingApi, loadingApi}) {
         w={{base: '100%', md: '400px', lg: '1024px'}}
         flexDirection={{base: 'column', md: 'column', lg: 'row'}}
       >
-        <Gradient colorG={colorsDD.green} versionG={3} />
+        <Gradient colorG={colorsDD.green} versionG={4} />
         <Flex
-          w={{base: '100%', md: '100%', lg: '40%'}}
+          display={{base: 'none', md: 'none', lg: 'flex'}}
+          w="50%"
+          h={'90vh'}
+          alignItems={'flex-end'}
+          justifyContent={'center'}
+          zIndex={2}
+        >
+          <Image
+            src="/images/identite/andrea-gauvreau-profile-black-and-white.webp"
+            alt="andrea-gauvreau-developpeur-front-end"
+            width={400}
+            height={640}
+            loading="lazy"
+            quality={100}
+          />
+        </Flex>
+        <Flex
+          w={{base: '100%', md: '100%', lg: '50%'}}
           flexDirection={'column'}
           gap={{base: 0, md: 0, lg: 10}}
           maxW={{base: '400px', lg: '100%'}}
@@ -78,7 +95,7 @@ export default function Competences({mousePos, setLoadingApi, loadingApi}) {
             zIndex={1}
           >
             <Image
-              src="/images/identite/andrea-thinking-lightup.png"
+              src="/images/identite/andrea-gauvreau-profile-black-and-white.webp"
               alt="andrea-gauvreau-developpeur-front-end"
               width={200}
               loading="lazy"
@@ -141,25 +158,6 @@ export default function Competences({mousePos, setLoadingApi, loadingApi}) {
               Three...
             </Badge>
           </Flex>
-        </Flex>
-        <Flex
-          display={{base: 'none', md: 'none', lg: 'flex'}}
-          w="60%"
-          h={'90vh'}
-          alignItems={'flex-end'}
-          justifyContent={'center'}
-          zIndex={2}
-        >
-          <Box w={'1000px'}>
-            <Image
-              src="/images/identite/andrea-thinking-lightup.png"
-              alt="andrea-gauvreau-developpeur-front-end"
-              width={600}
-              height={700}
-              loading="lazy"
-              quality={100}
-            />
-          </Box>
         </Flex>
       </Flex>
     </Flex>

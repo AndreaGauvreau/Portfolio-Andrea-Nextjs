@@ -32,19 +32,24 @@ export default function Parcours() {
         p={{base: 5, md: 5, lg: 0}}
       >
         <Flex
-          w={{base: '100%', md: '60%', lg: '50%'}}
-          alignItems={'center'}
+          w={{base: '100%', md: '60%', lg: '60%'}}
+          alignItems={'flex-end'}
           justifyContent={'center'}
-          h={{base: '100%', md: '100%', lg: '100vh'}}
+          h={{base: '100%', md: '100%', lg: '100svh'}}
+          position="relative"
         >
           <Image
-            src="/images/identite/andrea-galaxy.png"
+            src="/images/identite/mic-andrea-black-and-white.webp"
+            blurDataURL={
+              '/images/identite/mic-andrea-black-and-white-load.webp'
+            }
             alt="andrea-gauvreau-developpeur-front-end"
+            placeholder="blur"
             colour
             quality={100}
             loading="lazy"
-            width={420}
-            height={200}
+            fill
+            objectFit="contained"
           />
         </Flex>
         <Flex
