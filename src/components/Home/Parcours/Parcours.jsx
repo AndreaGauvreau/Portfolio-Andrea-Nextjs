@@ -49,7 +49,7 @@ export default function Parcours() {
             quality={100}
             loading="lazy"
             fill
-            objectFit="contained"
+            objectFit="contain"
           />
         </Flex>
         <Flex
